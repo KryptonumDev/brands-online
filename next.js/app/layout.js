@@ -1,8 +1,8 @@
-import './globals.scss'
+import '@/global/global.scss'
 import localFont from 'next/font/local'
 import Nav from '@/components/organisms/Nav'
 import Footer from '@/components/organisms/Footer'
-import GlobalScript from './global'
+import GlobalScript from '@/global/global'
 
 const Lato = localFont({
   src: [

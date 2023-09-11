@@ -7,38 +7,42 @@
 }
 
 :root {
-  --primary-100: #FDFBF8;
-  --primary-200: #FAF4F0;
-  --primary-300: #EFE8E7;
-  --primary-400: #E5D8D4;
-  --primary-500: #B4A29C;
-  --primary-600: #9A827A;
-  --primary-700: #766965;
-  --primary-800: #53423C;
-  --primary-900: #332621;
+  --neutral-100: #FFFFFF;
+  --neutral-200: #FCFCFC;
+  --neutral-300: #E8E8E8;
+  --neutral-400: #D0CECE;
+  --neutral-500: #ABAAAA;
+  --neutral-600: #7F7E7E;
+  --neutral-700: #5F5E5E;
+  --neutral-800: #434242;
+  --neutral-900: #1B1B1B;
+  
+  --gradients-100: linear-gradient(25deg, #CFFA5B 28%, #EAFFAF 91%, #EBFFB6 96%);
+  --gradients-200: linear-gradient(270deg, #14E5D7 0%, #00C2B5 100%);
+  --gradients-300: linear-gradient(270deg, #D2FB67 0%, #00C2B5 100%);
+  --gradients-400: linear-gradient(45deg, #F5FE81 0%, #A8C2BE 100%);
 
-  --success-100: #EDFAF8;
-  --success-200: #C8F1EA;
-  --success-300: #88E0D1;
-  --success-400: #71DAC8;
-  --success-500: #4ED1BA;
-  --success-600: #47BEA9;
-  --success-700: #379484;
-  --success-800: #2B7366;
-  --success-900: #21584E;
+  --success-100: #D0FBE3;
+  --success-200: #A1F7C6;
+  --success-300: #73F2AA;
+  --success-400: #44EE8E;
+  --success-500: #00D65D;
+  --success-600: #11BB5B;
+  --success-700: #0D8C44;
+  --success-800: #085E2D;
+  --success-900: #042F17;
 
-  --error-100: #FBF1F1;
-  --error-200: #EDBDBD;
-  --error-300: #E49F9F;
-  --error-400: #DF8D8D;
-  --error-500: #D77070;
-  --error-600: #C46666;
-  --error-700: #995050;
-  --error-800: #763E3E;
-  --error-900: #5A2F2F;
+  --error-100: #FFE5E5;
+  --error-200: #FF9999;
+  --error-300: #FF6666;
+  --error-400: #FF3333;
+  --error-500: #F00000;
+  --error-600: #CC0000;
+  --error-700: #990000;
+  --error-800: #660000;
+  --error-900: #330000;
 
   --pageMargin: clamp(16px, calc(40vw/7.68), 40px);
-
   @media (max-width: 899px) and (min-width: 649px) {
     --pageMargin: clamp(40px, calc(80vw/7.68), 80px);
   }
@@ -54,9 +58,9 @@ body {
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   font-family: 'Erode', serif;
-  background-color: var(--primary-100);
-  color: var(--primary-800);
-  font-size: clamp(1rem, calc(18vw/7.68), calc(18rem/16));
+  background-color: var(--neutral-100);
+  color: var(--neutral-8000);
+  font-size: clamp(1rem, calc(20vw/7.68), calc(20rem/16));
 }
 
 :focus {
@@ -70,7 +74,7 @@ body {
 
 main,
 .max-width {
-  max-width: 1200px;
+  max-width: 1280px;
   width: calc(100% - var(--pageMargin) * 2);
   margin: 0 auto;
   height: 100%;
@@ -113,51 +117,31 @@ select {
 summary {
   cursor: pointer;
   list-style: none;
-
   &::marker,
   &::-webkit-details-marker {
     display: none;
   }
 }
-
 iframe {
   border: none;
   display: block;
 }
-
 img {
   max-width: 100%;
   height: auto;
 }
 
-p {
-  line-height: 150%;
-
-  strong {
-    background: linear-gradient(rgba(255, 255, 255, 0) 50%, var(--primary-300) 50%);
-    font-weight: inherit;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   line-height: 133%;
-
   strong {
     font-family: var(--font-city-streetwear);
     font-weight: inherit;
   }
 }
 
-h1,
-h2 {
+h1, h2 {
   font-size: clamp(calc(24rem/16), calc(26vw/7.68), calc(36rem/16));
-
   strong {
     font-size: 1.6em;
     line-height: 1;
@@ -168,7 +152,6 @@ h2 {
 .link {
   position: relative;
   font-style: italic;
-
   &::after {
     content: '';
     width: 100%;
@@ -178,38 +161,10 @@ h2 {
     left: 0;
     bottom: -3px;
   }
-
-  @keyframes link {
-
-    0%,
-    100% {
-      transform: scaleX(1);
-    }
-
-    50% {
-      transform: scaleX(0);
-      transform-origin: right;
-    }
-
-    0%,
-    50% {
-      transform-origin: right;
-    }
-
-    51%,
-    100% {
-      transform-origin: left;
-    }
-  }
-
-  &:hover::after {
-    animation: link .8s;
-  }
 }
 
 .sec-wo-margin {
   position: relative;
-
   &::before {
     content: '';
     width: 100vw;
@@ -232,14 +187,13 @@ h2 {
 main {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: clamp(96px, calc(144vw/7.68), 172px);
-  margin: clamp(48px, calc(64vw/7.68), 96px) auto clamp(96px, calc(144vw/7.68), 172px);
+  row-gap: clamp(98px, calc(112vw/7.68), 240px);
+  margin: clamp(34px, calc(48vw/7.68), 124px) auto clamp(86px, calc(98vw/7.68), 240px);
 }
 
 .unorderedList {
   list-style-type: none;
   margin-top: 16px;
-
   li {
     display: grid;
     grid-template-columns: auto 1fr;

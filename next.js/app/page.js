@@ -1,6 +1,7 @@
+import Button from "@/components/atoms/Button"
 import Fetch from "@/utils/fetchData"
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 const IndexPage = async () => {
   // const { data: { homepage: {
@@ -9,7 +10,7 @@ const IndexPage = async () => {
 
   return (
     <main>
-      <h1>Siema</h1>
+      
     </main>
   )
 }
