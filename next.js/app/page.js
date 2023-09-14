@@ -24,13 +24,13 @@ const IndexPage = async () => {
 //   })
 // }
 
-const getData = async () => {
-  const { body: { data } } = await Fetch({query: `
-    homepage: Homepage(id: "homepage") {
+// const getData = async () => {
+//   const { body: { data } } = await Fetch({query: `
+//     homepage: Homepage(id: "homepage") {
         
-    }
-  `,})
-  return { data };
-}
+//     }
+//   `,})
+//   return { data };
+// }
 
 export default IndexPage;
