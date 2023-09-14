@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 import Link from 'next/link';
 
-const Button = ({ data, theme = 'primary', children, href, className, ...props }) => {
+const Button = ({ data, theme = 'primary', variant="normal", children, href, className, ...props }) => {
   if (data) {
     theme = data.theme;
     href = data.href;
@@ -12,6 +12,7 @@ const Button = ({ data, theme = 'primary', children, href, className, ...props }
   const commonProps = {
     className: `cta${className ? ` ${className}` : ''}`,
     "data-theme": theme,
+    "data-variant": variant,
     ...props,
   };
 

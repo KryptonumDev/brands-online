@@ -66,9 +66,8 @@ body {
 :focus {
   outline: none;
 }
-
-.tabbing :focus-visible {
-  outline: 1px solid var(--primary-900);
+:focus-visible {
+  outline: 1px solid var(--neutral-900);
   outline-offset: 5px;
 }
 

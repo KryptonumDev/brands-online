@@ -1,0 +1,11 @@
+.wrapper {
+  text-decoration: underline;
+  position: relative;
+  > svg {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    pointer-events: none;
+    transform: scale(0);
+  }
+}
