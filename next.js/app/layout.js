@@ -24,7 +24,9 @@ export default function RootLayout({ children }) {
     <html lang="pl">
       <body className={`${Lato.className}`}>
         <Nav />
-        {children}
+        <main id="main">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

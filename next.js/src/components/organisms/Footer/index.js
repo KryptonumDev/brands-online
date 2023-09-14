@@ -1,8 +1,8 @@
 import styles from './styles.module.scss';
 import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
-import NextLink from 'next/link';
-import Link from '@/components/atoms/Link';
+import Link from 'next/link';
+import CustomLink from '@/components/atoms/Link';
 
 const Footer = () => {
   return (
@@ -14,35 +14,35 @@ const Footer = () => {
         </div>
         <div className={styles.brandColumn}>
           <div className={styles.brand}>
-            <NextLink href="/" aria-label="Homepage">
-              <Logo />
-            </NextLink>
+            <Link href="/" aria-label="Homepage">
+              <Logo viewBox={true} />
+            </Link>
             <p>Our mission is helping brands go online. Our mission is helping brands go online. Our mission is helping brands go online.</p>
           </div>
           <div className={styles.socials}>
             <p>Social media</p>
             <ul>
               <li>
-                <Link href="#df">
+                <CustomLink href="#df">
                   <Instagram />
-                </Link>
+                </CustomLink>
               </li>
               <li>
-                <Link href="#sdf">
+                <CustomLink href="#sdf">
                   <Facebook />
-                </Link>
+                </CustomLink>
               </li>
               <li>
-                <Link href="#sdf">
+                <CustomLink href="#sdf">
                   <Youtube />
-                </Link>
+                </CustomLink>
               </li>
             </ul>
           </div>
         </div>
         <div className={styles.copy}>
-          <p><span>Ⓒ</span> 2023 <Link href="https://kryptonum.eu/pl">Kryptonum</Link></p>
-          <Link href='/privacy-policy'>Privacy policy</Link>
+          <p><span>Ⓒ</span> 2023 <CustomLink href="https://kryptonum.eu/pl">Kryptonum</CustomLink></p>
+          <CustomLink href='/privacy-policy'>Privacy policy</CustomLink>
         </div>
       </div>
     </footer>

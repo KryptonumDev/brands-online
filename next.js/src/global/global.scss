@@ -42,6 +42,8 @@
   --error-800: #660000;
   --error-900: #330000;
 
+  --easing: cubic-bezier(.65, 0, .05, 1);
+
   --pageMargin: clamp(16px, calc(40vw/7.68), 40px);
   @media (max-width: 899px) and (min-width: 649px) {
     --pageMargin: clamp(40px, calc(80vw/7.68), 80px);

@@ -1,7 +1,7 @@
 .wrapper {
   a {
+    --btn-color: #14E5D7;
     &[data-theme="primary"] {
-      --btn-color: #14E5D7;
       display: inline-flex;
       align-items: center;
       height: 52px;
@@ -36,6 +36,9 @@
         .arrow {
           transform: scale(1.05);
         }
+      }
+      .connector {
+        margin: 0 -2px;
       }
       .arrow {
         transition: transform .4s;

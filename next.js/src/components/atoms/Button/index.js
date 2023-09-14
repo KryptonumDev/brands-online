@@ -26,7 +26,11 @@ const Button = ({ data, theme = 'primary', variant="normal", children, href, cla
                 {children}
               </span>
               {theme === 'primary' && (
-                <><Arrow /><Gooey /></>
+                <>
+                  <Icon.connector />
+                  <Icon.arrow />
+                  <Gooey />
+                </>
               )}
             </a>
           </div>
@@ -37,7 +41,11 @@ const Button = ({ data, theme = 'primary', variant="normal", children, href, cla
                 {children}
               </span>
               {theme === 'primary' && (
-                <><Arrow /><Gooey /></>
+                <>
+                  <Icon.connector />
+                  <Icon.arrow />
+                  <Gooey />
+                </>
               )}
             </Link>
           </div>
@@ -49,7 +57,11 @@ const Button = ({ data, theme = 'primary', variant="normal", children, href, cla
             {children}
           </span>
           {theme === 'primary' && (
-            <><Arrow /><Gooey /></>
+            <>
+              <Icon.connector />
+              <Icon.arrow />
+              <Gooey />
+            </>
           )}
         </button>
       </div>
@@ -57,30 +69,39 @@ const Button = ({ data, theme = 'primary', variant="normal", children, href, cla
   )
 };
 
-const Arrow = () => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='51' height='53' fill='none' className={styles.arrow}>
-    <rect width='51' height='52' y='0.566' fill='#14E5D7' rx='25.5'></rect>
-    <path
-      fill='url(#button-arrow)'
-      d='M15.125 22.554v8.292h12.852v5.618l9.898-9.898-9.898-9.897v5.885H15.125z'
-    ></path>
-    <defs>
-      <linearGradient
-        id='button-arrow'
-        x1='30'
-        x2='23.022'
-        y1='21.687'
-        y2='38.508'
-        gradientUnits='userSpaceOnUse'
-      >
-        <stop stopColor='#CFFA5B'></stop>
-        <stop offset='0.922' stopColor='#EAFFAF'></stop>
-        <stop offset='1' stopColor='#EBFFB6'></stop>
-      </linearGradient>
-    </defs>
-  </svg>
-)
-
+const Icon = {
+  "connector": () => (
+    <svg xmlns='http://www.w3.org/2000/svg' width='10' height='27' fill='none' className={styles.connector}>
+      <path
+        fill='#14E5D7'
+        d='M.125 26.454V.312c.719 9.844 7.344 8.583 9 3.907v17.625c-4.485-6.479-8.985.032-9 4.61v.046-.046z'
+      ></path>
+    </svg>
+  ),
+  "arrow": () => (
+    <svg xmlns='http://www.w3.org/2000/svg' width='51' height='53' fill='none' className={styles.arrow}>
+      <rect width='51' height='52' y='0.566' fill='#14E5D7' rx='25.5'></rect>
+      <path
+        fill='url(#button-arrow)'
+        d='M15.125 22.554v8.292h12.852v5.618l9.898-9.898-9.898-9.897v5.885H15.125z'
+      ></path>
+      <defs>
+        <linearGradient
+          id='button-arrow'
+          x1='30'
+          x2='23.022'
+          y1='21.687'
+          y2='38.508'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#CFFA5B'></stop>
+          <stop offset='0.922' stopColor='#EAFFAF'></stop>
+          <stop offset='1' stopColor='#EBFFB6'></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
 const Gooey = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
