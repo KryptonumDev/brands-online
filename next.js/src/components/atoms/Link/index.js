@@ -4,13 +4,13 @@ import NextLink from 'next/link';
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
 
-const Link = ({ children, ...props }) => {
-  const [ uiInfo, setUiInfo ] = useState({ x: 0, y: 0, scale: 0 });
+const CustomLink = ({ children, ...props }) => {
+  const [ coordinates, setCoordinates ] = useState({ x: 0, y: 0, scale: 0 });
   
   const handleMouseMove = (e) => {
     const offsetX = e.clientX - e.target.getBoundingClientRect().left;
     const offsetY = e.clientY - e.target.getBoundingClientRect().top;
-    setUiInfo({ x: offsetX, y: offsetY });
+    setCoordinates({ x: offsetX, y: offsetY, scale: 1 });
   }
 
   const isExternal = props?.href.startsWith('https://');
@@ -20,19 +20,19 @@ const Link = ({ children, ...props }) => {
       {...props}
       className={styles.wrapper}
       onMouseMove={(e) => handleMouseMove(e)}
-      onMouseOver={() => setUiInfo(prevState => ({...prevState, scale: 1}))}
-      onMouseOut={() => setUiInfo(prevState => ({...prevState, scale: 0}))}
-      onMouseDown={() => setUiInfo(prevState => ({...prevState, scale: 1.5}))}
-      onMouseUp={() => setUiInfo(prevState => ({...prevState, scale: 1}))}
+      onMouseOut={() => setCoordinates(prevState => ({...prevState, scale: 0}))}
+      onMouseDown={() => setCoordinates(prevState => ({...prevState, scale: 1.5}))}
+      onMouseUp={() => setCoordinates(prevState => ({...prevState, scale: 1}))}
     >
       <span>
         {children}
       </span>
       <IconComponent
+        initial={{ scale: 0 }}
         animate={{
-          x: uiInfo.x,
-          y: uiInfo.y,
-          scale: uiInfo.scale
+          x: coordinates.x,
+          y: coordinates.y,
+          scale: coordinates.scale
         }}
       />
     </NextLink>
@@ -112,4 +112,4 @@ const Icon = {
   )
 }
 
-export default Link;
+export default CustomLink;
