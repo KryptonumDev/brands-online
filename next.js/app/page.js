@@ -1,5 +1,3 @@
-import Fetch from "@/utils/fetchData"
-
 // export const runtime = 'edge'
 
 const IndexPage = async () => {
@@ -9,7 +7,7 @@ const IndexPage = async () => {
 
   return (
     <>
-      
+      Homepage
     </>
   )
 }
