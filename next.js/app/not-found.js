@@ -1,14 +1,13 @@
 // export const runtime = 'edge'
 
-const IndexPage = async (data) => {
-  console.log(data);
+const NotFoundPage = async () => {
   // const { data: { homepage: {
   //   hero_Heading,
   // }}} = await getData();
 
   return (
     <>
-      Homepage
+      <h1>Not Found</h1>
     </>
   )
 }
@@ -26,10 +25,10 @@ const IndexPage = async (data) => {
 // const getData = async () => {
 //   const { body: { data } } = await Fetch({query: `
 //     homepage: Homepage(id: "homepage") {
-        
+
 //     }
 //   `,})
 //   return { data };
 // }
 
-export default IndexPage;
+export default NotFoundPage;

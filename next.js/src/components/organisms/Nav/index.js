@@ -82,7 +82,7 @@ const Nav = () => {
               {links.map(({ name, href, asButton }, i) => (
                 !asButton && (
                   <li key={i} className={styles.animatedItem}>
-                    <Link href={href}>
+                    <Link href={href} onClick={() => setNavOpened(false)}>
                       {splitWordIntoLetters(name)}
                     </Link>
                   </li>
