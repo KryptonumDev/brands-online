@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href && (href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:'));
@@ -22,7 +23,15 @@ const ListRenderer = ({ children, ordered }) => (
   </li>
 )
 
-const Markdown = ({ children, components, ...props }) => {
+const Markdown = ({ level, children, components, ...props }) => {
+  const HeadingComponent = level;
+  const updatedComponents = level
+    ? {
+        ...components,
+        p: ({ children }) => <HeadingComponent {...props}>{children}</HeadingComponent>
+      }
+    : components;
+
   return (
     <ReactMarkdown
       components={{
@@ -30,8 +39,15 @@ const Markdown = ({ children, components, ...props }) => {
         li: ListRenderer,
         ol: ({ children }) => <ol className="orderedList">{children}</ol>,
         ul: ({ children }) => <ul className="unorderedList">{children}</ul>,
-        ...components
+        img: ({ src, alt }) => {
+          const url = new URL(src);
+          const { w, h } = Object.fromEntries(url.searchParams.entries());
+          // eslint-disable-next-line @next/next/no-img-element
+          return <img src={src} alt={alt} width={w} height={h} loading="lazy" />
+        },
+        ...updatedComponents,
       }}
+      rehypePlugins={[rehypeRaw]}
       {...props}
     >
       {children}
