@@ -61,7 +61,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   font-family: 'Erode', serif;
   background-color: var(--neutral-100);
-  color: var(--neutral-8000);
+  color: var(--neutral-900);
   font-size: clamp(1rem, calc(20vw/7.68), calc(20rem/16));
 }
 
@@ -69,7 +69,7 @@ body {
   outline: none;
 }
 :focus-visible {
-  outline: 1px solid var(--neutral-900);
+  outline: 1px solid var(--neutral-800);
   outline-offset: 5px;
 }
 
@@ -134,19 +134,14 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  line-height: 133%;
-  strong {
-    font-family: var(--font-city-streetwear);
-    font-weight: inherit;
-  }
+  line-height: 130%;
+  color: var(--neutral-900);
 }
 
 h1, h2 {
-  font-size: clamp(calc(24rem/16), calc(26vw/7.68), calc(36rem/16));
+  font-size: clamp(calc(32rem/16), calc(48vw/7.68), calc(48rem/16));
   strong {
-    font-size: 1.6em;
-    line-height: 1;
-    margin: -.15em 4px;
+    font-weight: 700;
   }
 }
 
@@ -189,7 +184,9 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: clamp(98px, calc(112vw/7.68), 240px);
-  margin: clamp(34px, calc(48vw/7.68), 124px) auto clamp(86px, calc(98vw/7.68), 240px);
+  margin: clamp(34px, calc(48vw/7.68), 128px) auto clamp(86px, calc(98vw/7.68), 240px);
+  line-height: 145%;
+  color: var(--neutral-800);
 }
 
 .unorderedList {

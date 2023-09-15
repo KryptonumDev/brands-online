@@ -1,4 +1,4 @@
-const fetchData = async ({ query, variables }) => {
+const fetchData = async (query) => {
   query = `query { ${query} }`
   try {
     const response = await fetch(process.env.GRAPHQL_ENDPOINT, {
@@ -7,19 +7,17 @@ const fetchData = async ({ query, variables }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query,
-        variables,
+        ...{ query },
       }),
     });
 
-    const { status } = response;
     const body = await response.json();
 
     if (body.errors) {
       throw body.errors[0];
     }
 
-    return { status, data: body.data };
+    return { body };
   } catch (error) {
     throw {
       status: error.status || 500,
