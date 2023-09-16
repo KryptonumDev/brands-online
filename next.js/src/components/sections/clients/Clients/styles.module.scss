@@ -1,0 +1,24 @@
+.wrapper {
+  border-radius: 13px;
+  background-color: var(--neutral-300);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 2px;
+  .item {
+    width: calc(25% - 2px);
+    @media (max-width: 899px){
+      width: calc(50% - 2px);
+    }
+    height: clamp(126px, calc(126vw/7.68), 186px);
+    img {
+      padding: 1rem;
+    }
+    border-radius: 11px;
+    background-color: var(--neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+}

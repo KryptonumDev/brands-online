@@ -16,7 +16,6 @@ const Hero = ({
         <Markdown className={styles.paragraph}>{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
       </header>
-      <div className={styles.img}></div>
     </section>
   );
 };

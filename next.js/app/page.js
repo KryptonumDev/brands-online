@@ -1,15 +1,14 @@
-
+import Clients from "@/components/sections/homepage/Clients";
+import Hero from "@/components/sections/Hero";
+import Motivation from "@/components/sections/homepage/Motivation";
+import Seo from "@/global/Seo";
+import fetchData from "@/utils/fetchData";
 
 // export const runtime = 'edge'
 
-import Clients from "@/components/sections/Homepage/Clients";
-import Hero from "@/components/sections/Homepage/Hero";
-import Motivation from "@/components/sections/Homepage/Motivation";
-import fetchData from "@/utils/fetchData";
-
 const IndexPage = async () => {
   const {
-    homepage: {
+    page: {
       hero_Heading,
       hero_Paragraph,
       hero_Cta,
@@ -43,18 +42,18 @@ const IndexPage = async () => {
   )
 }
 
-// export async function generateMetadata() {
-//   const { data: { homepage: { seo } } } = await getData();
-//   return Seo({
-//     title: seo?.title,
-//     description: seo?.description,
-//     url: '/'
-//   })
-// }
+export async function generateMetadata() {
+  const { page: { seo } } = await getData();
+  return Seo({
+    title: seo?.title,
+    description: seo?.description,
+    url: ''
+  })
+}
 
 const getData = async () => {
   const { body: { data } } = await fetchData(`
-    homepage: Homepage(id: "homepage") {
+    page: Homepage(id: "homepage") {
         #Hero
       hero_Heading
       hero_Paragraph
@@ -73,6 +72,11 @@ const getData = async () => {
         theme
         text
         href
+      }
+        # SEO
+      seo {
+        title
+        description
       }
     }
     partners: allPartners(limit: 6, sort: { _createdAt: DESC}) {

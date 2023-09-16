@@ -1,36 +1,77 @@
+import Hero from "@/components/sections/Hero";
+import Clients from "@/components/sections/clients/Clients";
+import Seo from "@/global/Seo";
+import fetchData from "@/utils/fetchData";
+
 // export const runtime = 'edge'
 
-
-
 const ClientsPage = async () => {
-  // const { data: { homepage: {
-  //   hero_Heading,
-  // }}} = await getData();
-
+  const {
+    page: {
+      hero_Heading,
+      hero_Paragraph,
+      hero_Cta,
+    },
+    partners
+  } = await getData();
   return (
     <>
-      Clients
+      <Hero data={{
+        hero_Heading,
+        hero_Paragraph,
+        hero_Cta,
+      }} />
+      <Clients data={partners} />
     </>
   )
 }
 
 
-// export async function generateMetadata() {
-//   const { data: { homepage: { seo } } } = await getData();
-//   return Seo({
-//     title: seo?.title,
-//     description: seo?.description,
-//     url: '/'
-//   })
-// }
+export async function generateMetadata() {
+  const { page: { seo } } = await getData();
+  return Seo({
+    title: seo?.title,
+    description: seo?.description,
+    url: ''
+  })
+}
 
-// const getData = async () => {
-//   const { body: { data } } = await Fetch({query: `
-//     homepage: Homepage(id: "homepage") {
-
-//     }
-//   `,})
-//   return { data };
-// }
+const getData = async () => {
+  const { body: { data } } = await fetchData(`
+    page: Clients(id: "clients") {
+        #Hero
+      hero_Heading
+      hero_Paragraph
+      hero_Cta {
+        theme
+        text
+        href
+      }
+        # SEO
+      seo {
+        title
+        description
+      }
+    }
+    partners: allPartners(sort: { _createdAt: DESC}) {
+      img {
+        asset {
+          altText
+          url
+          metadata {
+            lqip
+            dimensions {
+              width
+              height
+            }
+          }
+        }
+      }
+      name
+      href
+    }
+  `)
+  return data;
+}
 
 export default ClientsPage;

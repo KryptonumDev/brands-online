@@ -10,7 +10,7 @@ const Seo = async ({ title, description, url }) => {
     title: title || 'Brands Online',
     description: description || '',
     url: `${domain}${url}` || '',
-    ogImage: global.seo.og_Img.asset.url
+    ogImage: global?.seo.og_Img.asset.url || ''
   }
 
   const metadata = {
@@ -47,18 +47,16 @@ const Seo = async ({ title, description, url }) => {
 export default Seo;
 
 const getData = async () => {
-  const { body: { data } } = await fetchData({
-    query: `
-      global: Global(id: "global") {
-        seo {
-          og_Img {
-            asset {
-              url
-            }
+  const { body: { data } } = await fetchData(`
+    global: Global(id: "global") {
+      seo {
+        og_Img {
+          asset {
+            url
           }
         }
       }
-    `,
-  })
+    }
+  `)
   return { data };
 }
