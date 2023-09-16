@@ -7,8 +7,50 @@ export default {
     {
       name: 'hero_Heading',
       type: 'markdown',
-      title: 'Nagłówek',
+      title: 'Heading',
       fieldset: 'hero',
+    },
+      {
+        name: 'hero_Paragraph',
+        type: 'markdown',
+        title: 'Paragraph',
+        fieldset: 'hero',
+      },
+      {
+        name: 'hero_Cta',
+        type: 'cta',
+        title: 'CTA',
+        fieldset: 'hero',
+      },
+    {
+      name: 'motivation_Paragraph',
+      type: 'markdown',
+      title: 'Paragraph',
+      fieldset: 'motivation',
+    },
+    {
+      name: 'clients_Tag',
+      type: 'string',
+      title: 'Tag',
+      fieldset: 'clients',
+    },
+    {
+      name: 'clients_Heading',
+      type: 'markdown',
+      title: 'Heading',
+      fieldset: 'clients',
+    },
+    {
+      name: 'clients_Paragraph',
+      type: 'markdown',
+      title: 'Paragraph',
+      fieldset: 'clients',
+    },
+    {
+      name: 'clients_Cta',
+      type: 'cta',
+      title: 'CTA',
+      fieldset: 'clients',
     },
     {
       name: 'seo',
@@ -20,10 +62,20 @@ export default {
   fieldsets: [
     {
       name: 'hero',
-      title: 'Hero section',
+      title: 'Hero',
       options: {
         collapsible: true
       }
+    },
+    {
+      name: 'motivation',
+      title: 'Our motivation',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
+      name: 'clients',
+      title: 'Clients',
+      options: { collapsible: true, collapsed: true },
     }
   ],
   groups: [

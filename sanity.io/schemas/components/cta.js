@@ -1,6 +1,6 @@
 export default {
   name: "cta",
-  title: "Wezwanie do działania",
+  title: "Call to action",
   type: "object",
   fields: [
     {
