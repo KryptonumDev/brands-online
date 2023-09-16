@@ -1,3 +1,4 @@
+import NextImage from "next/image"
 import Link from "next/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
@@ -41,10 +42,8 @@ const Markdown = ({ level, children, components, ...props }) => {
         ol: ({ children }) => <ol className="orderedList">{children}</ol>,
         ul: ({ children }) => <ul className="unorderedList">{children}</ul>,
         img: ({ src, alt }) => {
-          const url = new URL(src);
-          const { w, h } = Object.fromEntries(url.searchParams.entries());
-          // eslint-disable-next-line @next/next/no-img-element
-          return <img src={src} alt={alt} width={w} height={h} loading="lazy" />
+          const { w, h } = Object.fromEntries(new URL(src).searchParams.entries());
+          return <NextImage src={src} alt={alt} width={w} height={h} />
         },
         ...updatedComponents,
       }}
