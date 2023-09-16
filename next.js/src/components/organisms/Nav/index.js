@@ -48,7 +48,12 @@ const Nav = () => {
       <a href="#main" className={styles.skipToMainContent}>Skip to main content</a>
       <header className={styles.wrapper} aria-expanded={navOpened}>
         <div className="max-width">
-          <Link href='/' aria-label='Strona główna' className={styles.logo}>
+          <Link
+            href='/'
+            aria-label='Strona główna'
+            className={styles.logo}
+            onClick={() => setNavOpened(false)}
+          >
             <Logo />
           </Link>
           <nav className={styles.nav}>
@@ -60,7 +65,11 @@ const Nav = () => {
                         {splitWordIntoLetters(name)}
                       </Link>
                   ) : (
-                    <Button theme='secondary' href={href}>{name}</Button>
+                    <Button
+                      theme='secondary'
+                      href={href}
+                      onClick={() => setNavOpened(false)}
+                    >{name}</Button>
                   )}
                 </li>
               ))}
