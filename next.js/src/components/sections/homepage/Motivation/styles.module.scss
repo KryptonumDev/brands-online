@@ -1,0 +1,20 @@
+.wrapper {
+  max-width: calc(1000rem/16);
+  margin: 0 auto;
+  text-align: center;
+  h2 {
+    font-size: clamp(calc(24rem/16), calc(32vw/7.68), calc(48rem/16));
+    img {
+      height: .85em;
+      width: auto;
+    }
+    em {
+      background: var(--gradients-100);
+      font-style: normal;
+      border-radius: 10px;
+      padding: 0 8px;
+      position: relative;
+      z-index: -1;
+    }
+  }
+}
