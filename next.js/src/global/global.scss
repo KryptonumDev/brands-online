@@ -206,3 +206,11 @@ main {
     }
   }
 }
+
+.swiper-wrapper {
+  align-items: center;
+  .swiper-slide {
+    width: auto;
+    max-width: calc(100% - 84px);
+  }
+}

@@ -12,7 +12,7 @@ const Hero = ({
   return (
     <section className={styles.wrapper}>
       <header>
-        <Markdown level='h1'>{hero_Heading}</Markdown>
+        <Markdown.h1>{hero_Heading}</Markdown.h1>
         <Markdown className={styles.paragraph}>{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
       </header>

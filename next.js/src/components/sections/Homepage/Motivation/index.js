@@ -8,7 +8,7 @@ const Motivation = ({
 }) => {
   return (
     <section className={styles.wrapper}>
-      <Markdown level='h2' className={styles.paragraph}>{motivation_Paragraph}</Markdown>
+      <Markdown.h2 className={styles.paragraph}>{motivation_Paragraph}</Markdown.h2>
     </section>
   );
 };
