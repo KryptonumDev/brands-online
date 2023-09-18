@@ -36,6 +36,18 @@ export default {
       fieldset: 'services',
     },
     {
+      name: 'clients_Tag',
+      type: 'string',
+      title: 'Tag',
+      fieldset: 'clients',
+    },
+    {
+      name: 'clients_Heading',
+      type: 'markdown',
+      title: 'Heading',
+      fieldset: 'clients',
+    },
+    {
       name: 'seo',
       type: 'seo',
       title: 'SEO',
@@ -53,6 +65,11 @@ export default {
     {
       name: 'services',
       title: 'Services',
+      options: { collapsible: true, collapsed: true }
+    },
+    {
+      name: 'clients',
+      title: 'Clients',
       options: { collapsible: true, collapsed: true }
     },
   ],

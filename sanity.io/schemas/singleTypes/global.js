@@ -6,16 +6,20 @@ export default {
   fields: [
     {
       type: 'string',
-      name: 'linkedin',
-      title: 'LinkedIn',
-      validation: Rule => Rule.required(),
+      name: 'instagram',
+      title: 'Instagram',
       fieldset: 'social',
     },
     {
       type: 'string',
       name: 'facebook',
       title: 'Facebook',
-      validation: Rule => Rule.required(),
+      fieldset: 'social',
+    },
+    {
+      type: 'string',
+      name: 'youtube',
+      title: 'YouTube',
       fieldset: 'social',
     },
     {
