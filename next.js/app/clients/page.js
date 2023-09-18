@@ -1,5 +1,5 @@
 import Hero from "@/components/sections/Hero";
-import Clients from "@/components/sections/clients/Clients";
+import Clients from "@/components/sections/Clients";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
@@ -26,19 +26,18 @@ const ClientsPage = async () => {
   )
 }
 
-
 export async function generateMetadata() {
   const { page: { seo } } = await getData();
   return Seo({
     title: seo?.title,
     description: seo?.description,
-    url: ''
+    url: '/clients'
   })
 }
 
 const getData = async () => {
   const { body: { data } } = await fetchData(`
-    page: Clients(id: "clients") {
+    page: ClientsPage(id: "clientsPage") {
         #Hero
       hero_Heading
       hero_Paragraph

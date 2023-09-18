@@ -53,7 +53,7 @@ export async function generateMetadata() {
 
 const getData = async () => {
   const { body: { data } } = await fetchData(`
-    page: Homepage(id: "homepage") {
+    page: IndexPage(id: "indexPage") {
         #Hero
       hero_Heading
       hero_Paragraph

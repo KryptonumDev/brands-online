@@ -2,7 +2,10 @@
   max-width: calc(1000rem/16);
   margin: 0 auto;
   text-align: center;
-  h2 {
+  .tag {
+    margin-bottom: clamp(24px, calc(32vw/7.68), 48px);
+  }
+  h1 {
     font-size: clamp(calc(24rem/16), calc(32vw/7.68), calc(48rem/16));
   }
 }
