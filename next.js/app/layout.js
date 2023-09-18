@@ -2,6 +2,7 @@ import '@/global/global.scss'
 import localFont from 'next/font/local'
 import Nav from '@/components/organisms/Nav'
 import Footer from '@/components/organisms/Footer'
+import SmoothScroll from '@/utils/SmoothScroll'
 
 const Lato = localFont({
   src: [
@@ -24,9 +25,11 @@ export default function RootLayout({ children }) {
     <html lang="pl">
       <body className={`${Lato.className}`}>
         <Nav />
-        <main id="main">
-          {children}
-        </main>
+        <SmoothScroll>
+          <main id="main">
+            {children}
+          </main>
+        </SmoothScroll>
         <Footer />
       </body>
     </html>
