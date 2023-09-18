@@ -15,9 +15,14 @@ const CustomLink = ({ children, ...props }) => {
 
   const isExternal = props?.href.startsWith('https://');
   const IconComponent = isExternal ? Icon.external : Icon.internal;
+  const LinkComponent = isExternal ? 'a' : NextLink;
   return (
-    <NextLink
+    <LinkComponent
       {...props}
+      {...(isExternal && {
+        target: '_blank',
+        rel: 'noreferrer'
+      })}
       className={styles.wrapper}
       onMouseMove={(e) => handleMouseMove(e)}
       onMouseOut={() => setCoordinates(prevState => ({...prevState, scale: 0}))}
@@ -35,7 +40,7 @@ const CustomLink = ({ children, ...props }) => {
           scale: coordinates.scale
         }}
       />
-    </NextLink>
+    </LinkComponent>
   );
 };
 

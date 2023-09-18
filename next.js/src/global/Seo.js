@@ -10,7 +10,7 @@ const Seo = async ({ title, description, url }) => {
     title: title || 'Brands Online',
     description: description || '',
     url: `${domain}${url}` || '',
-    ogImage: global?.seo.og_Img.asset.url || ''
+    ogImage: global.seo?.og_Img.asset.url || ''
   }
 
   const metadata = {

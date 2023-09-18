@@ -3,8 +3,33 @@ import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
 import Link from 'next/link';
 import CustomLink from '@/components/atoms/Link';
+import fetchData from '@/utils/fetchData';
 
-const Footer = () => {
+const Footer = async () => {
+  const { global: {
+    instagram,
+    facebook,
+    youtube,
+  }} = await getData();
+
+  const socials = [
+    {
+      name: 'Instagram',
+      icon: <Instagram />,
+      url: instagram
+    },
+    {
+      name: 'Facebook',
+      icon: <Facebook />,
+      url: facebook
+    },
+    {
+      name: 'YouTube',
+      icon: <Youtube />,
+      url: youtube
+    }
+  ]
+
   return (
     <footer className={styles.wrapper}>
       <div className="max-width">
@@ -22,21 +47,15 @@ const Footer = () => {
           <div className={styles.socials}>
             <p>Social media</p>
             <ul>
-              <li>
-                <CustomLink href="#df">
-                  <Instagram />
-                </CustomLink>
-              </li>
-              <li>
-                <CustomLink href="#sdf">
-                  <Facebook />
-                </CustomLink>
-              </li>
-              <li>
-                <CustomLink href="#sdf">
-                  <Youtube />
-                </CustomLink>
-              </li>
+              {socials.map((item, i) => (
+                item.url && (
+                  <li key={i}>
+                    <CustomLink href={item.url} aria-label={item.name}>
+                      {item.icon}
+                    </CustomLink>
+                  </li>
+                )
+              ))}
             </ul>
           </div>
         </div>
@@ -241,5 +260,16 @@ const Youtube = () => (
     </defs>
   </svg>
 )
+
+const getData = async () => {
+  const { body: { data } } = await fetchData(`
+    global: Global(id: "global") {
+      instagram
+      facebook
+      youtube
+    }
+  `)
+  return data;
+}
 
 export default Footer;
