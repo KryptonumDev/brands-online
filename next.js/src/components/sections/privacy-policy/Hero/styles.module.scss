@@ -1,0 +1,12 @@
+.wrapper {
+  max-width: calc(690rem/16);
+  margin: 0 auto;
+  text-align: center;
+  .paragraph {
+    margin-top: clamp(16px, calc(28vw/7.68), 28px);
+  }
+  .readingTime {
+    color: var(--neutral-600);
+    margin-top: clamp(8px, calc(16vw/7.68), 20px);
+  }
+}

@@ -5,7 +5,7 @@ import fetchData from "@/utils/fetchData";
 
 export const runtime = 'edge'
 
-const IndexPage = async () => {
+const NotFoundPage = async () => {
   const { page: {
     hero_Heading,
     hero_Paragraph,
@@ -47,4 +47,4 @@ const getData = async () => {
   return data;
 }
 
-export default IndexPage;
+export default NotFoundPage;

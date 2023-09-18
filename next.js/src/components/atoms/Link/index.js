@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
 
-const CustomLink = ({ children, ...props }) => {
+const CustomLink = ({ href, children, ...props }) => {
   const [ coordinates, setCoordinates ] = useState({ x: 0, y: 0, scale: 0 });
   
   const handleMouseMove = (e) => {
@@ -13,7 +13,7 @@ const CustomLink = ({ children, ...props }) => {
     setCoordinates({ x: offsetX, y: offsetY, scale: 1 });
   }
 
-  const isExternal = props?.href.startsWith('https://');
+  const isExternal = href && (href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:'));
   const IconComponent = isExternal ? Icon.external : Icon.internal;
   const LinkComponent = isExternal ? 'a' : NextLink;
   return (
@@ -23,6 +23,7 @@ const CustomLink = ({ children, ...props }) => {
         target: '_blank',
         rel: 'noreferrer'
       })}
+      href={href}
       className={styles.wrapper}
       onMouseMove={(e) => handleMouseMove(e)}
       onMouseOut={() => setCoordinates(prevState => ({...prevState, scale: 0}))}
