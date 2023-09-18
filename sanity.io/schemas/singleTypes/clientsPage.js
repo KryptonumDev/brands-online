@@ -1,5 +1,5 @@
 export default {
-  name: 'clients',
+  name: 'clientsPage',
   title: 'Clients',
   type: 'document',
   icon: () => '🙌',

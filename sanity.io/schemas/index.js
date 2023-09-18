@@ -1,11 +1,13 @@
 // Single Types
 import global, { global_Seo } from './singleTypes/global'
-import homepage from './singleTypes/homepage'
-import clients from './singleTypes/clients'
+import homePage from './singleTypes/homePage'
+import clientsPage from './singleTypes/clientsPage'
+import servicesPage, { servicesPage_servicesList  } from './singleTypes/servicesPage'
 
 export const singleTypes = [
-  homepage,
-  clients,
+  homePage,
+  clientsPage,
+  servicesPage,
 ]
 
 // Collection Types
@@ -20,15 +22,14 @@ import cta from './components/cta'
 import seo from './components/seo'
 
 export const components = [
+  global_Seo,
   cta,
   seo,
+  servicesPage_servicesList,
 ]
 
 export const schemaTypes = [
-  // Single Types
   global,
-  global_Seo,
-
   // Restruzturize
   ...singleTypes,
   ...collectionTypes,
