@@ -3,11 +3,13 @@ import global, { global_Seo } from './singleTypes/global'
 import homePage from './singleTypes/homePage'
 import clientsPage from './singleTypes/clientsPage'
 import servicesPage, { servicesPage_servicesList  } from './singleTypes/servicesPage'
+import notFoundPage from './singleTypes/notFoundPage'
 
 export const singleTypes = [
   homePage,
   clientsPage,
   servicesPage,
+  notFoundPage,
 ]
 
 // Collection Types
