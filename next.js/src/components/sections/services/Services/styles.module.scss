@@ -25,4 +25,17 @@
       }
     }
   }
+  .button {
+    position: fixed;
+    bottom: clamp(16px, calc(24vw/7.68), 42px);
+    right: clamp(16px, calc(24vw/7.68), 42px);
+    z-index: 8;
+    transition: transform .6s var(--easing);
+    &[aria-hidden="true"] {
+      transform: translateY(calc(100% + clamp(16px, calc(24vw/7.68), 42px)));
+    }
+    &:focus {
+      transform: translateY(0);
+    }
+  }
 }

@@ -1,4 +1,6 @@
 'use client';
+import { useRef } from 'react';
+import { useInView } from "framer-motion"
 import Button from '@/components/atoms/Button';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
@@ -9,8 +11,13 @@ const Services = ({
     services_Cta,
   }
 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    margin: "-50% 0px -50% 0px"
+  });
+
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} ref={ref}>
       <div></div>
       <ul className={styles.list}>
         {services_List.map(({ title, tags, description }, i) => (
@@ -25,7 +32,11 @@ const Services = ({
           </li>
         ))}
       </ul>
-      <Button data={services_Cta} />
+      <Button
+        data={services_Cta}
+        className={styles.button}
+        aria-hidden={!isInView}
+      />
     </section>
   );
 };
