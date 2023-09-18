@@ -1,34 +1,50 @@
-// export const runtime = 'edge'
 
-const NotFoundPage = async () => {
-  // const { data: { homepage: {
-  //   hero_Heading,
-  // }}} = await getData();
+import Hero from "@/components/sections/notFound/Hero";
+import Seo from "@/global/Seo";
+import fetchData from "@/utils/fetchData";
+
+export const runtime = 'edge'
+
+const IndexPage = async () => {
+  const { page: {
+    hero_Heading,
+    hero_Paragraph,
+    hero_Cta,
+  }} = await getData();
 
   return (
     <>
-      <h1>Not Found</h1>
+      <Hero data={{
+        hero_Heading,
+        hero_Paragraph,
+        hero_Cta,
+      }} />
     </>
   )
 }
 
+export async function generateMetadata() {
+  const { page: { seo } } = await getData();
+  return Seo({
+    title: seo?.title,
+    description: seo?.description,
+  })
+}
 
-// export async function generateMetadata() {
-//   const { data: { homepage: { seo } } } = await getData();
-//   return Seo({
-//     title: seo?.title,
-//     description: seo?.description,
-//     url: '/'
-//   })
-// }
+const getData = async () => {
+  const { body: { data } } = await fetchData(`
+    page: NotFoundPage(id: "notFoundPage") {
+        #Hero
+      hero_Heading
+      hero_Paragraph
+      hero_Cta {
+        theme
+        text
+        href
+      }
+    }
+  `)
+  return data;
+}
 
-// const getData = async () => {
-//   const { body: { data } } = await Fetch({query: `
-//     homepage: Homepage(id: "homepage") {
-
-//     }
-//   `,})
-//   return { data };
-// }
-
-export default NotFoundPage;
+export default IndexPage;

@@ -1,0 +1,8 @@
+.wrapper {
+  max-width: calc(690rem/16);
+  margin: 0 auto;
+  text-align: center;
+  .paragraph {
+    margin: clamp(16px, calc(28vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 36px);
+  }
+}
