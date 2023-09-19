@@ -27,8 +27,8 @@ const Modal = ({ data, modal, ...props }) => {
     }
   }
   useEffect(() => {
-    let xMoveContainer = gsap.quickTo(modalContainer.current, "left", { duration: 0.8, ease: "power3" })
-    let yMoveContainer = gsap.quickTo(modalContainer.current, "top", { duration: 0.8, ease: "power3" })
+    let xMoveContainer = gsap.quickTo(modalContainer.current, "left", { duration: 0.6, ease: "power3" })
+    let yMoveContainer = gsap.quickTo(modalContainer.current, "top", { duration: 0.6, ease: "power3" })
     window.addEventListener('mousemove', ({ pageX, pageY }) => {
       xMoveContainer(pageX)
       yMoveContainer(pageY)
