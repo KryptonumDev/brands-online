@@ -29,3 +29,40 @@ export const titleAndDescription = {
     }
   }
 }
+
+export const titleDescriptionAndImage = {
+  name: "list_titleDescriptionAndImage",
+  title: "Title, Description & Image",
+  type: "object",
+  fields: [
+    {
+      name: 'title',
+      type: 'markdown',
+      title: 'Title',
+    },
+    {
+      name: 'description',
+      type: 'markdown',
+      title: 'description',
+    },
+    {
+      name: 'img',
+      type: 'image',
+      title: 'Image',
+    },
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'description',
+      media: 'img'
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title: removeMarkdown(title),
+        subtitle: removeMarkdown(subtitle),
+        media
+      }
+    }
+  }
+}
