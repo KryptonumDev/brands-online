@@ -22,7 +22,7 @@
     list-style-type: none;
     display: grid;
     gap: clamp(12px, calc(28vw/7.68), 36px);
-    li {
+    .item {
       padding: clamp(20px, calc(36vw/7.68), 36px) clamp(16px, calc(36vw/7.68), 36px);
       border-radius: 28px;
       background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;

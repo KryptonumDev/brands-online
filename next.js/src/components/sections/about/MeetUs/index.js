@@ -29,13 +29,14 @@ const MeetUs = ({
           <Button data={meetUs_Cta} />
         </header>
       </div>
-      <ul
+      <div
         className={styles.projects}
         onMouseEnter={() => setModal(prevState => ({ ...prevState, active: true }))}
         onMouseLeave={() => setModal(prevState => ({ ...prevState, active: false }))}
       >
         {meetUs_Projects.map(({ title, description }, i) => (
-          <li
+          <div
+            className={styles.item}
             key={i}
             onMouseEnter={() => setModal(prevState => ({ ...prevState, index: i }))}
             onMouseLeave={() => setModal(prevState => ({ ...prevState, index: i }))}
@@ -44,13 +45,13 @@ const MeetUs = ({
               {splitWordIntoLetters(title, styles.word, styles.letter)}
             </div>
             <Markdown className={styles.description}>{description}</Markdown>
-          </li>
+          </div>
         ))}
         <Modal
           data={projectsImages}
           modal={modal}
         />
-      </ul>
+      </div>
     </section>
   );
 };
