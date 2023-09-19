@@ -1,3 +1,17 @@
+export const splitWordIntoLetters = (word, className=null) => (
+  Array.from({ length: 2 }, (_, i) => (
+    <div key={i} aria-hidden={i === 1}>
+      {word.split('').map((letter, letterIndex) => (
+        letter === ' ' ? ' ' : (
+          <span key={letterIndex} className={className || ''}>
+            {letter}
+          </span>
+        )
+      ))}
+    </div>
+  ))
+);
+
 export const removeMarkdown = (markdown) => {
   return markdown?.replace(/\*\*(.*?)\*\*/g, '$1');
 }

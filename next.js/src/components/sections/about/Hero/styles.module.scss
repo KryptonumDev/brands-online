@@ -1,0 +1,13 @@
+.wrapper {
+  max-width: calc(826rem/16);
+  margin: 0 auto;
+  text-align: center;
+  header {
+    .paragraph {
+      margin: clamp(16px, calc(20vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 48px);
+      p:not(:last-child){
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

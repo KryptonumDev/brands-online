@@ -6,6 +6,7 @@ import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
 import { motion } from 'framer-motion';
 import { easing } from '@/global/constants';
+import { splitWordIntoLetters } from '@/utils/functions';
 
 const links = [
   {
@@ -30,18 +31,6 @@ const links = [
   },
 ]
 
-const splitWordIntoLetters = (word) => (
-  Array.from({ length: 2 }, (_, i) => (
-    <div key={i} aria-hidden={i === 1}>
-      {word.split('').map((letter, letterIndex) => (
-        <span key={letterIndex} className={styles.letter}>
-          {letter}
-        </span>
-      ))}
-    </div>
-  ))
-);
-
 const Nav = () => {
   const [ navOpened, setNavOpened ] = useState(false);
   return (
@@ -63,7 +52,7 @@ const Nav = () => {
                 <li key={i} className={!asButton ? styles.animatedItem : ''}>
                   {!asButton ? (
                       <Link href={href}>
-                        {splitWordIntoLetters(name)}
+                        {splitWordIntoLetters(name, styles.letter)}
                       </Link>
                   ) : (
                     <Button
@@ -93,7 +82,7 @@ const Nav = () => {
                 !asButton && (
                   <li key={i} className={styles.animatedItem}>
                     <Link href={href} onClick={() => setNavOpened(false)}>
-                      {splitWordIntoLetters(name)}
+                      {splitWordIntoLetters(name, styles.letter)}
                     </Link>
                   </li>
                 )
