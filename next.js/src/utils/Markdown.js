@@ -1,4 +1,4 @@
-import CustomLink from "@/components/atoms/Link";
+import CustomLink from "@/components/atoms/CustomLink";
 import NextImage from "next/image"
 import React from "react";
 import ReactMarkdown from "react-markdown";

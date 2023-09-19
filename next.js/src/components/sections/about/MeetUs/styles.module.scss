@@ -37,20 +37,16 @@
       flex-wrap: wrap;
       gap: 4px 16px;
       .title {
-        font-size: clamp(calc(24rem/16), calc(24vw/7.68), calc(32rem/16));
-        height: 1.3em;
-        line-height: 125%;
-        display: block;
-        overflow: hidden;
+        .word {
+          font-size: clamp(calc(24rem/16), calc(24vw/7.68), calc(32rem/16));
+          display: inline-block;
+          height: 1.3em;
+          line-height: 125%;
+          overflow: hidden;
+        }
         .letter {
           display: inline-block;
           transition: transform .8s var(--easing);
-          $delay-increment: 0.01s;
-          @for $i from 1 through 100 {
-            &:nth-child(#{$i}) {
-              transition-delay: ($i - 1) * $delay-increment;
-            }
-          }
         }
       }
       &:hover,

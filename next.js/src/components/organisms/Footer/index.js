@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
 import Link from 'next/link';
-import CustomLink from '@/components/atoms/Link';
+import CustomLink from '@/components/atoms/CustomLink';
 import fetchData from '@/utils/fetchData';
 
 const Footer = async () => {

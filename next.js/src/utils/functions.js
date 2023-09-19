@@ -1,16 +1,34 @@
-export const splitWordIntoLetters = (word, className=null) => (
-  Array.from({ length: 2 }, (_, i) => (
-    <div key={i} aria-hidden={i === 1}>
-      {word.split('').map((letter, letterIndex) => (
-        letter === ' ' ? ' ' : (
-          <span key={letterIndex} className={className || ''}>
-            {letter}
-          </span>
-        )
-      ))}
-    </div>
-  ))
-);
+import { Fragment } from "react";
+
+export const splitWordIntoLetters = (word, classNameWord = null, classNameLetter = null) => {
+  const words = word.split(' ');
+  return (
+    words.map((word, wordIndex) => (
+      <div key={wordIndex} className={classNameWord}>
+        {Array.from({ length: 2 }, (_, i) => (
+          <div key={i} aria-hidden={i === 1}>
+            {word.split('').map((letter, letterIndex) => {
+              const transitionDelay = `${0.1 * (wordIndex + letterIndex / word.length)}s`;
+              return (
+                <Fragment key={letterIndex}>
+                  <span
+                    className={classNameLetter}
+                    style={{ transitionDelay }}
+                  >
+                    {letter}
+                  </span>
+                  {(wordIndex !== words.length - 1 && letterIndex === word.split('').length - 1) && (
+                    '\u00A0'
+                  )}
+                </Fragment>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    ))
+  );
+};
 
 export const removeMarkdown = (markdown) => {
   return markdown?.replace(/\*\*(.*?)\*\*/g, '$1');

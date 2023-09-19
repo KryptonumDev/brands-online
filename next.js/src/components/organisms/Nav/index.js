@@ -6,7 +6,20 @@ import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
 import { motion } from 'framer-motion';
 import { easing } from '@/global/constants';
-import { splitWordIntoLetters } from '@/utils/functions';
+
+const splitWordIntoLetters = (word, className = null) => (
+  Array.from({ length: 2 }, (_, i) => (
+    <div key={i} aria-hidden={i === 1}>
+      {word.split('').map((letter, letterIndex) => (
+        letter === ' ' ? ' ' : (
+          <span key={letterIndex} className={className || ''}>
+            {letter}
+          </span>
+        )
+      ))}
+    </div>
+  ))
+);
 
 const links = [
   {

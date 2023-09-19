@@ -1,0 +1,17 @@
+.modalContainer {
+  position: absolute;
+  width: clamp(150px, calc(172vw/7.68), 300px);
+  height: clamp(150px, calc(172vw/7.68), 300px);
+  overflow: hidden;
+  pointer-events: none;
+  .modalSlider {
+    width: 100%;
+    height: 100%;
+    transition: transform .6s var(--easing);
+    .item {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+}
