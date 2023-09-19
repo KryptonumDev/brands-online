@@ -39,7 +39,9 @@
       padding: 0 clamp(16px, calc(24vw/7.68), 28px);
       display: block;
       overflow: hidden;
-      &:hover {
+      border-radius: 64px;
+      &:hover,
+      &:focus-visible {
         .letter {
           transform: translateY(-100%);
         }
@@ -70,6 +72,7 @@
           display: grid;
           gap: 8px;
           padding: 15px 28px;
+          border-radius: 64px;
           span {
             display: block;
             width: 34px;
@@ -102,6 +105,8 @@
       border-bottom-right-radius: 20px;
       overflow: hidden;
       font-size: clamp(18px, calc(20vw/7.68), 20px);
+      visibility: hidden;
+      transition: visibility .8s;
       ul {
         width: 100%;
         margin-top: calc(clamp(58px, calc(64vw/7.68), 64px) + clamp(20px, calc(28vw/7.68), 36px));
@@ -135,6 +140,9 @@
         span:nth-child(2){
           transform: translateY(-5px) rotate(135deg);
         }
+      }
+      .mobileNav {
+        visibility: visible;
       }
       .overlay {
         opacity: 1;

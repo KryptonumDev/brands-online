@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
 import { motion } from 'framer-motion';
+import { easing } from '@/global/constants';
 
 const links = [
   {
@@ -85,7 +86,7 @@ const Nav = () => {
             className={styles.mobileNav}
             initial={{ height: 0 }}
             animate={{ height: navOpened ? 'auto' : 0 }}
-            transition={{ duration: .8, ease: [ 0.65, 0, 0.05, 1 ] }}
+            transition={{ duration: .8, ease: easing }}
           >
             <ul>
               {links.map(({ name, href, asButton }, i) => (
