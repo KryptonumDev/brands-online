@@ -10,8 +10,8 @@ const CustomLink = ({ href, children, ...props }) => {
   const iconRef = useRef(null);
 
   useEffect(() => {
-    let xMoveContainer = gsap.quickTo(iconRef.current, "x", { duration: 0.6, ease: "power4" })
-    let yMoveContainer = gsap.quickTo(iconRef.current, "y", { duration: 0.6, ease: "power4" })
+    let xMoveContainer = gsap.quickTo(iconRef.current, "x", { duration: 0.6, ease: "expo" })
+    let yMoveContainer = gsap.quickTo(iconRef.current, "y", { duration: 0.6, ease: "expo" })
 
     linkRef.current.addEventListener('mousemove', (e) => {
       const offsetX = e.clientX - e.target.getBoundingClientRect().left;
@@ -24,7 +24,7 @@ const CustomLink = ({ href, children, ...props }) => {
   gsap.to(iconRef.current, {
     scale: scale,
     duration: 0.4,
-    ease: 'power4',
+    ease: 'expo',
   });
 
   const isExternal = href && (href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:'));
