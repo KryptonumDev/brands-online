@@ -2,16 +2,18 @@
 import global, { global_Seo } from './singleTypes/global'
 import homePage from './singleTypes/homePage'
 import aboutPage, { aboutPage_experienceList } from './singleTypes/aboutPage'
-import clientsPage from './singleTypes/clientsPage'
 import servicesPage, { servicesPage_servicesList } from './singleTypes/servicesPage'
+import clientsPage from './singleTypes/clientsPage'
+import contactPage, { step1_Options } from './singleTypes/contactPage'
 import privacyPolicyPage from './singleTypes/privacyPolicyPage'
 import notFoundPage from './singleTypes/notFoundPage'
 
 export const singleTypes = [
   homePage,
   aboutPage,
-  clientsPage,
   servicesPage,
+  clientsPage,
+  contactPage,
   privacyPolicyPage,
   notFoundPage,
 ]
@@ -32,6 +34,7 @@ export const components = [
   global_Seo,
   cta,
   seo,
+  step1_Options,
   aboutPage_experienceList,
   servicesPage_servicesList,
   titleAndDescription,
