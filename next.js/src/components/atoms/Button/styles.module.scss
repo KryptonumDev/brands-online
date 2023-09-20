@@ -1,5 +1,5 @@
 .wrapper {
-  a {
+  a, button {
     --btn-color: #14E5D7;
     &[data-theme="primary"] {
       display: inline-flex;

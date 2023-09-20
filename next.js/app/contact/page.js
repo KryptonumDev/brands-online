@@ -1,36 +1,112 @@
+import ContactForm from "@/components/sections/contact/ContactForm";
+import Seo from "@/global/Seo";
+import fetchData from "@/utils/fetchData";
+
 // export const runtime = 'edge'
 
-
-
 const ContactPage = async () => {
-  // const { data: { homepage: {
-  //   hero_Heading,
-  // }}} = await getData();
+  const { page: {
+    hero_Heading,
+    hero_Paragraph,
+    hero_Hint,
+    hero_Cta,
+    step1_Heading,
+    step1_Paragraph,
+    step1_Options,
+    step2_Heading,
+    step2_Paragraph,
+    step2_Options,
+    step3_Heading,
+    step3_Paragraph,
+    step3_Options,
+    step4_Heading,
+    step4_Paragraph,
+    success_Heading,
+    success_Paragraph,
+    success_Cta,
+    error_Heading,
+    error_Paragraph,
+    error_Cta,
+  }} = await getData();
 
   return (
     <>
-      Contact
+      <ContactForm data={{
+        hero_Heading,
+        hero_Paragraph,
+        hero_Hint,
+        hero_Cta,
+        step1_Heading,
+        step1_Paragraph,
+        step1_Options,
+        step2_Heading,
+        step2_Paragraph,
+        step2_Options,
+        step3_Heading,
+        step3_Paragraph,
+        step3_Options,
+        step4_Heading,
+        step4_Paragraph,
+        success_Heading,
+        success_Paragraph,
+        success_Cta,
+        error_Heading,
+        error_Paragraph,
+        error_Cta,
+      }} />
     </>
   )
 }
 
+export async function generateMetadata() {
+  const { page: { seo } } = await getData();
+  return Seo({
+    title: seo?.title,
+    description: seo?.description,
+  })
+}
 
-// export async function generateMetadata() {
-//   const { data: { homepage: { seo } } } = await getData();
-//   return Seo({
-//     title: seo?.title,
-//     description: seo?.description,
-//     url: '/'
-//   })
-// }
-
-// const getData = async () => {
-//   const { body: { data } } = await Fetch({query: `
-//     homepage: Homepage(id: "homepage") {
-
-//     }
-//   `,})
-//   return { data };
-// }
+const getData = async () => {
+  const { body: { data } } = await fetchData(`
+    page: ContactPage(id: "contactPage") {
+        # Hero
+      hero_Heading
+      hero_Paragraph
+      hero_Hint
+      hero_Cta
+        # Step 1
+      step1_Heading
+      step1_Paragraph
+      step1_Options {
+        title
+        list
+      }
+        # Step 2
+      step2_Heading
+      step2_Paragraph
+      step2_Options
+        # Step 3
+      step3_Heading
+      step3_Paragraph
+      step3_Options
+        # Step 4
+      step4_Heading
+      step4_Paragraph
+        # Success section
+      success_Heading
+      success_Paragraph
+      success_Cta {
+        theme
+        text
+        href
+      }
+        # Error section
+      error_Heading
+      error_Paragraph
+      error_Cta
+    }
+  `)
+  return data;
+}
 
 export default ContactPage;

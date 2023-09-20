@@ -1,0 +1,24 @@
+.wrapper {
+  width: 100%;
+  max-width: calc(1000rem/16);
+  margin: 0 auto;
+  header {
+    max-width: calc(790rem/16);
+    margin: 0 auto;
+    text-align: center;
+    .paragraph {
+      margin-top: clamp(16px, calc(20vw/7.68), 28px);
+    }
+    .hint {
+      color: var(--neutral-650);
+      margin-top: clamp(12px, calc(16vw/7.68), 28px);
+      font-size: 1rem;
+    }
+    .cta {
+      margin-top: clamp(28px, calc(48vw/7.68), 48px);
+    }
+  }
+  .header {
+    margin: clamp(36px, calc(36vw/7.68), 48px) auto;
+  }
+}

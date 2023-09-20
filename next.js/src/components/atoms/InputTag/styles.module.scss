@@ -1,0 +1,42 @@
+.input {
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  &:checked + .label {
+    border-color: rgba(255, 255, 255, 0);
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+.label {
+  text-align: center;
+  line-height: 150%;
+  cursor: pointer;
+  padding: 4px 16px;
+  border-radius: 48px;
+  font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
+  background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;
+  border: 1px solid var(--neutral-800);
+  span {
+    position: relative;
+    z-index: 1;
+  }
+  position: relative;
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--gradients-100);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity .5s;
+  }
+  transition: border-color .5s;
+  &:hover {
+    border-color: rgba(255, 255, 255, 0);
+  }
+}
