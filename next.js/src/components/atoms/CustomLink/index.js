@@ -1,17 +1,31 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import NextLink from 'next/link';
 import styles from './styles.module.scss';
-import { motion } from 'framer-motion';
+import gsap from 'gsap';
 
 const CustomLink = ({ href, children, ...props }) => {
-  const [ coordinates, setCoordinates ] = useState({ x: 0, y: 0, scale: 0 });
-  
-  const handleMouseMove = (e) => {
-    const offsetX = e.clientX - e.target.getBoundingClientRect().left;
-    const offsetY = e.clientY - e.target.getBoundingClientRect().top;
-    setCoordinates({ x: offsetX, y: offsetY, scale: 1 });
-  }
+  const [ scale, setScale ] = useState(0);
+  const linkRef = useRef(null);
+  const iconRef = useRef(null);
+
+  useEffect(() => {
+    let xMoveContainer = gsap.quickTo(iconRef.current, "x", { duration: 0.6, ease: "power4" })
+    let yMoveContainer = gsap.quickTo(iconRef.current, "y", { duration: 0.6, ease: "power4" })
+
+    linkRef.current.addEventListener('mousemove', (e) => {
+      const offsetX = e.clientX - e.target.getBoundingClientRect().left;
+      const offsetY = e.clientY - e.target.getBoundingClientRect().top;
+      xMoveContainer(offsetX)
+      yMoveContainer(offsetY)
+    })
+  }, [])
+
+  gsap.to(iconRef.current, {
+    scale: scale,
+    duration: 0.4,
+    ease: 'power4',
+  });
 
   const isExternal = href && (href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:'));
   const IconComponent = isExternal ? Icon.external : Icon.internal;
@@ -25,29 +39,25 @@ const CustomLink = ({ href, children, ...props }) => {
       })}
       href={href}
       className={styles.wrapper}
-      onMouseMove={(e) => handleMouseMove(e)}
-      onMouseOut={() => setCoordinates(prevState => ({...prevState, scale: 0}))}
-      onMouseDown={() => setCoordinates(prevState => ({...prevState, scale: 1.5}))}
-      onMouseUp={() => setCoordinates(prevState => ({...prevState, scale: 1}))}
+      ref={linkRef}
+      onMouseOver={() => setScale(1)}
+      onMouseOut={() => setScale(0)}
+      onMouseDown={() => setScale(1.5)}
+      onMouseUp={() => setScale(1)}
     >
       <span>
         {children}
       </span>
       <IconComponent
-        initial={{ scale: 0 }}
-        animate={{
-          x: coordinates.x,
-          y: coordinates.y,
-          scale: coordinates.scale
-        }}
+        innerRef={iconRef}
       />
     </LinkComponent>
   );
 };
 
 const Icon = {
-  "internal": ({ ...props }) => (
-    <motion.svg xmlns='http://www.w3.org/2000/svg' width='35' height='34' fill='none' {...props}>
+  "internal": ({ innerRef, ...props }) => (
+    <svg xmlns='http://www.w3.org/2000/svg' width='35' height='34' fill='none' {...props} ref={innerRef}>
       <rect
         width='28'
         height='28'
@@ -79,10 +89,10 @@ const Icon = {
           <stop offset='1' stopColor='#EBFFB6'></stop>
         </linearGradient>
       </defs>
-    </motion.svg>
+    </svg>
   ),
-  "external": ({ ...props }) => (
-    <motion.svg xmlns='http://www.w3.org/2000/svg' width='35' height='34' fill='none' {...props}>
+  "external": ({ innerRef, ...props }) => (
+    <svg xmlns='http://www.w3.org/2000/svg' width='35' height='34' fill='none' {...props} ref={innerRef}>
       <rect
         width='28'
         height='28'
@@ -114,7 +124,7 @@ const Icon = {
           <stop offset='1' stopColor='#EBFFB6'></stop>
         </linearGradient>
       </defs>
-    </motion.svg>
+    </svg>
   )
 }
 
