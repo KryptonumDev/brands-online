@@ -19,13 +19,13 @@ const CustomLink = ({ href, children, ...props }) => {
       xMoveContainer(offsetX)
       yMoveContainer(offsetY)
     })
-  }, [])
-
-  gsap.to(iconRef.current, {
-    scale: scale,
-    duration: 0.4,
-    ease: 'expo',
-  });
+    
+    gsap.to(iconRef.current, {
+      scale: scale,
+      duration: 0.4,
+      ease: 'expo',
+    });
+  }, [scale])
 
   const isExternal = href && (href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:'));
   const IconComponent = isExternal ? Icon.external : Icon.internal;
