@@ -128,6 +128,52 @@ export default {
       fieldset: 'step4',
       validation: Rule => Rule.required(),
     },
+
+    {
+      name: 'success_Heading',
+      type: 'markdown',
+      title: 'Heading',
+      fieldset: 'success',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'success_Paragraph',
+      type: 'markdown',
+      title: 'Paragraph',
+      fieldset: 'success',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'success_Cta',
+      type: 'cta',
+      title: 'CTA',
+      fieldset: 'success',
+      validation: Rule => Rule.required(),
+    },
+
+    {
+      name: 'error_Heading',
+      type: 'markdown',
+      title: 'Heading',
+      fieldset: 'error',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'error_Paragraph',
+      type: 'markdown',
+      title: 'Paragraph',
+      fieldset: 'error',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'error_Cta',
+      type: 'string',
+      title: 'CTA',
+      description: 'This text will be visible in the CTA to fill the form again.',
+      fieldset: 'error',
+      validation: Rule => Rule.required(),
+    },
+
     {
       name: 'seo',
       type: 'seo',
@@ -161,6 +207,16 @@ export default {
     {
       name: 'step4',
       title: 'Step 4',
+      options: { collapsible: true, collapsed: true }
+    },
+    {
+      name: 'success',
+      title: 'Success section',
+      options: { collapsible: true, collapsed: true }
+    },
+    {
+      name: 'error',
+      title: 'Error section',
       options: { collapsible: true, collapsed: true }
     },
   ],
