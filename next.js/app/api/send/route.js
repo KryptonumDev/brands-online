@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const email = {
-  from: 'Acme <onboarding@resend.dev>',
+  from: 'BrandsOnline <hello@brandsonline.com>',
   to: 'kryptonumstudio@gmail.com',
 }
 
