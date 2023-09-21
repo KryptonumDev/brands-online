@@ -3,7 +3,7 @@ import Markdown from '@/utils/Markdown';
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
 import InputTag from '@/components/atoms/InputTag';
-import Button from '@/components/atoms/Button';
+import NextStepBtn from '../NextStepBtn';
 
 const Step1 = ({ stylesWrapper, heading, paragraph, options, setStep, ...props }) => {
   const [ addTag, setAddTag ] = useState(options.map(() => ({ show: false, disabled: true, name: '' })));
@@ -115,9 +115,7 @@ const Step1 = ({ stylesWrapper, heading, paragraph, options, setStep, ...props }
           </div>
         ))}
       </div>
-      <div className={stylesWrapper.nextStep}>
-        <Button onClick={() => setStep(2)}>Next</Button>
-      </div>
+      <NextStepBtn setStep={setStep} step={2} className={stylesWrapper.nextStepBtn} />
     </motion.section>
   );
 };

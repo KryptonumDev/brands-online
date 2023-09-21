@@ -1,6 +1,6 @@
 import Markdown from '@/utils/Markdown';
-import Button from '@/components/atoms/Button';
 import { motion } from 'framer-motion';
+import NextStepBtn from '../NextStepBtn';
 
 const Hero = ({
   stylesWrapper,
@@ -21,11 +21,7 @@ const Hero = ({
         {hint && (
           <p className={stylesWrapper.hint}>{hint}</p>
         )}
-        <Button
-          className={stylesWrapper.cta}
-          theme="primary"
-          onClick={() => setStep(1)}
-        >{cta}</Button>
+        <NextStepBtn setStep={setStep} step={1} text={cta} className={stylesWrapper.nextStepBtn} />
       </header>
     </motion.section>
   );

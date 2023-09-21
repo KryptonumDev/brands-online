@@ -5,6 +5,9 @@ import Hero from './Hero';
 import Step1 from './Step1';
 import { AnimatePresence } from 'framer-motion';
 import Indicator from './Indicator';
+import Step2 from './Step2';
+import Step3 from './Step3';
+import Step4 from './Step4';
 
 const ContactForm = ({
   data: {
@@ -68,6 +71,44 @@ const ContactForm = ({
             options={step1_Options}
             setStep={setStep}
             key="step1"
+            initial={{ opacity: 0, y: 13 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -13 }}
+          />
+        )}
+        {step === 2 && (
+          <Step2
+            stylesWrapper={styles}
+            heading={step2_Heading}
+            paragraph={step2_Paragraph}
+            options={step2_Options}
+            setStep={setStep}
+            key="step2"
+            initial={{ opacity: 0, y: 13 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -13 }}
+          />
+        )}
+        {step === 3 && (
+          <Step3
+            stylesWrapper={styles}
+            heading={step3_Heading}
+            paragraph={step3_Paragraph}
+            options={step3_Options}
+            setStep={setStep}
+            key="step3"
+            initial={{ opacity: 0, y: 13 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -13 }}
+          />
+        )}
+        {step === 4 && (
+          <Step4
+            stylesWrapper={styles}
+            heading={step4_Heading}
+            paragraph={step4_Paragraph}
+            setStep={setStep}
+            key="step4"
             initial={{ opacity: 0, y: 13 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -13 }}

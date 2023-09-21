@@ -14,19 +14,13 @@
       margin-top: clamp(12px, calc(16vw/7.68), 28px);
       font-size: 1rem;
     }
-    .cta {
-      margin-top: clamp(28px, calc(48vw/7.68), 48px);
-    }
   }
-  .header {
-    margin: clamp(36px, calc(36vw/7.68), 48px) auto;
-  }
-  .nextStep {
-    margin-top: 48px;
-    text-align: center;
-    @media (max-width: 1024px) and (min-width: 768px){
-      margin-left: auto;
-      width: fit-content;
-    }
+}
+.nextStepBtn {
+  margin-top: 48px;
+  text-align: center;
+  @media (max-width: 1024px) and (min-width: 768px){
+    margin-left: auto;
+    width: fit-content;
   }
 }

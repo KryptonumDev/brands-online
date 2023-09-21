@@ -1,0 +1,14 @@
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  label {
+    padding: 4px 36px;
+    @media (max-width: 499px){
+      flex-grow: 1;
+      min-width: calc(50% - 12px);
+    }
+  }
+}
