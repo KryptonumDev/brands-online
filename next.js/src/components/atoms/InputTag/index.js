@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-const InputTag = ({ children, name }) => {
+const InputTag = ({ children, name, ...props }) => {
   return (
     <>
       <input
@@ -8,6 +8,7 @@ const InputTag = ({ children, name }) => {
         id={name}
         name={name}
         className={styles.input}
+        {...props}
       />
       <label
         htmlFor={name}

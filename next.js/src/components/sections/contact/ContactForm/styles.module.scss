@@ -21,4 +21,12 @@
   .header {
     margin: clamp(36px, calc(36vw/7.68), 48px) auto;
   }
+  .nextStep {
+    margin-top: 48px;
+    text-align: center;
+    @media (max-width: 1024px) and (min-width: 768px){
+      margin-left: auto;
+      width: fit-content;
+    }
+  }
 }

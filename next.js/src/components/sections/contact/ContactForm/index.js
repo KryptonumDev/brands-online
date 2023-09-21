@@ -36,7 +36,14 @@ const ContactForm = ({
   return (
     <div className={styles.wrapper}>
       {step > 0 && (
-        <Indicator step={step} setStep={setStep} maxSteps={maxSteps} />
+        <Indicator
+          step={step}
+          setStep={setStep}
+          maxSteps={maxSteps}
+          initial={{ height: 0 }}
+          animate={{ height: 'auto' }}
+          exit={{ height: 0 }}
+        />
       )}
       <AnimatePresence mode='wait'>
         {step === 0 && (
@@ -59,6 +66,7 @@ const ContactForm = ({
             heading={step1_Heading}
             paragraph={step1_Paragraph}
             options={step1_Options}
+            setStep={setStep}
             key="step1"
             initial={{ opacity: 0, y: 13 }}
             animate={{ opacity: 1, y: 0 }}

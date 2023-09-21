@@ -1,9 +1,14 @@
+'use client'
 import styles from './styles.module.scss';
+import { motion } from 'framer-motion';
 
-const Indicator = ({ step, setStep, maxSteps }) => {
+const Indicator = ({ step, setStep, maxSteps, ...props }) => {
   return (
-    <div className={styles.wrapper}>
-      <button className={styles.backBtn} onClick={() => setStep(0)}>
+    <motion.div
+      className={styles.wrapper}
+      {...props}
+    >
+      <button className={styles.backBtn} onClick={() => setStep(step-1)}>
         <Arrow />
         <span>Previous step</span>
       </button>
@@ -11,7 +16,7 @@ const Indicator = ({ step, setStep, maxSteps }) => {
       <div className={styles.progressbar} role="progressbar">
         <div className={styles.bar} style={{ transform: `scaleX(${step/maxSteps})` }}></div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

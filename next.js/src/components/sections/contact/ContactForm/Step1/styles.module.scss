@@ -1,6 +1,11 @@
 .options {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  @media (min-width: 1025px){
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (max-width: 1024px) and (min-width: 600px){
+    grid-template-columns: 1fr 1fr;
+  }
   gap: 28px clamp(32px, calc(48vw/7.68), 48px);
   p {
     font-size: clamp(calc(24rem/16), calc(32vw/7.68), calc(32rem/16));
@@ -10,5 +15,119 @@
   .list {
     display: grid;
     gap: 12px;
+  }
+  .addTag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    &[aria-hidden="true"]{
+      visibility: hidden;
+    }
+    span {
+      padding: 4px 0;
+    }
+    border-radius: 48px;
+    font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
+    position: relative;
+    overflow: hidden;
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      background-color: rgba(0,0,0,.1);
+      opacity: 0;
+      transition: opacity .3s;
+      border-radius: inherit;
+    }
+    &:hover::before {
+      opacity: .5;
+    }
+    &:active::before {
+      opacity: 1;
+    }
+  }
+  .input {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    gap: 12px;
+    overflow: hidden;
+    &[aria-hidden="true"]{
+      visibility: hidden;
+    }
+    input {
+      grid-column: 3/1;
+      border: none;
+      border-bottom: 1px solid var(--neutral-800);
+      padding: 0 20px;
+      height: 30px;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      height: 30px;
+      padding: 0 20px;
+      border-radius: 6px;
+      position: relative;
+      &:focus {
+        outline: none;
+      }
+      &:disabled {
+        opacity: .6;
+        pointer-events: none;
+      }
+      &.add {
+        background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;
+        border: 1px solid rgba(255, 255, 255, 0);
+        &::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: var(--gradients-100);
+          border-radius: inherit;
+          opacity: 0;
+          transition: opacity .5s;
+        }
+        span {
+          position: relative;
+          z-index: 1;
+        }
+        &:hover::before,
+        &:focus::before {
+          opacity: 1;
+        }
+      }
+      &.cancel {
+        &:hover::before {
+          opacity: .5;
+        }
+        &:active::before,
+        &:focus::before {
+          opacity: 1;
+        }
+        &::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: -1;
+          background-color: rgba(0, 0, 0, .1);
+          opacity: 0;
+          transition: opacity .3s;
+          border-radius: inherit;
+        }
+      }
+    }
   }
 }
