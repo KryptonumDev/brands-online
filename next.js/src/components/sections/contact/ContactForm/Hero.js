@@ -1,6 +1,6 @@
 import Markdown from '@/utils/Markdown';
 import { motion } from 'framer-motion';
-import NextStepBtn from '../NextStepBtn';
+import NextStepBtn from './NextStepBtn';
 
 const Hero = ({
   stylesWrapper,

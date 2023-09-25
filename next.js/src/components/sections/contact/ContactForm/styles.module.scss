@@ -16,6 +16,10 @@
     }
   }
 }
+header.header {
+  margin-top: clamp(28px, calc(36vw/7.68), 48px);
+  margin-bottom: clamp(36px, calc(48vw/7.68), 48px);
+}
 .nextStepBtn {
   margin-top: 48px;
   text-align: center;
