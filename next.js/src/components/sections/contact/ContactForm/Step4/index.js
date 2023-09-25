@@ -51,7 +51,6 @@ const Step4 = ({
           label="Phone *(optional)*"
           type="tel"
           register={register('phone', {
-            required: { value: true, message: `Phone is required` },
             pattern: { value: regex.phone, message: `Incorrect phone number` }
           })}
           onKeyDown={(e) => phoneValidation(e)}
@@ -85,7 +84,12 @@ const Step4 = ({
           errors={errors}
         />
       </div>
-      <NextStepBtn setStep={setStep} step={4} className={stylesWrapper.nextStepBtn} />
+      <NextStepBtn
+        setStep={setStep}
+        step={4}
+        className={stylesWrapper.nextStepBtn}
+        type="submit"
+      />
     </motion.section>
   );
 };

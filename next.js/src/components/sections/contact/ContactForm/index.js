@@ -53,7 +53,6 @@ const ContactForm = ({
   } = useForm({ mode: 'all' })
 
   const onSubmit = (data) => {
-    console.log(data);
     setStatus({ sending: true });
     fetch('/api/contact', {
       method: 'POST',
@@ -66,7 +65,7 @@ const ContactForm = ({
       .then(response => {
         if (response.success) {
           setStatus(prevStatus => ({ ...prevStatus, success: true }));
-          reset();
+          // reset();
         } else {
           setStatus(prevStatus => ({ ...prevStatus, success: false }));
         }
