@@ -52,7 +52,10 @@ const Button = ({ data, theme = 'primary', variant="normal", children, href, cla
         )
     ) : (
       <div className={styles.wrapper}>
-        <button {...commonProps}>
+        <button
+          type="button"
+          {...commonProps}
+        >
           <span>
             {children}
           </span>
