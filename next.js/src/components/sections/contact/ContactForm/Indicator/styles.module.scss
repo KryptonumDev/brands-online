@@ -1,5 +1,9 @@
 .wrapper {
   overflow: hidden;
+  p {
+    text-align: center;
+    margin-bottom: 8px;
+  }
 }
 .backBtn {
   display: inline-flex;
@@ -7,7 +11,7 @@
   gap: 12px;
   font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
   margin-right: auto;
-  margin-bottom: clamp(40px, calc(48vw/7.68), 64px);
+  margin-bottom: clamp(34px, calc(42vw/7.68), 42px);
 }
 .progressbar {
   width: 100%;
