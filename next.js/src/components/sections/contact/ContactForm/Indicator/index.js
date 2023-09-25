@@ -1,14 +1,28 @@
 'use client'
+import { useState } from 'react';
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
 
 const Indicator = ({ step, setStep, maxSteps, ...props }) => {
+  const [ disabled, setDisabled ] = useState(false);
+
+  const nextStep = () => {
+    setDisabled(true);
+    setStep(step - 1);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 500);
+  }
   return (
     <motion.div
       className={styles.wrapper}
       {...props}
     >
-      <button className={styles.backBtn} onClick={() => setStep(step-1)}>
+      <button
+        className={styles.backBtn}
+        disabled={disabled}
+        onClick={() => nextStep()}
+      >
         <Arrow />
         <span>Previous step</span>
       </button>
