@@ -1,0 +1,11 @@
+.wrapper {
+  text-align: center;
+  h2 {
+    max-width: calc(794rem/16);
+    margin: 0 auto;
+  }
+  .paragraph {
+    max-width: calc(583rem/16);
+    margin: clamp(16px, calc(20vw/7.68), 28px) auto clamp(28px, calc(36vw/7.68), 48px);
+  }
+}
