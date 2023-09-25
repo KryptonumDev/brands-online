@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useState, useMemo, useCallback, useRef } from 'react';
 import Markdown from '@/utils/Markdown';
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
@@ -17,116 +17,151 @@ const Step1 = ({
   },
   ...props
 }) => {
-  const [ addTag, setAddTag ] = useState(options.map(() => ({ show: false, disabled: true, name: '' })));
+  const [addTags, setAddTags] = useState(
+    options.map(() => ({ show: false, disabled: true, name: '' }))
+  );
 
   const wrapperOptions = useRef(null);
 
-  const handleShowAddTag = (index) => {
-    setAddTag(prevState => {
-      const updatedAddTag = [...prevState];
-      updatedAddTag[index].show = true;
-      return updatedAddTag;
-    })
-    setTimeout(() => {
-      wrapperOptions.current.querySelector(`#input_${index}`).focus();
-    }, 0);
-  }
-
-  const handleSetTag = (e, optionIndex) => {
-    const inputValue = e.target.value;
-    setAddTag(prevState => {
-      const updatedAddTag = [...prevState];
-      updatedAddTag[optionIndex].disabled = inputValue.trim() === '';
-      updatedAddTag[optionIndex].name = inputValue;
-      return updatedAddTag;
-    });
-  }
-
-  const handleAddTag = (optionIndex) => {
-    const newValue = addTag[optionIndex].name;
-    if(newValue) {
-      const updatedOptions = [...options];
-      updatedOptions[optionIndex].list.push(newValue);
-      setAddTag(prevState => {
-        const updatedAddTag = [...prevState];
-        updatedAddTag[optionIndex].disabled = true;
-        updatedAddTag[optionIndex].name = '';
-        return updatedAddTag;
+  const handleShowAddTag = useCallback(
+    (index) => {
+      setAddTags((prevState) => {
+        const updatedAddTags = [...prevState];
+        updatedAddTags[index].show = true;
+        return updatedAddTags;
       });
-    }
-  }
+      setTimeout(() => {
+        const inputElement = wrapperOptions.current.querySelector(
+          `#input_${index}`
+        );
+        if (inputElement) inputElement.focus();
+      }, 0);
+    },
+    [setAddTags]
+  );
+
+  const handleSetTag = useCallback(
+    (e, optionIndex) => {
+      const inputValue = e.target.value;
+      setAddTags((prevState) => {
+        const updatedAddTags = [...prevState];
+        updatedAddTags[optionIndex].disabled = inputValue.trim() === '';
+        updatedAddTags[optionIndex].name = inputValue;
+        return updatedAddTags;
+      });
+    },
+    [setAddTags]
+  );
+
+  const handleAddTag = useCallback(
+    (e, optionIndex) => {
+      e && e.preventDefault();
+      const newValue = addTags[optionIndex].name;
+      if (newValue) {
+        const updatedOptions = [...options];
+        updatedOptions[optionIndex].list.push(newValue);
+        setAddTags((prevState) => {
+          const updatedAddTags = [...prevState];
+          updatedAddTags[optionIndex].disabled = true;
+          updatedAddTags[optionIndex].name = '';
+          updatedAddTags[optionIndex].checked = true;
+          return updatedAddTags;
+        });
+      }
+    },
+    [addTags, options, setAddTags]
+  );
+
+  const renderedOptions = useMemo(() => {
+    return options.map(({ title, list }, optionIndex) => (
+      <div className="item" key={optionIndex}>
+        <p>{title}</p>
+        <div className={styles.list}>
+          {list.map((item, itemIndex) => (
+            <InputTag
+              key={itemIndex}
+              register={register(`services[${title}]`)}
+              errors={errors}
+              value={item}
+            >
+              {item}
+            </InputTag>
+          ))}
+          <motion.button
+            className={styles.addTag}
+            aria-hidden={addTags[optionIndex].show}
+            onClick={() => handleShowAddTag(optionIndex)}
+            initial={{
+              height: 'auto',
+            }}
+            animate={{
+              height: !addTags[optionIndex].show ? 'auto' : 0,
+            }}
+            type="button"
+          >
+            <PlusIcon />
+            <span>Other</span>
+          </motion.button>
+          <motion.div
+            className={styles.input}
+            aria-hidden={!addTags[optionIndex].show}
+            initial={{
+              height: 0,
+            }}
+            animate={{
+              height: addTags[optionIndex].show ? 'auto' : 0,
+            }}
+          >
+            <input
+              id={`input_${optionIndex}`}
+              type="text"
+              value={addTags[optionIndex].name}
+              onChange={(e) => handleSetTag(e, optionIndex)}
+              onKeyDown={(e) => e.key === 'Enter' && handleAddTag(e, optionIndex)}
+            />
+            <button
+              className={styles.add}
+              disabled={addTags[optionIndex].disabled}
+              onClick={() => handleAddTag(null, optionIndex)}
+              type="button"
+            >
+              <span>Add</span>
+            </button>
+            <button
+              className={styles.cancel}
+              type="button"
+              onClick={() =>
+                setAddTags((prevState) => {
+                  const updatedAddTags = [...prevState];
+                  updatedAddTags[optionIndex].show = false;
+                  return updatedAddTags;
+                })
+              }
+            >
+              Cancel
+            </button>
+          </motion.div>
+        </div>
+      </div>
+    ));
+  }, [
+    options,
+    register,
+    errors,
+    addTags,
+    handleShowAddTag,
+    handleSetTag,
+    handleAddTag,
+  ]);
 
   return (
-    <motion.section
-      {...props}
-    >
+    <motion.section {...props}>
       <header className={stylesWrapper.header}>
         <Markdown.h2>{heading}</Markdown.h2>
         <Markdown className={stylesWrapper.paragraph}>{paragraph}</Markdown>
       </header>
       <div className={styles.options} ref={wrapperOptions}>
-        {options.map(({ title, list }, optionIndex) => (
-          <div className="item" key={optionIndex}>
-            <p>{title}</p>
-            <div className={styles.list}>
-              {list.map((item, itemIndex) => (
-                <InputTag
-                  key={itemIndex}
-                  register={register(`services[${title}`)}
-                  errors={errors}
-                  value={item}
-                >{item}</InputTag>
-              ))}
-              <motion.button
-                className={styles.addTag}
-                aria-hidden={addTag[optionIndex].show}
-                onClick={() => handleShowAddTag(optionIndex)}
-                initial={{
-                  height: 'auto'
-                }}
-                animate={{
-                  height: !addTag[optionIndex].show ? 'auto' : 0,
-                }}
-              >
-                <PlusIcon />
-                <span>Other</span>
-              </motion.button>
-              <motion.div
-                className={styles.input}
-                aria-hidden={!addTag[optionIndex].show}
-                initial={{
-                  height: 0
-                }}
-                animate={{
-                  height: addTag[optionIndex].show ? 'auto' : 0,
-                }}
-              >
-                <input
-                  id={`input_${optionIndex}`}
-                  type="text"
-                  value={addTag[optionIndex].name}
-                  onChange={(e) => handleSetTag(e, optionIndex)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleAddTag(optionIndex)}
-                />
-                <button
-                  className={styles.add}
-                  disabled={addTag[optionIndex].disabled}
-                  onClick={() => handleAddTag(optionIndex)}
-                >
-                    <span>Add</span>
-                  </button>
-                <button
-                  className={styles.cancel}
-                  onClick={() => setAddTag(prevState => {
-                    const updatedAddTag = [...prevState];
-                    updatedAddTag[optionIndex].show = false;
-                    return updatedAddTag;
-                  })}
-                >Cancel</button>
-              </motion.div>
-            </div>
-          </div>
-        ))}
+        {renderedOptions}
       </div>
       <NextStepBtn setStep={setStep} step={2} className={stylesWrapper.nextStepBtn} />
     </motion.section>
@@ -146,4 +181,4 @@ const PlusIcon = () => (
       d='M12 18.75c-.41 0-.75-.34-.75-.75V6c0-.41.34-.75.75-.75s.75.34.75.75v12c0 .41-.34.75-.75.75z'
     ></path>
   </svg>
-)
+);

@@ -11,7 +11,7 @@ const Indicator = ({ step, setStep, maxSteps, ...props }) => {
     setStep(step - 1);
     setTimeout(() => {
       setDisabled(false);
-    }, 500);
+    }, 300);
   }
   return (
     <motion.div

@@ -76,8 +76,6 @@ const ContactForm = ({
       })
   }
 
-  console.log(status.success);
-
   return (
     <form
       className={styles.wrapper}
@@ -86,14 +84,16 @@ const ContactForm = ({
       <AnimatePresence mode='wait' initial={false}>
         {status.success === undefined ? (
           <>
-            <Indicator
-              step={step}
-              setStep={setStep}
-              maxSteps={maxSteps}
-              initial={{ height: 0 }}
-              animate={step > 0 ? { height: 'auto' } : { height: 0 }}
-              exit={{ height: 0 }}
-            />
+            {step > 0 && (
+              <Indicator
+                step={step}
+                setStep={setStep}
+                maxSteps={maxSteps}
+                initial={{ opacity: 0 }}
+                animate={step > 0 ? { opacity: 1 } : { opacity: 0 }}
+                exit={{ opacity: 0 }}
+              />
+            )}
             {step === 0 && (
               <Hero
                 stylesWrapper={styles}
