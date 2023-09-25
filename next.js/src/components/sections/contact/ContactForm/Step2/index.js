@@ -1,10 +1,21 @@
 import Markdown from '@/utils/Markdown';
 import styles from './styles.module.scss';
-import InputTag from '@/components/atoms/InputTag';
+import InputTag from '@/components/moleculas/InputTag';
 import { motion } from 'framer-motion';
 import NextStepBtn from '../NextStepBtn';
 
-const Step2 = ({ stylesWrapper, heading, paragraph, options, setStep, ...props }) => {
+const Step2 = ({
+  stylesWrapper,
+  heading,
+  paragraph,
+  options,
+  setStep,
+  form: {
+    register,
+    errors
+  },
+  ...props
+}) => {
   return (
     <motion.section
       {...props}
@@ -18,8 +29,10 @@ const Step2 = ({ stylesWrapper, heading, paragraph, options, setStep, ...props }
           <InputTag
             type="radio"
             key={i}
-            name='budget'
-          >{item}</InputTag>
+            value={item}
+            register={register('budget')}
+            errors={errors}
+            >{item}</InputTag>
         ))}
       </div>
       <NextStepBtn setStep={setStep} step={3} className={stylesWrapper.nextStepBtn} />

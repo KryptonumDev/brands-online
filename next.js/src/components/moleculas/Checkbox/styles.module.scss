@@ -1,0 +1,47 @@
+.label {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px;
+  padding-top: calc(clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16)) + 5px);
+  position: relative;
+  width: fit-content;
+  > p {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-bottom: 5px;
+  }
+  cursor: pointer;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  @media (max-width: 499px){
+    width: 32px;
+    height: 32px;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    &:checked {
+      + svg .tick {
+        stroke-dashoffset: 0
+      }
+    }
+    &:focus-visible + svg {
+      outline: 1px solid var(--neutral-800);
+      outline-offset: 5px;
+    }
+  }
+  .tick {
+    stroke-dasharray: 26;
+    stroke-dashoffset: 26;
+    transition: stroke-dashoffset .4s;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+}

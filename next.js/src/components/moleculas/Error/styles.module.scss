@@ -1,0 +1,11 @@
+.error {
+  font-size: clamp(calc(12rem/16), calc(12vw/7.68), calc(16rem/16));
+  @media (max-width: 349px){
+    font-size: calc(11rem/16);
+  }
+  color: var(--error-550);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  line-height: inherit;
+}

@@ -1,14 +1,16 @@
 import { GenerateID } from '@/utils/functions';
 import styles from './styles.module.scss';
 
-const InputTag = ({ children, name, type='checkbox', ...props }) => {
+const InputTag = ({ register, errors, children, type='checkbox', ...props }) => {
   const id = GenerateID();
   return (
     <>
       <input
         type={type}
         id={id}
-        name={name}
+        {...register}
+        name={register.name}
+        aria-invalid={Boolean(errors[register.name])}
         className={styles.input}
         {...props}
       />

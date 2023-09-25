@@ -2,10 +2,21 @@ import { useRef, useState } from 'react';
 import Markdown from '@/utils/Markdown';
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
-import InputTag from '@/components/atoms/InputTag';
+import InputTag from '@/components/moleculas/InputTag';
 import NextStepBtn from '../NextStepBtn';
 
-const Step1 = ({ stylesWrapper, heading, paragraph, options, setStep, ...props }) => {
+const Step1 = ({
+  stylesWrapper,
+  heading,
+  paragraph,
+  options,
+  setStep,
+  form: {
+    register,
+    errors
+  },
+  ...props
+}) => {
   const [ addTag, setAddTag ] = useState(options.map(() => ({ show: false, disabled: true, name: '' })));
 
   const wrapperOptions = useRef(null);
@@ -61,7 +72,9 @@ const Step1 = ({ stylesWrapper, heading, paragraph, options, setStep, ...props }
               {list.map((item, itemIndex) => (
                 <InputTag
                   key={itemIndex}
-                  name={`option_${optionIndex}_${itemIndex}`}
+                  register={register(`services[${title}`)}
+                  errors={errors}
+                  value={item}
                 >{item}</InputTag>
               ))}
               <motion.button

@@ -1,0 +1,10 @@
+.form {
+  display: grid;
+  gap: 12px clamp(16px, calc(20vw/7.68), 36px);
+  @media (min-width: 800px){
+    grid-template-columns: 1fr 1fr;
+    > label:nth-last-child(-n+2){
+      grid-column: 3/1;
+    }
+  }
+}

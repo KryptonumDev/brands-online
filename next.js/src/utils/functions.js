@@ -73,3 +73,29 @@ export const GenerateID = () => {
   };
   return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
+
+export const phoneValidation = (e) => {
+  if (
+    (e.metaKey || e.ctrlKey) && e.key === 'a' ||
+    (e.metaKey || e.ctrlKey) && e.key === 'a' ||
+    (e.metaKey || e.ctrlKey) && e.key === 'c' ||
+    (e.metaKey || e.ctrlKey) && e.key === 'x' ||
+    (e.metaKey || e.ctrlKey) && e.key === 'v' ||
+    (e.metaKey || e.ctrlKey) && e.key === 'z' ||
+    e.key === 'ArrowLeft' ||
+    e.key === 'ArrowRight' ||
+    e.key === 'Home' ||
+    e.key === 'End' ||
+    e.key === 'Backspace' ||
+    e.key === 'Delete' ||
+    e.key === 'Enter' ||
+    e.key === 'Tab'
+  ) {
+    return;
+  }
+  const allowedCharactersPattern = /[0-9()_+\-\s]/;
+  const pressedKey = e.key;
+  if (!allowedCharactersPattern.test(pressedKey)) {
+    e.preventDefault();
+  }
+}

@@ -1,13 +1,14 @@
 'use client'
 import { useState } from 'react';
 import styles from './styles.module.scss';
-import Hero from './Hero';
-import Step1 from './Step1';
 import { AnimatePresence } from 'framer-motion';
 import Indicator from './Indicator';
+import Hero from './Hero';
+import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
+import { useForm } from 'react-hook-form';
 
 const ContactForm = ({
   data: {
@@ -34,21 +35,61 @@ const ContactForm = ({
     error_Cta,
   }
 }) => {
+  const [ status, setStatus ] = useState({ sending: false });
   const [ step, setStep ] = useState(0);
   const maxSteps = 4;
+
+  const animation = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  }
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ mode: 'all' })
+
+  const onSubmit = (data) => {
+    console.log(data);
+    setStatus({ sending: true });
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.success) {
+          setStatus(prevStatus => ({ ...prevStatus, success: true }));
+          reset();
+        } else {
+          setStatus(prevStatus => ({ ...prevStatus, success: false }));
+        }
+      })
+      .catch(() => {
+        setStatus(prevStatus => ({ ...prevStatus, success: false }));
+      })
+  }
+
   return (
-    <div className={styles.wrapper}>
-      {step > 0 && (
-        <Indicator
-          step={step}
-          setStep={setStep}
-          maxSteps={maxSteps}
-          initial={{ height: 0 }}
-          animate={{ height: 'auto' }}
-          exit={{ height: 0 }}
-        />
-      )}
-      <AnimatePresence mode='wait'>
+    <form
+      className={styles.wrapper}
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Indicator
+        step={step}
+        setStep={setStep}
+        maxSteps={maxSteps}
+        initial={{ height: 0 }}
+        animate={step > 0 ? { height: 'auto' } : { height: 0 }}
+        exit={{ height: 0 }}
+      />
+      <AnimatePresence mode='wait' initial={false}>
         {step === 0 && (
           <Hero
             stylesWrapper={styles}
@@ -58,9 +99,7 @@ const ContactForm = ({
             cta={hero_Cta}
             setStep={setStep}
             key="step0"
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -13 }}
+            {...animation}
           />
         )}
         {step === 1 && (
@@ -71,9 +110,11 @@ const ContactForm = ({
             options={step1_Options}
             setStep={setStep}
             key="step1"
-            initial={{ opacity: 0, y: 13 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -13 }}
+            {...animation}
+            form={{
+              register,
+              errors,
+            }}
           />
         )}
         {step === 2 && (
@@ -84,9 +125,11 @@ const ContactForm = ({
             options={step2_Options}
             setStep={setStep}
             key="step2"
-            initial={{ opacity: 0, y: 13 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -13 }}
+            {...animation}
+            form={{
+              register,
+              errors,
+            }}
           />
         )}
         {step === 3 && (
@@ -97,9 +140,11 @@ const ContactForm = ({
             options={step3_Options}
             setStep={setStep}
             key="step3"
-            initial={{ opacity: 0, y: 13 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -13 }}
+            {...animation}
+            form={{
+              register,
+              errors,
+            }}
           />
         )}
         {step === 4 && (
@@ -109,13 +154,15 @@ const ContactForm = ({
             paragraph={step4_Paragraph}
             setStep={setStep}
             key="step4"
-            initial={{ opacity: 0, y: 13 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -13 }}
+            {...animation}
+            form={{
+              register,
+              errors,
+            }}
           />
         )}
       </AnimatePresence>
-    </div>
+    </form>
   );
 };
 

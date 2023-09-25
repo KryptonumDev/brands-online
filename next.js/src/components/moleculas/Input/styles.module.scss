@@ -1,0 +1,65 @@
+.label {
+  --input-height: 36px;
+  padding-top: calc(clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16)) + 5px);
+  position: relative;
+  font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
+  textarea,
+  input {
+    border-radius: 20px;
+    background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;
+    &:focus {
+      background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-200) border-box;
+    }
+    border: 1px solid var(--neutral-300);
+    transition: border-color .3s, background .4s;
+    &:hover,
+    &:focus {
+      border-color: rgba(0,0,0,0);
+    }
+    padding: 4px 28px;
+    height: var(--input-height);
+    width: 100%;
+    &:not(:placeholder-shown) {
+      + span {
+        transform: scale(.8) translate(-17px, calc(-1em - (var(--input-height) - 1em) / 2 - 8px));
+      }
+    }
+    &:focus-visible {
+      outline: 0;
+    }
+  }
+  > span {
+    pointer-events: none;
+    position: absolute;
+    left: 29px;
+    top: calc(1em + 5px + (var(--input-height) - 1em) / 2);
+    line-height: 1;
+    display: block;
+    transform-origin: left top;
+    color: var(--neutral-650);
+    transition: transform .2s var(--easing);
+    em {
+      font-style: normal;
+      font-size: .8em;
+    }
+  }
+  textarea {
+    resize: none;
+    padding: 12px 28px;
+    height: 90px;
+    + span {
+      top: calc(21.5px + 1em);
+    }
+    &:not(:placeholder-shown) {
+      + span {
+        transform: scale(.8) translate(-17px, calc(-21.5px - 1em - 5px));
+      }
+    }
+  }
+  > p {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0 12px 5px auto;
+  }
+}
