@@ -23,6 +23,41 @@ export default {
         fieldset: 'hero',
       },
     {
+      name: 'services_Tag',
+      type: 'string',
+      title: 'Tag',
+      fieldset: 'services',
+    },
+    {
+      name: 'services_Heading',
+      type: 'markdown',
+      title: 'Heading',
+      fieldset: 'services',
+    },
+    {
+      name: 'services_Paragraph',
+      type: 'markdown',
+      title: 'Paragraph',
+      fieldset: 'services',
+    },
+    {
+      name: 'services_Cta',
+      type: 'cta',
+      title: 'CTA',
+      fieldset: 'services',
+    },
+    {
+      name: 'services_List',
+      type: 'array',
+      of: [
+        {
+          type: 'list_titleDescriptionAndImage'
+        }
+      ],
+      title: 'List',
+      fieldset: 'services',
+    },
+    {
       name: 'motivation_Paragraph',
       type: 'markdown',
       title: 'Paragraph',
@@ -66,6 +101,11 @@ export default {
       options: {
         collapsible: true
       }
+    },
+    {
+      name: 'services',
+      title: 'Our services',
+      options: { collapsible: true, collapsed: true },
     },
     {
       name: 'motivation',

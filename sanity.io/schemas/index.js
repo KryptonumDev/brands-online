@@ -1,6 +1,6 @@
 // Single Types
 import global, { global_Seo } from './singleTypes/global'
-import homePage from './singleTypes/homePage'
+import indexPage from './singleTypes/indexPage'
 import aboutPage, { aboutPage_experienceList } from './singleTypes/aboutPage'
 import servicesPage, { servicesPage_servicesList } from './singleTypes/servicesPage'
 import clientsPage from './singleTypes/clientsPage'
@@ -9,7 +9,7 @@ import privacyPolicyPage from './singleTypes/privacyPolicyPage'
 import notFoundPage from './singleTypes/notFoundPage'
 
 export const singleTypes = [
-  homePage,
+  indexPage,
   aboutPage,
   servicesPage,
   clientsPage,
