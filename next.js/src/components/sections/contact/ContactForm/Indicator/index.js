@@ -6,22 +6,24 @@ import { motion } from 'framer-motion';
 const Indicator = ({ step, setStep, maxSteps, ...props }) => {
   const [ disabled, setDisabled ] = useState(false);
 
-  const nextStep = () => {
+  const backStep = () => {
     setDisabled(true);
     setStep(step - 1);
     setTimeout(() => {
       setDisabled(false);
     }, 300);
   }
+  
   return (
     <motion.div
       className={styles.wrapper}
       {...props}
     >
       <button
+        type="button"
         className={styles.backBtn}
         disabled={disabled}
-        onClick={() => nextStep()}
+        onClick={() => backStep()}
       >
         <Arrow />
         <span>Previous step</span>
