@@ -4,7 +4,7 @@ import Services from "@/components/sections/services/Services";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
-// export const runtime = 'edge'
+export const runtime = 'edge'
 
 const ServicesPage = async () => {
   const {

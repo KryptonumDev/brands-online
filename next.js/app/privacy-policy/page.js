@@ -4,7 +4,7 @@ import Hero from "@/components/sections/privacy-policy/Hero";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
-// export const runtime = 'edge'
+export const runtime = 'edge'
 
 const PrivacyPolicy = async () => {
   const { page: {

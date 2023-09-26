@@ -3,7 +3,7 @@ import Clients from "@/components/sections/Clients";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
-// export const runtime = 'edge'
+export const runtime = 'edge'
 
 const ClientsPage = async () => {
   const {
