@@ -34,8 +34,7 @@ const Services = ({
       </ul>
       <Button
         data={services_Cta}
-        className={styles.button}
-        aria-hidden={!isInView}
+        className={`${styles.button} ${isInView ? styles.visible : ''}`}
       />
     </section>
   );

@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import Clients from "@/components/sections/homepage/Clients";
 import Motivation from "@/components/sections/homepage/Motivation";
+import Services from "@/components/sections/homepage/Services";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
@@ -12,6 +13,11 @@ const IndexPage = async () => {
       hero_Heading,
       hero_Paragraph,
       hero_Cta,
+      services_Tag,
+      services_Heading,
+      services_Paragraph,
+      services_Cta,
+      services_List,
       motivation_Paragraph,
       clients_Tag,
       clients_Heading,
@@ -27,6 +33,13 @@ const IndexPage = async () => {
         hero_Heading,
         hero_Paragraph,
         hero_Cta,
+      }} />
+      <Services data={{
+        services_Tag,
+        services_Heading,
+        services_Paragraph,
+        services_Cta,
+        services_List,
       }} />
       <Motivation data={{
         motivation_Paragraph
@@ -61,6 +74,32 @@ const getData = async () => {
         theme
         text
         href
+      }
+        # Services
+      services_Tag
+      services_Heading
+      services_Paragraph
+      services_Cta {
+        theme
+        text
+        href
+      }
+      services_List {
+        title
+        description
+        img {
+          asset {
+            altText
+            url
+            metadata {
+              lqip
+              dimensions {
+                width
+                height
+              }
+            }
+          }
+        }
       }
         # Motivation
       motivation_Paragraph
