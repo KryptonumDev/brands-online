@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 import { Logo } from '@/components/atoms/Icons';
@@ -46,6 +46,20 @@ const links = [
 
 const Nav = () => {
   const [ navOpened, setNavOpened ] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey)
+    }
+  }, []);
+
+  const handleEscapeKey = (e) => {
+    if (e.key === "Escape") {
+      setNavOpened(false);
+    }
+  }
+  
   return (
     <>
       <a href="#main" className={styles.skipToMainContent}>Skip to main content</a>
