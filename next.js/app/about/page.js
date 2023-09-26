@@ -4,7 +4,7 @@ import MeetUs from "@/components/sections/about/MeetUs";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 const AboutPage = async () => {
   const {

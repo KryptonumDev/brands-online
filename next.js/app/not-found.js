@@ -3,7 +3,7 @@ import Hero from "@/components/sections/notFound/Hero";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 const NotFoundPage = async () => {
   const { page: {
