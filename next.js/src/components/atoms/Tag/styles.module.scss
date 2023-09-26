@@ -1,12 +1,11 @@
 .wrapper {
   display: inline-flex;
-  font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
   max-width: 100%;
   span {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding: calc(8em/16) calc(34em/16);
+    padding: 8px calc(34em/16);
     display: inline-block;
     background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-200) border-box;
     border: 1px solid rgba(255, 255, 255, 0);
