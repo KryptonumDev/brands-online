@@ -35,7 +35,7 @@ const Footer = async () => {
       <div className="max-width">
         <div className={styles.collaborate}>
           <p>Want to collaborate with us?</p>
-          <Button href="/contact">Let’s talk</Button>
+          <Button href="/contact" variant='secondary'>Let’s talk</Button>
         </div>
         <div className={styles.brandColumn}>
           <div className={styles.brand}>
