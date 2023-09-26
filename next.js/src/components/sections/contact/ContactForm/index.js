@@ -10,6 +10,7 @@ import Step3 from './Step3';
 import Step4 from './Step4';
 import { useForm } from 'react-hook-form';
 import Status from './Status';
+import Sending from './Sending';
 
 const ContactForm = ({
   data: {
@@ -164,6 +165,9 @@ const ContactForm = ({
                   errors,
                 }}
               />
+            )}
+            {status.sending && (
+              <Sending {...animation} />
             )}
           </>
         ) : (
