@@ -38,7 +38,7 @@ const Clients = ({
         onSlideChange={(e) => setFrameWidth(e.slidesSizesGrid[e.activeIndex])}
         speed={600}
         autoplay={{
-          delay: 2000,
+          delay: 1500,
           disableOnInteraction: false,
         }}
         className={styles.swiper}
