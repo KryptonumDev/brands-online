@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './styles.module.scss';
 import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
@@ -59,6 +60,7 @@ const Nav = () => {
       setNavOpened(false);
     }
   }
+  const pathname = usePathname();
   
   return (
     <>
@@ -78,7 +80,7 @@ const Nav = () => {
               {links.map(({ name, href, asButton }, i) => (
                 <li key={i} className={!asButton ? styles.animatedItem : ''}>
                   {!asButton ? (
-                      <Link href={href}>
+                      <Link href={href} aria-current={pathname === href ? 'page' : false}>
                         {splitWordIntoLetters(name, styles.letter)}
                       </Link>
                   ) : (
@@ -108,7 +110,11 @@ const Nav = () => {
               {links.map(({ name, href, asButton }, i) => (
                 !asButton && (
                   <li key={i} className={styles.animatedItem}>
-                    <Link href={href} onClick={() => setNavOpened(false)}>
+                    <Link
+                      href={href}
+                      onClick={() => setNavOpened(false)}
+                      aria-current={pathname === href ? 'page' : false}
+                    >
                       {splitWordIntoLetters(name, styles.letter)}
                     </Link>
                   </li>

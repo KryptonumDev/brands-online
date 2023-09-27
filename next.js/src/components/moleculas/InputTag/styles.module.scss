@@ -19,7 +19,7 @@
   padding: 4px 16px;
   border-radius: 48px;
   font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
-  background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;
+  background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-200) border-box;
   border: 1px solid var(--neutral-800);
   span {
     position: relative;
@@ -28,11 +28,11 @@
   position: relative;
   &::before {
     content: '';
-    width: 100%;
-    height: 100%;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -1px;
+    top: -1px;
     background: var(--gradients-100);
     border-radius: inherit;
     opacity: 0;
