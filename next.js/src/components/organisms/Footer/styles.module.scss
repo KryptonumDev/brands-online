@@ -31,10 +31,9 @@
       a {
         display: inline-block;
         margin-bottom: clamp(16px, calc(28vw/7.68), 36px);
-        @media (max-width: 549px){
-          svg {
-            max-width: 240px;
-          }
+        svg {
+          width: clamp(240px, calc(278vw/7.68), 278px);
+          height: auto;
         }
       }
     }
