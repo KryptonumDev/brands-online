@@ -67,6 +67,9 @@ const Step1 = ({
           updatedAddTags[optionIndex].checked = true;
           return updatedAddTags;
         });
+        setTimeout(() => {
+          wrapperOptions.current.querySelector(`.item:nth-child(${optionIndex + 1}) input[type="checkbox"]:last-of-type`).click();
+        }, 0);
       }
     },
     [addTags, options, setAddTags]
