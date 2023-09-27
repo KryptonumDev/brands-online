@@ -40,7 +40,7 @@ const Footer = async () => {
         <div className={styles.brandColumn}>
           <div className={styles.brand}>
             <Link href="/" aria-label="Homepage">
-              <Logo viewBox={true} />
+              <Logo viewBox={true} circleColor="#FCFCFC" />
             </Link>
             <p>Our mission is helping brands go online. Our mission is helping brands go online. Our mission is helping brands go online.</p>
           </div>
