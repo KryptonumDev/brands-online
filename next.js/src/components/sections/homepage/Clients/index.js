@@ -34,6 +34,7 @@ const Clients = ({
         modules={[ A11y, Autoplay ]}
         height='106'
         centeredSlides={true}
+        slideToClickedSlide={true}
         grabCursor={true}
         onSlideChange={(e) => setFrameWidth(e.slidesSizesGrid[e.activeIndex])}
         speed={600}
