@@ -36,9 +36,9 @@
     background: var(--gradients-100);
     border-radius: inherit;
     opacity: 0;
-    transition: opacity .5s;
+    transition: opacity .6s;
   }
-  transition: border-color .5s;
+  transition: border-color .6s;
   &:hover {
     border-color: rgba(255, 255, 255, 0);
   }
