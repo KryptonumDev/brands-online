@@ -24,13 +24,18 @@
         margin-bottom: clamp(12px, calc(16vw/7.68), 20px);
       }
       border-radius: 28px;
-      overflow: hidden;
       border: 1px solid #E9E9E9;
-      &[data-opened="false"] summary:hover .arrow {
-        transform: rotate(45deg) !important;
+      &[data-opened="false"] {
+        &:focus-within,
+        .summary:hover {
+          .arrow {
+            transform: rotate(45deg) !important;
+          }
+        }
       }
       transition: background-color .3s, border-color .3s;
-      &:hover {
+      &:hover,
+      &:focus-within {
         background-color: var(--neutral-200);
         border-color: var(--neutral-100);
       }
@@ -54,6 +59,8 @@
         }
       }
       .content {
+        overflow: hidden;
+        border-radius: 28px;
         .description {
           padding: 0 clamp(16px, calc(36vw/7.68), 36px);
           margin-bottom: clamp(16px, calc(24vw/7.68), 32px);

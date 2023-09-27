@@ -37,7 +37,10 @@ const Services = ({
             open
             data-opened={opened === i}
           >
-            <summary onClick={(e) => handleClick(e, i)}>
+            <summary
+              onClick={(e) => handleClick(e, i)}
+              tabIndex={opened === i ? -1 : 0}
+            >
               <Markdown components={{ p: 'span' }}>{title}</Markdown>
               <Arrow
                 className={styles.arrow}
