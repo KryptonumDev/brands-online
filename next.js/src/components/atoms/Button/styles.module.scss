@@ -53,7 +53,7 @@
           top: -25%;
           background-color: var(--btn-color);
           transform: translateX(-60%);
-          transition: transform .6s;
+          transition: transform .5s .1s var(--easing);
         }
       }
       transition: transform .5s var(--easing);
@@ -61,7 +61,15 @@
       &:focus-within {
         .fill::before {
           transform: translateX(0);
+          transition-delay: 0s;
         }
+        .arrow {
+          transform: translateX(3px);
+          transition-delay: .1s;
+        }
+      }
+      .arrow {
+        transition: transform .5s 0s var(--easing);
       }
       &:active {
         transform: translateX(5px);
