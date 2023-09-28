@@ -23,6 +23,24 @@ export default {
       fieldset: 'social',
     },
     {
+      name: 'footer_Heading',
+      title: 'Heading',
+      type: 'string',
+      fieldset: 'footer',
+    },
+    {
+      name: 'footer_Cta',
+      title: 'CTA',
+      type: 'cta',
+      fieldset: 'footer',
+    },
+    {
+      name: 'footer_Slogan',
+      title: 'Slogan',
+      type: 'markdown',
+      fieldset: 'footer',
+    },
+    {
       name: 'seo',
       type: 'global_Seo',
       title: 'Global SEO',
@@ -35,6 +53,11 @@ export default {
       options: {
         collapsible: true
       }
+    },
+    {
+      name: 'footer',
+      title: 'Footer',
+      options: { collapsible: true, collapsed: true }
     }
   ]
 }
