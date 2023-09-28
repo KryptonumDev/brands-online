@@ -4,12 +4,16 @@ import Button from '@/components/atoms/Button';
 import Link from 'next/link';
 import CustomLink from '@/components/atoms/CustomLink';
 import fetchData from '@/utils/fetchData';
+import Markdown from '@/utils/Markdown';
 
 const Footer = async () => {
   const { global: {
     instagram,
     facebook,
     youtube,
+    footer_Heading,
+    footer_Cta,
+    footer_Slogan,
   }} = await getData();
 
   const socials = [
@@ -34,15 +38,15 @@ const Footer = async () => {
     <footer className={styles.wrapper}>
       <div className="max-width">
         <div className={styles.collaborate}>
-          <p>Want to collaborate with us?</p>
-          <Button href="/contact" variant='secondary'>Let’s talk</Button>
+          <p>{footer_Heading}</p>
+          <Button data={footer_Cta} variant='secondary' />
         </div>
         <div className={styles.brandColumn}>
           <div className={styles.brand}>
             <Link href="/" aria-label="Homepage">
               <Logo viewBox={true} circleColor="#FCFCFC" />
             </Link>
-            <p>Our mission is helping brands go online. Our mission is helping brands go online. Our mission is helping brands go online.</p>
+            <Markdown>{footer_Slogan}</Markdown>
           </div>
           <div className={styles.socials}>
             <p>Social media</p>
@@ -267,6 +271,13 @@ const getData = async () => {
       instagram
       facebook
       youtube
+      footer_Heading
+      footer_Cta {
+        theme
+        text
+        href
+      }
+      footer_Slogan
     }
   `)
   return data;
