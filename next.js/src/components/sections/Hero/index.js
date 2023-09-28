@@ -28,7 +28,13 @@ const Hero = ({
             <Stage preset="rembrandt" intensity={1} environment="city">
               <HeroRender />
             </Stage>
-            <OrbitControls enablePan={false} enableZoom={false} />
+            <OrbitControls
+              enablePan={false}
+              enableZoom={false}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={Math.PI / 2}
+              autoRotate
+            />
           </Canvas>
         </Suspense>
       </div>

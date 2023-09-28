@@ -13,7 +13,7 @@ export function HeroRender(props) {
 
   const handleMouseMove = ({ clientX, clientY }) => {
     const { innerWidth, innerHeight } = window;
-    const x =  (clientX / innerWidth);
+    const x = (clientX / innerWidth);
     const y = (clientY / innerHeight);
     mouse.y.set(x);
     mouse.x.set(y);
@@ -22,6 +22,7 @@ export function HeroRender(props) {
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
