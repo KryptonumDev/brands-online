@@ -11,8 +11,14 @@
     }
   }
   .renders {
-    width: 100%;
+    min-width: 100%;
     height: 100%;
     aspect-ratio: 1/1;
+    @media (min-width: 1000px){
+      margin-right: calc(var(--pageMargin) * -1);
+    }
+    @media (max-width: 999px){
+      margin: 0 calc(var(--pageMargin) * -1);
+    }
   }
 }
