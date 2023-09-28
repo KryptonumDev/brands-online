@@ -1,5 +1,6 @@
 .wrapper {
   display: grid;
+  align-items: center;
   @media (min-width: 1000px){
     grid-template-columns: 1.1fr 1fr;
   }
@@ -8,5 +9,10 @@
     .paragraph {
       margin: clamp(16px, calc(20vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 48px);
     }
+  }
+  .renders {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
   }
 }
