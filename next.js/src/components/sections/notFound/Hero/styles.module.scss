@@ -1,8 +1,26 @@
 .wrapper {
-  max-width: calc(690rem/16);
-  margin: 0 auto;
-  text-align: center;
-  .paragraph {
-    margin: clamp(16px, calc(28vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 36px);
+  header {
+    max-width: calc(690rem/16);
+    margin: 0 auto;
+    text-align: center;
+    .paragraph {
+      margin: clamp(16px, calc(28vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 36px);
+    }
+  }
+  .render {
+    pointer-events: none;
+    z-index: -1;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/.6;
+    @media (max-width: 599px){
+      aspect-ratio: 1/1;
+    }
+    margin: -15% auto;
+    @media (max-width: 999px){
+      width: calc(100% + (var(--pageMargin) * 2));
+      margin-left: calc(var(--pageMargin) * -1);
+      margin-right: calc(var(--pageMargin) * -1);
+    }
   }
 }
