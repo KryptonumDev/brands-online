@@ -97,7 +97,7 @@
         height: calc(100% + 4px);
         stroke-dasharray: 150 310;
         stroke-dashoffset: 150;
-        transition: stroke-dashoffset 1.8s var(--easing);
+        transition: stroke-dashoffset 1.5s var(--easing);
       }
       &::before {
         content: '';
