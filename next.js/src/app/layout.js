@@ -4,15 +4,15 @@ import Nav from '@/components/organisms/Nav'
 import Footer from '@/components/organisms/Footer'
 import SmoothScroll from '@/utils/SmoothScroll'
 
-const Lato = localFont({
+const DMSans = localFont({
   src: [
     {
-      path: '../src/assets/fonts/DMSans-Regular.woff2',
+      path: '../assets/fonts/DMSans-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../src/assets/fonts/DMSans-Bold.woff2',
+      path: '../assets/fonts/DMSans-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
@@ -23,7 +23,7 @@ const Lato = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
-      <body className={`${Lato.className}`}>
+      <body className={`${DMSans.className}`}>
         <Nav />
         <SmoothScroll>
           <main id="main">
