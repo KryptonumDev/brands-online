@@ -24,7 +24,8 @@ const Render = ({ progress }) => {
               rotation={[-0.166, 0.259, 0.58]}
             />
             <motion.group
-              position={[97.705, -28.857, 83.781]} scale={[1, 1.002, 1]}
+              position={[97.705, -28.857, 83.781]}
+              scale={[1, 1.002, 1]}
               rotation-y={progress}
             >
               <group
