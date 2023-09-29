@@ -115,22 +115,9 @@ const Icon = {
         height='41'
         x='0.5'
         y='0.5'
-        stroke='url(#paint0_linear_1263_2868)'
+        stroke='var(--neutral-800)'
         rx='20.5'
       ></rect>
-      <defs>
-        <linearGradient
-          id='paint0_linear_1263_2868'
-          x1='132'
-          x2='0'
-          y1='21'
-          y2='21'
-          gradientUnits='userSpaceOnUse'
-        >
-          <stop stopColor='#CFFA5B'></stop>
-          <stop offset='1' stopColor='#EAFFAF'></stop>
-        </linearGradient>
-      </defs>
     </svg>
   )
 }

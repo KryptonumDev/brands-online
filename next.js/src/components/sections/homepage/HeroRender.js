@@ -45,7 +45,7 @@ const HeroRender = () => {
   }, [])
 
   return (
-    <Canvas>
+    <Canvas resize={{ scroll: false }}>
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
@@ -94,13 +94,15 @@ const HeroRender = () => {
               rotation={[-0.566, -0.228, -0.617]}
               scale={[1, 0.903, 0.796]}
             />
-            <group position={[-96.802, -74.177, 112.785]}>
-              <motion.group
+            <motion.group
+              position={[-96.802, -74.177, 112.785]}
+              rotation-x={mesh[2].x}
+              rotation-y={mesh[2].y}
+            >
+              <group
                 position={[-43.814, -7.745, -19.598]}
                 rotation={[0.037, -0.152, 0.787]}
                 scale={0.366}
-                rotation-x={mesh[2].x}
-                rotation-y={mesh[2].y}
               >
                 <mesh
                   castShadow
@@ -109,8 +111,8 @@ const HeroRender = () => {
                   material={nodes.Shape_0_1.material}
                   position={[0.427, -0.835, 0]}
                 />
-              </motion.group>
-            </group>
+              </group>
+            </motion.group>
             <directionalLight
               intensity={1}
               decay={2}
