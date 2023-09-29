@@ -4,7 +4,7 @@ import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 import { Canvas } from "@react-three/fiber";
 
-const HeroRender = () => {
+const Render = () => {
   const { nodes } = useGLTF("/renders/homepage.gltf");
 
   const options = {
@@ -140,4 +140,4 @@ const HeroRender = () => {
 
 useGLTF.preload("/renders/homepage.gltf");
 
-export default HeroRender;
+export default Render;

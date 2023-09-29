@@ -1,5 +1,5 @@
-import Hero from "@/components/sections/Hero";
 import Clients from "@/components/sections/Clients";
+import Hero from "@/components/sections/clientsPage/Hero";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 

@@ -3,7 +3,7 @@ import { lazy, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
-const HeroRender = lazy(() => import('../homepage/HeroRender'));
+const Render = lazy(() => import('./Render'));
 
 const Hero = ({
   data: {
@@ -24,9 +24,9 @@ const Hero = ({
         <Markdown className={styles.paragraph}>{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
       </header>
-      <div className={styles.renders}>
+      <div className={styles.render}>
         {!isMounted ? null : (
-          <HeroRender />
+          <Render />
         )}
         <Background />
       </div>
