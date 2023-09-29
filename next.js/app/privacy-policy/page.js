@@ -48,6 +48,11 @@ const getData = async () => {
         title
         description
       }
+        # SEO
+      seo {
+        title
+        description
+      }
     }
   `)
   return data;

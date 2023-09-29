@@ -104,6 +104,11 @@ const getData = async () => {
       error_Heading
       error_Paragraph
       error_Cta
+        # SEO
+      seo {
+        title
+        description
+      }
     }
   `)
   return data;
