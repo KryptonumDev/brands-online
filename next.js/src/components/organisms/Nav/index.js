@@ -86,7 +86,7 @@ const Nav = () => {
         scrollDistance = 0;
       }
       prevScrollPos = scrollY;
-      if (scrollY === 0) {
+      if (scrollY <= offset) {
         logo.current.setAttribute('data-hide', false);
       }
     } else {
