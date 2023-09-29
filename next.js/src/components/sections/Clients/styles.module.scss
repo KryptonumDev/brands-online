@@ -1,15 +1,14 @@
 .wrapper {
   border-radius: 13px;
   background-color: var(--neutral-300);
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  @media (max-width: 899px){
+    grid-template-columns: 1fr 1fr;
+  }
   gap: 2px;
   padding: 2px;
   .item {
-    width: calc(25% - 2px);
-    @media (max-width: 899px){
-      width: calc(50% - 2px);
-    }
     height: clamp(126px, calc(126vw/7.68), 186px);
     img {
       padding: 1rem;
