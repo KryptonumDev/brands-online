@@ -59,6 +59,9 @@
       li {
         list-style-type: none;
       }
+      a {
+        overflow-wrap: anywhere;
+      }
       ol {
         counter-reset: ol;
         > li {
