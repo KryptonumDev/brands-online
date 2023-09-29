@@ -4,6 +4,10 @@
   z-index: 9;
   padding-top: clamp(20px, calc(28vw/7.68), 36px);
   .logo {
+    &[data-hide="true"] {
+      transform: translateY(calc((clamp(58px, calc(64vw/7.68), 64px) + clamp(20px, calc(28vw/7.68), 36px)) * -1));
+    }
+    transition: transform .6s;
     svg {
       @media (max-width: 749px){
         width: 42px;

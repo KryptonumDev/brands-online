@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './styles.module.scss';
@@ -46,13 +46,18 @@ const links = [
 ]
 
 const Nav = () => {
+  const pathname = usePathname();
   const [ navOpened, setNavOpened ] = useState(false);
+  const logo = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("keydown", handleEscapeKey);
+    document.addEventListener('keydown', handleEscapeKey);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      document.removeEventListener("keydown", handleEscapeKey)
+      document.removeEventListener('keydown', handleEscapeKey);
+      window.removeEventListener('scroll', handleScroll);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleEscapeKey = (e) => {
@@ -60,7 +65,34 @@ const Nav = () => {
       setNavOpened(false);
     }
   }
-  const pathname = usePathname();
+
+  let prevScrollPos = 0;
+  let scrollDistance = 0;
+  const offset = 50;
+
+  const handleScroll = () => {
+    const { scrollY } = window;
+
+    const headerExpanded = logo.current.closest('header').getAttribute('aria-expanded') == 'true';
+    if (!headerExpanded) {
+      if (scrollY < prevScrollPos) {
+        scrollDistance += prevScrollPos - scrollY;
+        if (scrollDistance >= offset) {
+          logo.current.setAttribute('data-hide', false);
+          scrollDistance = 0;
+        }
+      } else {
+        logo.current.setAttribute('data-hide', true);
+        scrollDistance = 0;
+      }
+      prevScrollPos = scrollY;
+      if (scrollY === 0) {
+        logo.current.setAttribute('data-hide', false);
+      }
+    } else {
+      logo.current.setAttribute('data-hide', false);
+    }
+  };
   
   return (
     <>
@@ -72,6 +104,7 @@ const Nav = () => {
             aria-label='Strona główna'
             className={styles.logo}
             onClick={() => setNavOpened(false)}
+            ref={logo}
           >
             <Logo />
           </Link>
