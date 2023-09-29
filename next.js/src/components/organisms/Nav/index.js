@@ -70,6 +70,12 @@ const Nav = () => {
   let scrollDistance = 0;
   const offset = 50;
 
+  useEffect(() => {
+    if(navOpened) {
+      logo.current.setAttribute('data-hide', false);
+    }
+  }, [navOpened])
+
   const handleScroll = () => {
     const { scrollY } = window;
 
