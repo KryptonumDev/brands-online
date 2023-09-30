@@ -8,8 +8,6 @@ const Render = ({ progress }) => {
   return (
     <Canvas
       resize={{ scroll: false }}
-      antialias={false}
-      pixelRatio={window.devicePixelRatio}
     >
       <Stage shadows={false}>
         <group dispose={null}>

@@ -4,6 +4,7 @@ import { useScroll, useSpring, useTransform } from "framer-motion"
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import FloatingButton from './FloatingButton';
+import { RenderPlaceholder } from '@/components/atoms/Icons';
 const Render = lazy(() => import('./Render'));
 
 const Services = ({
@@ -26,13 +27,13 @@ const Services = ({
     setIsMounted(true);
   }, [])
 
-
   return (
     <section className={styles.wrapper} ref={wrapper}>
       <div className={styles.render}>
         {!isMounted ? null : (
           <Render progress={progress} />
         )}
+        <RenderPlaceholder />
       </div>
       <ul className={styles.list}>
         {services_List.map(({ title, tags, description }, i) => (

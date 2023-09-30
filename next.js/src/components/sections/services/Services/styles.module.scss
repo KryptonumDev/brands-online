@@ -47,6 +47,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    svg {
+      width: 80%;
+      height: 80%;
+      position: absolute;
+      z-index: -1;
+      transition: transform .5s var(--easing);
+    }
     &:not(:has(div)){
       &::before {
         content: '';
@@ -65,11 +72,10 @@
         }
       }
     }
-    svg {
-      width: 80%;
-      height: 80%;
-      position: absolute;
-      z-index: -1;
+    &:has(div){
+      svg {
+        transform: scale(0);
+      }
     }
     @media (max-width: 899px){
       width: calc(100% + (var(--pageMargin) * 2));
