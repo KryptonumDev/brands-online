@@ -55,9 +55,9 @@ const Render = ({ progress }) => {
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
+        enableRotate={false}
         autoRotate
+        autoRotateSpeed={2}
       />
     </Canvas>
   );
