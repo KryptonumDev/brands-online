@@ -1,9 +1,9 @@
 'use client';
 import { lazy, useEffect, useRef, useState } from 'react';
-import { useInView, useScroll, useSpring, useTransform } from "framer-motion"
-import Button from '@/components/atoms/Button';
+import { useScroll, useSpring, useTransform } from "framer-motion"
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
+import FloatingButton from './FloatingButton';
 const Render = lazy(() => import('./Render'));
 
 const Services = ({
@@ -14,9 +14,6 @@ const Services = ({
 }) => {
   const [ isMounted, setIsMounted ] = useState(false);
   const wrapper = useRef(null);
-  const isInView = useInView(wrapper, {
-    margin: "-50% 0px -50% 0px"
-  });
 
   const { scrollYProgress } = useScroll({
     target: wrapper,
@@ -50,10 +47,7 @@ const Services = ({
           </li>
         ))}
       </ul>
-      <Button
-        data={services_Cta}
-        className={`${styles.button} ${isInView ? styles.visible : ''}`}
-      />
+      <FloatingButton cta={services_Cta} wrapper={wrapper} />
     </section>
   );
 };

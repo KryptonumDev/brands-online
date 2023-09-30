@@ -6,7 +6,11 @@ import { motion } from 'framer-motion-3d';
 const Render = ({ progress }) => {
   const { nodes } = useGLTF("/renders/services.gltf");
   return (
-    <Canvas resize={{ scroll: false }}>
+    <Canvas
+      resize={{ scroll: false }}
+      antialias={false}
+      pixelRatio={window.devicePixelRatio}
+    >
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
