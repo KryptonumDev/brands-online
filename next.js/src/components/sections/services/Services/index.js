@@ -1,9 +1,10 @@
 'use client';
-import { useRef } from 'react';
-import { useInView } from "framer-motion"
+import { lazy, useEffect, useRef, useState } from 'react';
+import { useInView, useScroll, useSpring, useTransform } from "framer-motion"
 import Button from '@/components/atoms/Button';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
+const Render = lazy(() => import('./Render'));
 
 const Services = ({
   data: {
@@ -11,14 +12,31 @@ const Services = ({
     services_Cta,
   }
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
+  const [ isMounted, setIsMounted ] = useState(false);
+  const wrapper = useRef(null);
+  const isInView = useInView(wrapper, {
     margin: "-50% 0px -50% 0px"
   });
 
+  const { scrollYProgress } = useScroll({
+    target: wrapper,
+    offset: ['start end', 'end start']
+  })
+
+  const progress = useSpring(useTransform(scrollYProgress, [0, 1], [0, 8]), { damping: 50 });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, [])
+
+
   return (
-    <section className={styles.wrapper} ref={ref}>
-      <div></div>
+    <section className={styles.wrapper} ref={wrapper}>
+      <div className={styles.render}>
+        {!isMounted ? null : (
+          <Render progress={progress} />
+        )}
+      </div>
       <ul className={styles.list}>
         {services_List.map(({ title, tags, description }, i) => (
           <li key={i}>
