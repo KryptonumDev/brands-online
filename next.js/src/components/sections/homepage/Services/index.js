@@ -88,7 +88,7 @@ const Services = ({
           ))}
         </div>
       </div>
-      <motion.div
+      <div
         ref={canvas}
         className={styles.render}
       >
@@ -96,7 +96,7 @@ const Services = ({
           <Render rotation={rotation} />
         )}
         <RenderPlaceholder />
-      </motion.div>
+      </div>
     </section>
   );
 };
