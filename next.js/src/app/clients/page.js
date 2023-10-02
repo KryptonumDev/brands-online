@@ -26,6 +26,7 @@ const ClientsPage = async () => {
       }} />
       <Clients data={partners} />
       <SchemaBreadcrumbs breadcrumbs={[
+        { name: 'Main page', path: '' },
         { name: 'Clients', path: pathname },
       ]} />
     </>

@@ -29,6 +29,7 @@ const PrivacyPolicy = async () => {
       />
       <Content content={content_List} />
       <SchemaBreadcrumbs breadcrumbs={[
+        { name: 'Main page', path: '' },
         { name: 'Privacy Policy', path: pathname },
       ]} />
     </>

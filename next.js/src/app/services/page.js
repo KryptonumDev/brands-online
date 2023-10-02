@@ -40,6 +40,7 @@ const ServicesPage = async () => {
         partners={partners}
       />
       <SchemaBreadcrumbs breadcrumbs={[
+        { name: 'Main page', path: '' },
         { name: 'Services', path: pathname },
       ]} />
     </>
