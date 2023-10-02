@@ -1,12 +1,14 @@
 'use client'
-import { useState } from 'react';
+import { lazy, useEffect, useRef, useState } from 'react';
 import Tag from '@/components/atoms/Tag';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
 import Img from '@/utils/Img';
 import { easing } from '@/global/constants';
-import { motion } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { RenderPlaceholder } from '@/components/atoms/Icons';
+const Render = lazy(() => import('./Render'));
 
 const Services = ({
   data: {
@@ -22,51 +24,79 @@ const Services = ({
     e.preventDefault();
     setOpened(i);
   }
+
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const canvas = useRef(null);
+
+  const { scrollYProgress: progress } = useScroll({
+    target: canvas,
+    offset: ['start end', 'end start']
+  });
+  const rotation = useSpring(
+    useTransform(progress, [0, 1], [-10, 0]),
+    { damping: 100 }
+  );
+
   return (
-    <section className={styles.wrapper}>
-      <header>
-        <Tag className={styles.tag}>{services_Tag}</Tag>
-        <Markdown.h2>{services_Heading}</Markdown.h2>
-        <Markdown className={styles.paragraph}>{services_Paragraph}</Markdown>
-        <Button data={services_Cta} />
-      </header>
-      <div className={styles.list}>
-        {services_List.map(({ title, description, img }, i) => (
-          <details
-            key={i}
-            open
-            data-opened={opened === i}
-          >
-            <summary
-              onClick={(e) => handleClick(e, i)}
-              tabIndex={opened === i ? -1 : 0}
+    <section>
+      <div className={styles.column}>
+        <header>
+          <Tag className={styles.tag}>{services_Tag}</Tag>
+          <Markdown.h2>{services_Heading}</Markdown.h2>
+          <Markdown className={styles.paragraph}>{services_Paragraph}</Markdown>
+          <Button data={services_Cta} />
+        </header>
+        <div className={styles.list}>
+          {services_List.map(({ title, description, img }, i) => (
+            <details
+              key={i}
+              open
+              data-opened={opened === i}
             >
-              <Markdown components={{ p: 'span' }}>{title}</Markdown>
-              <Arrow
-                className={styles.arrow}
-                initial={i === 0 ? { rotate: 0 } : { rotate: 90 }}
-                animate={opened === i ? { rotate: 0 } : { rotate: 90 }}
+              <summary
+                onClick={(e) => handleClick(e, i)}
+                tabIndex={opened === i ? -1 : 0}
+              >
+                <Markdown components={{ p: 'span' }}>{title}</Markdown>
+                <Arrow
+                  className={styles.arrow}
+                  initial={i === 0 ? { rotate: 0 } : { rotate: 90 }}
+                  animate={opened === i ? { rotate: 0 } : { rotate: 90 }}
+                  transition={{
+                    duration: '0',
+                  }}
+                />
+              </summary>
+              <motion.div
+                className={styles.content}
+                initial={i === 0 ? { height: 'auto' } : { height: 0 }}
+                animate={opened === i ? { height: 'auto' } : { height: 0 }}
                 transition={{
-                  duration: '0',
+                  duration: '.6',
+                  ease: easing
                 }}
-              />
-            </summary>
-            <motion.div
-              className={styles.content}
-              initial={i === 0 ? { height: 'auto' } : { height: 0 }}
-              animate={opened === i ? { height: 'auto' } : { height: 0 }}
-              transition={{
-                duration: '.6',
-                ease: easing
-              }}
-            >
-              <Markdown className={styles.description}>{description}</Markdown>
-              <Shape className={styles.shape} />
-              <Img data={img} />
-            </motion.div>
-          </details>
-        ))}
+              >
+                <Markdown className={styles.description}>{description}</Markdown>
+                <Shape className={styles.shape} />
+                <Img data={img} />
+              </motion.div>
+            </details>
+          ))}
+        </div>
       </div>
+      <motion.div
+        ref={canvas}
+        className={styles.render}
+      >
+        {!isMounted ? null : (
+          <Render rotation={rotation} />
+        )}
+        <RenderPlaceholder />
+      </motion.div>
     </section>
   );
 };
