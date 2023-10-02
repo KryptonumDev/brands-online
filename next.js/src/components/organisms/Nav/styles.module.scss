@@ -4,6 +4,9 @@
   z-index: 9;
   padding-top: clamp(20px, calc(28vw/7.68), 36px);
   .logo {
+    backdrop-filter: blur(4px);
+    border-radius: 44px;
+    padding: 5px 8px;
     &[data-hide="true"] {
       transform: translateY(calc((clamp(58px, calc(64vw/7.68), 64px) + clamp(20px, calc(28vw/7.68), 36px)) * -1));
     }
