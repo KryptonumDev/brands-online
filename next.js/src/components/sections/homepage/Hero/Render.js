@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useGLTF, OrthographicCamera, Stage, OrbitControls } from "@react-three/drei";
+import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 import { Canvas } from "@react-three/fiber";
@@ -45,16 +45,12 @@ const Render = () => {
   }, [])
 
   return (
-    <Canvas resize={{ scroll: false }}>
+    <Canvas
+      resize={{ scroll: false }}
+    >
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
-            <OrthographicCamera
-              makeDefault={false}
-              far={100000}
-              near={0}
-              position={[-41.172, -49.506, 1000]}
-            />
             <motion.group
               position={[46.234, -33.072, 58.831]}
               rotation={[-0.051, 0.146, -0.577]}
@@ -86,10 +82,10 @@ const Render = () => {
               />
             </motion.group>
             <spotLight
-              intensity={1}
-              angle={Math.PI / 6}
+              intensity={1.3}
+              angle={Math.PI / 3}
               decay={2}
-              distance={2000}
+              distance={200}
               position={[167.106, 183.826, -34.752]}
               rotation={[-0.566, -0.228, -0.617]}
               scale={[1, 0.903, 0.796]}
@@ -114,15 +110,9 @@ const Render = () => {
               </group>
             </motion.group>
             <directionalLight
-              intensity={1}
-              decay={2}
+              intensity={1.3}
+              decay={20}
               rotation={[-0.342, 0.666, 0.523]}
-            />
-            <OrthographicCamera
-              makeDefault={false}
-              far={100000}
-              near={0}
-              position={[7.17, -30.83, 1000]}
             />
           </group>
         </group>
