@@ -1,7 +1,7 @@
 import React from 'react';
 import { domain } from '../Seo';
 
-const SchemaBreadcrumbs = (breadcrumbs) => {
+const SchemaBreadcrumbs = ({ breadcrumbs }) => {
   return (
     <script type="application/ld+json">
       {JSON.stringify({

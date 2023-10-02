@@ -25,7 +25,7 @@ const ClientsPage = async () => {
         hero_Cta,
       }} />
       <Clients data={partners} />
-      <SchemaBreadcrumbs {...[
+      <SchemaBreadcrumbs breadcrumbs={[
         { name: 'Clients', path: pathname },
       ]} />
     </>

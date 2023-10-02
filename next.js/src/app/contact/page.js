@@ -57,7 +57,7 @@ const ContactPage = async () => {
         error_Paragraph,
         error_Cta,
       }} />
-      <SchemaBreadcrumbs {...[
+      <SchemaBreadcrumbs breadcrumbs={[
         { name: 'Contact', path: pathname },
       ]} />
     </>

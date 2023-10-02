@@ -40,7 +40,7 @@ const AboutPage = async () => {
         meetUs_Cta,
         meetUs_Projects,
       }} />
-      <SchemaBreadcrumbs {...[
+      <SchemaBreadcrumbs breadcrumbs={[
         { name: 'About', path: pathname },
       ]} />
     </>

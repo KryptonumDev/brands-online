@@ -54,7 +54,7 @@ const IndexPage = async () => {
         clients_Cta,
         partners,
       }} />
-      <SchemaBreadcrumbs {...[
+      <SchemaBreadcrumbs breadcrumbs={[
         { name: 'Main page', path: pathname },
       ]} />
     </>
