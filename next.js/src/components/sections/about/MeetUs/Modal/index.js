@@ -46,7 +46,7 @@ const Modal = ({ data, modal, ...props }) => {
     >
       <div
         className={styles.modalSlider}
-        style={{ transform: `translateY(${modal.index * 100}%)`}}
+        style={{ transform: `translateY(${modal.index * -100}%)`}}
       >
         {data.map((item, i) => (
           <Img data={item} key={i} className={styles.item} />
