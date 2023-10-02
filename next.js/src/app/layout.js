@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import Nav from '@/components/organisms/Nav'
 import Footer from '@/components/organisms/Footer'
 import SmoothScroll from '@/utils/SmoothScroll'
+import SchemaOrganization from '@/global/Schema/Organization'
 
 const DMSans = localFont({
   src: [
@@ -23,6 +24,9 @@ const DMSans = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
+      <head>
+        <SchemaOrganization />
+      </head>
       <body className={`${DMSans.className}`}>
         <Nav />
         <SmoothScroll>
