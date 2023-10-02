@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useGLTF, OrthographicCamera, Stage, OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from 'framer-motion-3d';
 
 const Render = ({ progress }) => {
-  const { nodes } = useGLTF("/renders/services.gltf");
   return (
     <Canvas
       resize={{ scroll: false }}
     >
+      <CanvasElement progress={progress} />
+    </Canvas>
+  );
+}
+
+const CanvasElement = ({ progress }) => {
+  const { nodes } = useGLTF("/renders/services.gltf");
+  const mesh = useRef(null);
+
+  let time = 0;
+  useFrame((state, delta) => {
+    mesh.current.rotation.x += delta * 1;
+  })
+
+  return (
+    <>
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
             <motion.group
               position={[-33.157, -22.782, 36.454]}
               rotation-y={progress}
+              ref={mesh}
             >
               <group
                 position={[-1.861, -4.851, -7.144]}
@@ -61,8 +77,8 @@ const Render = ({ progress }) => {
         autoRotate
         autoRotateSpeed={2}
       />
-    </Canvas>
-  );
+    </>
+  )
 }
 
 useGLTF.preload("/renders/services.gltf");

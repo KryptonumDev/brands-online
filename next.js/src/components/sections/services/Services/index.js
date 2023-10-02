@@ -20,7 +20,7 @@ const Services = ({
     offset: ['start end', 'end start']
   })
 
-  const progress = useSpring(useTransform(scrollYProgress, [0, 1], [0, 8]), { damping: 50 });
+  const progress = useSpring(useTransform(scrollYProgress, [0, 1], [0, 10]), { damping: 50 });
 
   useEffect(() => {
     setIsMounted(true);
