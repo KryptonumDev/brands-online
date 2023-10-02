@@ -1,6 +1,8 @@
 .wrapper {
   margin-top: calc((clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 128px)) * -1);
   .render {
+    z-index: -1;
+    pointer-events: none;
     width: 100%;
     height: calc(400px + clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 128px));
     margin-bottom: clamp(16px, calc(24vw/7.68), 32px);
@@ -37,6 +39,7 @@
       width: calc(100% + var(--pageMargin) * 2);
       margin-left: calc(var(--pageMargin) * -1);
       margin-right: calc(var(--pageMargin) * -1);
+      margin-bottom: clamp(-10%, calc(-30vw/4), -5%);
     }
   }
   header {
