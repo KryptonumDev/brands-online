@@ -26,8 +26,8 @@ const Hero = ({
     offset: ['start end', 'end start']
   })
 
-  const options = { damping: 20 }
-  const progress = useSpring(useTransform(scrollYProgress, [0, 1], [-9, -4]), options);
+  const options = { damping: 50 }
+  const progress = useSpring(useTransform(scrollYProgress, [0, 1], [-10, -2]), options);
 
   return (
     <section className={styles.wrapper} ref={wrapper}>

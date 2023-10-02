@@ -17,12 +17,12 @@ const Render = () => {
 
   const mesh = {
     0: {
-      x: useTransform(mouse.x, [0, 1], [0, -2]),
-      y: useTransform(mouse.y, [0, 1], [0, -2]),
+      x: useTransform(mouse.x, [0, 1], [-1, 2]),
+      y: useTransform(mouse.y, [0, 1], [-1, 2]),
     },
     1: {
-      x: useTransform(mouse.x, [0, 1], [0, -2]),
-      y: useTransform(mouse.y, [0, 1], [0, -2]),
+      x: useTransform(mouse.x, [0, 1], [-1, 1]),
+      y: useTransform(mouse.y, [0, 1], [-1, 1]),
     },
   };
 
@@ -105,7 +105,7 @@ const Render = () => {
         enableZoom={false}
         enableRotate={false}
         autoRotate
-        autoRotateSpeed={3}
+        autoRotateSpeed={5}
       />
     </Canvas>
   );
