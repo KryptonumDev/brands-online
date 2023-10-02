@@ -17,7 +17,6 @@ const CanvasElement = ({ progress }) => {
   const { nodes } = useGLTF("/renders/services.gltf");
   const mesh = useRef(null);
 
-  let time = 0;
   useFrame((state, delta) => {
     mesh.current.rotation.x += delta * 1;
   })
