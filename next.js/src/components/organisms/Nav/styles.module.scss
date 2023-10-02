@@ -3,7 +3,9 @@
   top: 0;
   z-index: 9;
   padding-top: clamp(20px, calc(28vw/7.68), 36px);
+  pointer-events: none;
   .logo {
+    pointer-events: auto;
     backdrop-filter: blur(4px);
     border-radius: 44px;
     padding: 5px 8px;
@@ -41,6 +43,7 @@
   }
   .nav,
   .mobileNav {
+    pointer-events: auto;
     .animatedItem a {
       height: 1.3em;
       padding: 0 clamp(16px, calc(24vw/7.68), 28px);
