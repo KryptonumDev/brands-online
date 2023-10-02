@@ -21,14 +21,12 @@ const MeetUs = ({
 
   return (
     <section className={styles.wrapper}>
-      <div className={styles.column}>
-        <header>
-          <Tag>{meetUs_Tag}</Tag>
-          <Markdown.h2>{meetUs_Heading}</Markdown.h2>
-          <Markdown className={styles.paragraph}>{meetUs_Paragraph}</Markdown>
-          <Button data={meetUs_Cta} />
-        </header>
-      </div>
+      <header>
+        <Tag>{meetUs_Tag}</Tag>
+        <Markdown.h2>{meetUs_Heading}</Markdown.h2>
+        <Markdown className={styles.paragraph}>{meetUs_Paragraph}</Markdown>
+        <Button data={meetUs_Cta} />
+      </header>
       <div
         className={styles.projects}
         onMouseEnter={() => setModal(prevState => ({ ...prevState, active: true }))}

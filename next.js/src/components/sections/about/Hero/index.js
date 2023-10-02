@@ -20,11 +20,9 @@ const Hero = ({
   return (
     <section className={styles.wrapper}>
       <div className={styles.render}>
-        <div className={styles.renderFloating}>
-          {!isMounted ? null : (
-            <Render />
-          )}
-        </div>
+        {!isMounted ? null : (
+          <Render />
+        )}
         <Placeholder />
       </div>
       <header>
