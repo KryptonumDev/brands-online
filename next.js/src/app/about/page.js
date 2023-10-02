@@ -1,8 +1,11 @@
 import Experience from "@/components/sections/about/Experience";
 import Hero from "@/components/sections/about/Hero";
 import MeetUs from "@/components/sections/about/MeetUs";
+import SchemaBreadcrumbs from "@/global/Schema/Breadcrumbs";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
+
+const pathname = '/about';
 
 // export const runtime = 'edge'
 
@@ -37,6 +40,9 @@ const AboutPage = async () => {
         meetUs_Cta,
         meetUs_Projects,
       }} />
+      <SchemaBreadcrumbs {...[
+        { name: 'About', path: pathname },
+      ]} />
     </>
   )
 }
@@ -46,7 +52,7 @@ export async function generateMetadata() {
   return Seo({
     title: seo?.title,
     description: seo?.description,
-    url: '/about'
+    url: pathname,
   })
 }
 

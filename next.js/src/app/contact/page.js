@@ -1,8 +1,11 @@
 import ContactForm from "@/components/sections/contact/ContactForm";
+import SchemaBreadcrumbs from "@/global/Schema/Breadcrumbs";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
 // export const runtime = 'edge'
+
+const pathname = '/contact';
 
 const ContactPage = async () => {
   const { page: {
@@ -54,6 +57,9 @@ const ContactPage = async () => {
         error_Paragraph,
         error_Cta,
       }} />
+      <SchemaBreadcrumbs {...[
+        { name: 'Contact', path: pathname },
+      ]} />
     </>
   )
 }
@@ -63,6 +69,7 @@ export async function generateMetadata() {
   return Seo({
     title: seo?.title,
     description: seo?.description,
+    url: pathname,
   })
 }
 

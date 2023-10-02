@@ -1,8 +1,35 @@
 .wrapper {
-  max-width: calc(826rem/16);
-  margin: 0 auto;
-  text-align: center;
+  .render {
+    margin-top: -5%;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    svg {
+      width: 80%;
+      height: 80%;
+      position: absolute;
+      z-index: -2;
+    }
+    @media (max-width: 999px) {
+      width: calc(100% + var(--pageMargin) * 2);
+      margin: 0 calc(var(--pageMargin) * -1);
+    }
+    .renderFloating {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 500px;
+      z-index: -1;
+    }
+  }
   header {
+    max-width: calc(826rem/16);
+    margin: 0 auto;
+    text-align: center;
     .paragraph {
       margin: clamp(16px, calc(20vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 48px);
       p:not(:last-child){

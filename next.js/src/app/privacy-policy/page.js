@@ -1,10 +1,13 @@
 
 import Content from "@/components/sections/privacy-policy/Content";
 import Hero from "@/components/sections/privacy-policy/Hero";
+import SchemaBreadcrumbs from "@/global/Schema/Breadcrumbs";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
 // export const runtime = 'edge'
+
+const pathname = '/privacy-policy';
 
 const PrivacyPolicy = async () => {
   const { page: {
@@ -25,6 +28,9 @@ const PrivacyPolicy = async () => {
         content={content_List}
       />
       <Content content={content_List} />
+      <SchemaBreadcrumbs {...[
+        { name: 'Privacy Policy', path: pathname },
+      ]} />
     </>
   )
 }
@@ -34,6 +40,7 @@ export async function generateMetadata() {
   return Seo({
     title: seo?.title,
     description: seo?.description,
+    url: pathname,
   })
 }
 

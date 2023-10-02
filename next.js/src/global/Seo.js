@@ -1,6 +1,6 @@
 import fetchData from "@/utils/fetchData";
 
-export const domain = 'https://domain.com';
+export const domain = 'https://www.brandsonline.com';
 const locale = "pl_PL";
 
 const Seo = async ({ title, description, url }) => {

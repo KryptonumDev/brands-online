@@ -1,10 +1,13 @@
 import Clients from "@/components/sections/services/Clients";
 import Hero from "@/components/sections/services/Hero";
 import Services from "@/components/sections/services/Services";
+import SchemaBreadcrumbs from "@/global/Schema/Breadcrumbs";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
 
 // export const runtime = 'edge'
+
+const pathname = '/services';
 
 const ServicesPage = async () => {
   const {
@@ -36,6 +39,9 @@ const ServicesPage = async () => {
         }}
         partners={partners}
       />
+      <SchemaBreadcrumbs {...[
+        { name: 'Services', path: pathname },
+      ]} />
     </>
   )
 }
@@ -45,7 +51,7 @@ export async function generateMetadata() {
   return Seo({
     title: seo?.title,
     description: seo?.description,
-    url: '/services'
+    url: pathname,
   })
 }
 

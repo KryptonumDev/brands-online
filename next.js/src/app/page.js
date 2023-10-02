@@ -4,8 +4,11 @@ import Motivation from "@/components/sections/homepage/Motivation";
 import Services from "@/components/sections/homepage/Services";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
+import SchemaBreadcrumbs from "@/global/Schema/Breadcrumbs";
 
 // export const runtime = 'edge'
+
+const pathname = '';
 
 const IndexPage = async () => {
   const {
@@ -51,6 +54,9 @@ const IndexPage = async () => {
         clients_Cta,
         partners,
       }} />
+      <SchemaBreadcrumbs {...[
+        { name: 'Main page', path: pathname },
+      ]} />
     </>
   )
 }
@@ -60,7 +66,7 @@ export async function generateMetadata() {
   return Seo({
     title: seo?.title,
     description: seo?.description,
-    url: ''
+    url: pathname,
   })
 }
 
