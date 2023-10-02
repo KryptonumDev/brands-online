@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { domain } from '../Seo';
 
 const SchemaBreadcrumbs = ({ breadcrumbs }) => {
   return (
-    <script type="application/ld+json">
-      {JSON.stringify({
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html:
+      JSON.stringify({
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -17,8 +18,8 @@ const SchemaBreadcrumbs = ({ breadcrumbs }) => {
             }
           ))
         ]
-      })}
-    </script>
+      })
+    }} />
   )
 };
 

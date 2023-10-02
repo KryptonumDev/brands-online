@@ -17,8 +17,8 @@ const SchemaOrganization = async () => {
   } = await getData();
 
   return (
-    <script type="application/ld+json">
-      {JSON.stringify({
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html:
+      JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": seo?.title,
@@ -53,8 +53,8 @@ const SchemaOrganization = async () => {
           facebook || '',
           youtube || '',
         ]
-      })}
-    </script>
+      })
+    }} />
   );
 }
 
