@@ -6,6 +6,16 @@ export default {
   fields: [
     {
       type: 'string',
+      name: 'email',
+      title: 'Email',
+    },
+    {
+      type: 'string',
+      name: 'phone',
+      title: 'Phone number',
+    },
+    {
+      type: 'string',
       name: 'instagram',
       title: 'Instagram',
       fieldset: 'social',
