@@ -1,6 +1,5 @@
 import React from "react";
 import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
-import { motion } from 'framer-motion-3d';
 import { Canvas } from "@react-three/fiber";
 
 const Render = () => {
