@@ -4,7 +4,7 @@ import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 import { Canvas } from "@react-three/fiber";
 
-const Render = () => {
+const Render = ({ setIsLoading }) => {
   const { nodes } = useGLTF("/renders/homepage.gltf");
 
   const options = {
@@ -47,10 +47,11 @@ const Render = () => {
   return (
     <Canvas
       resize={{ scroll: false }}
+      onCreated={() => setIsLoading(false)}
     >
       <Stage shadows={false}>
         <group dispose={null}>
-          <group scale={0.01}>
+          <group scale={0.008}>
             <motion.group
               position={[46.234, -33.072, 58.831]}
               rotation={[-0.051, 0.146, -0.577]}
@@ -120,8 +121,7 @@ const Render = () => {
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
+        enableRotate={false}
         autoRotate
         autoRotateSpeed={5}
       />

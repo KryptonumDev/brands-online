@@ -1,0 +1,38 @@
+.wrapper {
+  width: 80%;
+  aspect-ratio: 1/1;
+  display: grid;
+  align-self: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  border-radius: 13px;
+  background: linear-gradient(315deg, #E8E8E8, #FFF);
+  padding: 2px;
+  gap: 2px;
+  &.loading {
+    pointer-events: none;
+    animation: wrapperLoading 2s infinite;
+    @keyframes wrapperLoading {
+      50% {
+        opacity: .6;
+      }
+    }
+    > div {
+      animation: itemLoading 1s infinite;
+      @keyframes itemLoading {
+        50% {
+          opacity: .4;
+        }
+      }
+    }
+  }
+  > div {
+    border-radius: 11px;
+    background-color: var(--neutral-100);
+    transition: opacity .1s .5s;
+    &:hover {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+  }
+}
