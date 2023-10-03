@@ -3,12 +3,17 @@
   aspect-ratio: 1/1;
   display: grid;
   align-self: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  border-radius: 13px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  &.large {
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    aspect-ratio: 1/.5;
+  }
   background: linear-gradient(315deg, #E8E8E8, #FFF);
-  padding: 2px;
-  gap: 2px;
+  border-radius: clamp(5px, calc(10vw/7.68), 14px);
+  padding: clamp(1px, calc(2vw/7.68), 2px);
+  gap: clamp(1px, calc(2vw/7.68), 2px);
   &.loading {
     pointer-events: none;
     animation: wrapperLoading 2s infinite;
@@ -27,7 +32,7 @@
     }
   }
   > div {
-    border-radius: 11px;
+    border-radius: clamp(4px, calc(8vw/7.68), 12px);
     background-color: var(--neutral-100);
     transition: opacity .1s .5s;
     &:hover {

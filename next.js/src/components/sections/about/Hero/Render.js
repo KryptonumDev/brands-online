@@ -4,7 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 
-const Render = () => {
+const Render = ({ setIsLoading }) => {
   const { nodes } = useGLTF("/renders/about.gltf");
 
   const options = {
@@ -41,7 +41,10 @@ const Render = () => {
   }, [])
 
   return (
-    <Canvas resize={{ scroll: false }}>
+    <Canvas
+      resize={{ scroll: false }}
+      onCreated={() => setIsLoading(false)}
+    >
       <Stage shadows={false}>
         <group dispose={null} rotation-y={-600}>
           <group scale={0.01}>
