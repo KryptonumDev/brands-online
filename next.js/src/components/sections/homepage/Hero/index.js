@@ -16,7 +16,6 @@ const Hero = ({
   const [ isMounted, setIsMounted ] = useState(false);
   const [ isLoading, setIsLoading ] = useState(true);
 
-  console.log(isLoading);
   useEffect(() => {
     setIsMounted(true);
   }, []);

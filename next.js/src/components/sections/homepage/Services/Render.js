@@ -1,12 +1,67 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
-import { motion } from 'framer-motion-3d';
-import { Canvas } from "@react-three/fiber";
+import { motion as motion3d } from 'framer-motion-3d';
+import { Canvas, useFrame } from "@react-three/fiber";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const Render = ({ rotation }) => {
-  const { nodes } = useGLTF("/renders/brands-online-logo-homepage.gltf");
+  const options = {
+    damping: 50
+  }
+  const mouse = {
+    x: useSpring(useMotionValue(0), options),
+    y: useSpring(useMotionValue(0), options),
+  }
+
+  const mouseTransform = {
+    x: useTransform(mouse.x, [0, 1], [-50, 50]),
+    y: useTransform(mouse.y, [0, 1], [-50, 50]),
+  }
+
+  const handleMouseMove = ({ clientX, clientY }) => {
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth);
+    const y = (clientY / innerHeight);
+    mouse.x.set(x);
+    mouse.y.set(y);
+  }
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
-    <Canvas resize={{ scroll: false }}>
+    <motion.div
+      style={{
+        width: '100%',
+        height: '100%',
+        x: mouseTransform.x,
+        y: mouseTransform.y
+      }}
+    >
+      <Canvas
+        resize={{ scroll: false }}
+      >
+        <CanvasElement rotation={rotation} />
+      </Canvas>
+    </motion.div>
+  );
+}
+
+const CanvasElement = ({ rotation }) => {
+  const { nodes } = useGLTF("/renders/brands-online-logo-homepage.gltf");
+
+  const mesh = useRef(null);
+  let time = 0;
+  useFrame(() => {
+    time += 0.01 * 1;
+    mesh.current.rotation.x = .25 * Math.sin(time);
+  })
+
+  return (
+    <>
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
@@ -23,9 +78,10 @@ const Render = ({ rotation }) => {
               decay={2}
               rotation={[-0.172, 0.295, 0.537]}
             />
-            <motion.group
+            <motion3d.group
               position={[121.842, -32.198, 104.76]}
               rotation-y={rotation}
+              ref={mesh}
             >
               <group
                 position={[-0.731, 1.617, -1.232]}
@@ -41,18 +97,17 @@ const Render = ({ rotation }) => {
                   rotation={[0.489, Math.PI / 10, 0]}
                 />
               </group>
-            </motion.group>
+            </motion3d.group>
           </group>
         </group>
       </Stage>
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
+        enableRotate={false}
       />
-    </Canvas>
-  );
+    </>
+  )
 }
 
 useGLTF.preload("/renders/brands-online-logo-homepage.gltf");

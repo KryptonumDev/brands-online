@@ -7,7 +7,7 @@ import Button from '@/components/atoms/Button';
 import Img from '@/utils/Img';
 import { easing } from '@/global/constants';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { RenderPlaceholder } from '@/components/atoms/Icons';
+import RenderPlaceholder from '@/components/atoms/RenderPlaceholder';
 const Render = lazy(() => import('./Render'));
 
 const Services = ({
@@ -24,22 +24,20 @@ const Services = ({
     e.preventDefault();
     setOpened(i);
   }
+  
+  const [ isMounted, setIsMounted ] = useState(false);
+  const canvas = useRef(null);
 
-  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  const canvas = useRef(null);
 
   const { scrollYProgress: progress } = useScroll({
     target: canvas,
     offset: ['start end', 'end start']
   });
-  const rotation = useSpring(
-    useTransform(progress, [0, 1], [-10, 2]),
-    { damping: 100 }
-  );
+
+  const rotation = useSpring(useTransform(progress, [0, 1], [-6, 4]), { damping: 100 });
 
   return (
     <section>
@@ -92,10 +90,9 @@ const Services = ({
         ref={canvas}
         className={styles.render}
       >
-        {!isMounted ? null : (
+        {!isMounted ? <RenderPlaceholder /> : (
           <Render rotation={rotation} />
         )}
-        <RenderPlaceholder />
       </div>
     </section>
   );
