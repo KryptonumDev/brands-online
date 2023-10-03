@@ -6,6 +6,7 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
     gap: 12px 24px;
+    perspective: 800px;
     li {
       padding: clamp(20px, calc(28vw/7.68), 36px) clamp(16px, calc(24vw/7.68), 28px);
       border-radius: 12px;
@@ -28,9 +29,9 @@
         opacity: .5;
         transition: opacity .3s;
       }
-      transform: perspective(800px) rotateX(8deg);
+      transform: rotateX(8deg);
       @media (min-width: 1000px){
-        transform: perspective(800px) rotateY(5deg);
+        transform: rotateY(5deg);
       }
       transition: transform .3s;
       &:hover {
