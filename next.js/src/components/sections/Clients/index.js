@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './styles.module.scss';
 import Img from '@/utils/Img';
 
@@ -8,9 +7,9 @@ const Clients = ({ data }) => {
       {data.map(({ img, name, href }, i) => (
         <div className={styles.item} key={i}>
           {href ? (
-            <Link href={href}>
+            <a href={href} target='_blank' rel="noopener">
               <Img data={img} aria-label={name} />
-            </Link>
+            </a>
           ) : (
             <Img data={img} aria-label={name} />
           )}
