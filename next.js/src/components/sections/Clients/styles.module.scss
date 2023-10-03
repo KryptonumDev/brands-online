@@ -24,7 +24,10 @@
     }
     border-radius: 11px;
     background-color: var(--neutral-100);
-    transition: background-color .2s .2s, filter .3s;
+    transition: background-color .2s, filter .3s;
+    @media (pointer: fine){
+      transition: background-color .2s .2s, filter .3s;
+    }
     &:hover {
       background-color: var(--neutral-300);
       transition: background-color .2s 0s, filter .3s;
