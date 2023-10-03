@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useGLTF, OrthographicCamera, Stage, OrbitControls } from "@react-three/drei";
 import { motion } from 'framer-motion-3d';
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 
-const Render = ({ progress }) => {
-  const { nodes } = useGLTF("/renders/logo-brands-online.gltf");
+const Render = ({ progress, setIsLoading }) => {
   return (
-    <Canvas resize={{ scroll: false }}>
+    <Canvas
+      resize={{ scroll: false }}
+      onCreated={() => setIsLoading(false)}
+    >
+      <CanvasElement progress={progress} />
+    </Canvas>
+  );
+}
+
+const CanvasElement = ({ progress }) => {
+  const { nodes } = useGLTF("/renders/logo-brands-online.gltf");
+
+  const mesh = useRef(null);
+  let time = 0;
+  useFrame(() => {
+    time += 0.01 * 2;
+    mesh.current.rotation.z = .1 * Math.sin(time);
+  })
+  return (
+    <>
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
@@ -27,6 +45,7 @@ const Render = ({ progress }) => {
               position={[97.705, -28.857, 83.781]}
               scale={[1, 1.002, 1]}
               rotation-y={progress}
+              ref={mesh}
             >
               <group
                 position={[3.42, 8.178, 10.802]}
@@ -55,13 +74,12 @@ const Render = ({ progress }) => {
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
+        enableRotate={false}
         autoRotate
         autoRotateSpeed={5}
       />
-    </Canvas>
-  );
+    </>
+  )
 }
 
 useGLTF.preload("/renders/logo-brands-online.gltf");

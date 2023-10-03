@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
 import { useSpring, useTransform, useScroll } from 'framer-motion';
-import { RenderPlaceholder } from '@/components/atoms/Icons';
+import RenderPlaceholder from '@/components/atoms/RenderPlaceholder';
 const Render = lazy(() => import('./Render'));
 
 const Hero = ({
@@ -14,7 +14,8 @@ const Hero = ({
     hero_Cta,
   }
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [ isMounted, setIsMounted ] = useState(false);
+  const [ isLoading, setIsLoading ] = useState(true);
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -37,10 +38,10 @@ const Hero = ({
         <Button data={hero_Cta} />
       </header>
       <div className={styles.render}>
+        <RenderPlaceholder loading={isLoading} className={styles.placeholder} />
         {!isMounted ? null : (
-          <Render progress={progress} />
+          <Render progress={progress} setIsLoading={setIsLoading} />
         )}
-        <RenderPlaceholder />
       </div>
     </section>
   );
