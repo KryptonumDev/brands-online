@@ -36,7 +36,7 @@ const CanvasElement = () => {
     },
     2: {
       x: useTransform(mouse.x, [0, 1], [0, 3]),
-      y: useTransform(mouse.y, [0, 1], [0, 1.5]),
+      y: useTransform(mouse.y, [0, 1], [-1, 1]),
     },
   };
 
@@ -69,72 +69,80 @@ const CanvasElement = () => {
     <>
       <Stage shadows={false}>
         <group dispose={null}>
-          <group scale={0.008}>
+          <group scale={0.01}>
             <motion.group
-              position={[46.234, -33.072, 58.831]}
-              rotation={[-0.051, 0.146, -0.577]}
-              scale={[0.401, 0.356, 0.356]}
+              position={[64.248, -13.655, 64.4]}
               rotation-x={mesh[0].x}
               rotation-y={mesh[0].y}
               ref={mesh0}
             >
-              <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.ź.geometry}
-                material={nodes.ź.material}
-                position={[-144.169, 153.683, -8]}
-              />
+              <group
+                position={[8.78, 42.161, -6.561]}
+                rotation={[0.212, 0.433, -0.762]}
+                scale={[0.441, 0.392, 0.392]}
+              >
+                <mesh
+                  castShadow
+                  receiveShadow
+                  geometry={nodes.Shape_0.geometry}
+                  material={nodes.Shape_0.material}
+                  position={[-86.74, 85.5, -8]}
+                />
+              </group>
             </motion.group>
             <motion.group
-              position={[-34.902, -89.227, -10.524]}
-              rotation={[-0.438, 0.139, -1.773]}
-              scale={0.384}
+              position={[-18.249, -138.103, 21.859]}
               rotation-x={mesh[1].x}
               rotation-y={mesh[1].y}
               ref={mesh1}
             >
-              <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.Shape_0.geometry}
-                material={nodes.Shape_0.material}
-                position={[0.855, -0.787, 0]}
-              />
-            </motion.group>
-            <spotLight
-              intensity={1.3}
-              angle={Math.PI / 3}
-              decay={2}
-              distance={200}
-              position={[167.106, 183.826, -34.752]}
-              rotation={[-0.566, -0.228, -0.617]}
-              scale={[1, 0.903, 0.796]}
-            />
-            <motion.group
-              position={[-96.802, -74.177, 112.785]}
-              rotation-x={mesh[2].x}
-              rotation-y={mesh[2].y}
-              ref={mesh2}
-            >
               <group
-                position={[-43.814, -7.745, -19.598]}
-                rotation={[0.037, -0.152, 0.787]}
-                scale={0.366}
+                position={[12.348, 13.876, -28.383]}
+                rotation={[-0.479, 0.451, -1.44]}
+                scale={0.384}
               >
                 <mesh
                   castShadow
                   receiveShadow
                   geometry={nodes.Shape_0_1.geometry}
                   material={nodes.Shape_0_1.material}
+                  position={[0.855, -0.787, 0]}
+                />
+              </group>
+            </motion.group>
+            <spotLight
+              intensity={1}
+              angle={Math.PI / 6}
+              decay={2}
+              distance={2000}
+              position={[196.569, 167.645, -16.355]}
+              rotation={[-0.566, -0.228, -0.661]}
+              scale={[2.095, 0.903, 0.796]}
+            />
+            <motion.group
+              position={[-107.174, -64.7, 101.803]}
+              rotation-x={mesh[2].x}
+              rotation-y={mesh[2].y}
+              ref={mesh2}
+            >
+              <group
+                position={[-47.443, -6.222, -8.616]}
+                rotation={[0.316, 0.132, 0.79]}
+                scale={0.366}
+              >
+                <mesh
+                  castShadow
+                  receiveShadow
+                  geometry={nodes.Shape_0_2.geometry}
+                  material={nodes.Shape_0_2.material}
                   position={[0.427, -0.835, 0]}
                 />
               </group>
             </motion.group>
             <directionalLight
-              intensity={1.3}
-              decay={20}
-              rotation={[-0.342, 0.666, 0.523]}
+              intensity={0.7}
+              decay={2}
+              rotation={[-0.34, 0.668, 0.519]}
             />
           </group>
         </group>
