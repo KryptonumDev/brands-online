@@ -66,6 +66,10 @@ body {
   font-size: clamp(1rem, calc(20vw/7.68), calc(20rem/16));
 }
 
+* {
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNSIgaGVpZ2h0PSIzNSIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0NGRkE1QiIgZD0iTTMyLjQzNSAyMC40NTl2LTQuNjMxSDE3LjY4OFYxMS44N2wtNi40NTEgNi40NTIgNi40NTIgNi4wOTR2LTMuOTU5aDE0Ljc0NloiLz48Y2lyY2xlIGN4PSIxNy4xOTkiIGN5PSIxNy44NzUiIHI9IjE0LjYzNiIgc3Ryb2tlPSIjMDBDMkI1IiBzdHJva2Utd2lkdGg9IjQuNzI4Ii8+PC9zdmc+") 18 18, auto !important;
+}
+
 :focus {
   outline: none;
 }
@@ -102,7 +106,6 @@ label {
 button {
   border: none;
   background-color: transparent;
-  cursor: pointer;
 }
 
 sup {
@@ -123,7 +126,6 @@ select {
 }
 
 summary {
-  cursor: pointer;
   list-style: none;
   &::marker,
   &::-webkit-details-marker {
@@ -234,4 +236,8 @@ main {
     width: auto;
     max-width: calc(100% - 84px);
   }
+}
+
+.noMouseEffect:hover ~ .mouseEffect {
+  opacity: 0 !important;
 }

@@ -10,7 +10,7 @@
     grid-template-rows: repeat(4, 1fr);
     aspect-ratio: 1/.5;
   }
-  background: linear-gradient(315deg, #E8E8E8, #FFF);
+  background: linear-gradient(315deg, rgba(232, 232, 232, .5), rgba(255, 255, 255, 0));
   border-radius: clamp(5px, calc(10vw/7.68), 14px);
   padding: clamp(1px, calc(2vw/7.68), 2px);
   gap: clamp(1px, calc(2vw/7.68), 2px);

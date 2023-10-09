@@ -123,7 +123,7 @@ const Render = ({ setIsLoading }) => {
         enableZoom={false}
         enableRotate={false}
         autoRotate
-        autoRotateSpeed={4}
+        autoRotateSpeed={3}
       />
     </Canvas>
   );

@@ -4,6 +4,7 @@ import Nav from '@/components/organisms/Nav'
 import Footer from '@/components/organisms/Footer'
 import SmoothScroll from '@/utils/SmoothScroll'
 import SchemaOrganization from '@/global/Schema/Organization'
+import MouseEffect from '@/components/atoms/MouseEffect'
 
 const DMSans = localFont({
   src: [
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
         <SmoothScroll>
           <main id="main">
             {children}
+            <MouseEffect />
           </main>
         </SmoothScroll>
         <Footer />

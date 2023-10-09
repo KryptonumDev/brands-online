@@ -1,6 +1,6 @@
 .wrapper {
   border-radius: 13px;
-  background-color: var(--neutral-300);
+  background: linear-gradient(315deg, rgba(232,232,232,.6), rgba(232, 232, 232, .2));
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   @media (max-width: 899px){
@@ -29,7 +29,7 @@
       transition: background-color .2s .2s, filter .3s;
     }
     &:hover {
-      background-color: var(--neutral-300);
+      background-color: rgba(232,232,232,.6);
       transition: background-color .2s 0s, filter .3s;
     }
     &:not(:hover){

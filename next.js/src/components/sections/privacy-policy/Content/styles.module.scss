@@ -10,9 +10,6 @@
     transition: border-color .6s var(--easing);
     &[data-opened="true"]{
       border-color: rgba(255,255,255,0);
-      summary {
-        cursor: default;
-      }
     }
     &[data-opened="false"]{
       .description {

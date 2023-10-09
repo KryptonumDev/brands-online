@@ -9,7 +9,6 @@ import styles from './styles.module.scss';
 import Tag from '@/components/atoms/Tag';
 import Button from '@/components/atoms/Button';
 import Img from '@/utils/Img';
-import Link from 'next/link';
 
 const Clients = ({
   data: {
@@ -22,7 +21,7 @@ const Clients = ({
 }) => {
   const [ frameWidth, setFrameWidth ] = useState(0);
   return (
-    <section className={styles.wrapper}>
+    <section className={`${styles.wrapper} noMouseEffect`}>
       <header>
         <Tag>{clients_Tag}</Tag>
         <Markdown.h2>{clients_Heading}</Markdown.h2>
@@ -47,9 +46,9 @@ const Clients = ({
         {partners.map(({ img, name, href }, i) => (
           <SwiperSlide key={i}>
             {href ? (
-              <Link href={href}>
+              <a href={href} target="_blank" rel="noopener">
                 <Img data={img} aria-label={name} />
-              </Link>
+              </a>
             ) : (
               <Img data={img} aria-label={name} />
             )}
@@ -58,12 +57,12 @@ const Clients = ({
         <motion.div
           className={styles.indicator}
           initial={{
-            width: partners[0].img.asset.metadata.dimensions.width
+            width: Math.min(partners[0].img.asset.metadata.dimensions.width, 200)
           }}
           animate={{
-            width: frameWidth === 0 ? partners[0].img.asset.metadata.dimensions.width : frameWidth
+            width: frameWidth === 0 ? Math.min(partners[0].img.asset.metadata.dimensions.width, 200) : frameWidth
           }}
-        ></motion.div>
+        />
       </Swiper>
       <Button data={clients_Cta} />
     </section>

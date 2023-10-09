@@ -28,6 +28,10 @@
       right: 0;
       background: linear-gradient(-90deg, var(--neutral-100), var(--neutral-100), rgba(255,255,255,0));
     }
+    img {
+      max-height: 126px;
+      max-width: 200px;
+    }
     @media (max-width: 499px){
       margin-left: calc(var(--pageMargin) * -1);
       margin-right: calc(var(--pageMargin) * -1);

@@ -9,11 +9,13 @@
     grid-template-columns: 1fr 1fr;
   }
   .list {
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.60);
-    backdrop-filter: blur(8px);
-    padding: 0 var(--pageMargin);
-    margin: 0 calc(var(--pageMargin) * -1);
+    @media (max-width: 899px){
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.60);
+      backdrop-filter: blur(8px);
+      padding: var(--pageMargin);
+      margin: calc(var(--pageMargin) * -1);
+    }
     display: grid;
     gap: clamp(48px, calc(64vw/7.68), 80px);
     li {
