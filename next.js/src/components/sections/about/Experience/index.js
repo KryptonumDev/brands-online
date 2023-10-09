@@ -11,7 +11,7 @@ const Experience = ({
       <ul>
         {experience_List.map(({ number, title, description }, i) => (
           <li key={i}>
-            <Counter to={number} className={styles.number} />
+            <Counter className={styles.number}>{number}</Counter>
             <p className={styles.title}>{title}</p>
             <p className={styles.description}>{description}</p>
           </li>
