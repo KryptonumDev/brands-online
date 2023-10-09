@@ -8,7 +8,7 @@ const Render = ({ setIsLoading }) => {
   const { nodes } = useGLTF("/renders/about.gltf");
 
   const options = {
-    damping: 20
+    damping: 25
   }
   const mouse = {
     x: useSpring(useMotionValue(0), options),
@@ -17,12 +17,12 @@ const Render = ({ setIsLoading }) => {
 
   const mesh = {
     0: {
-      x: useTransform(mouse.x, [0, 1], [-1, 2]),
-      y: useTransform(mouse.y, [0, 1], [-1, 2]),
-    },
-    1: {
       x: useTransform(mouse.x, [0, 1], [-1, 1]),
       y: useTransform(mouse.y, [0, 1], [-1, 1]),
+    },
+    1: {
+      x: useTransform(mouse.x, [0, 1], [-1, 1.5]),
+      y: useTransform(mouse.y, [0, 1], [-1, 1.5]),
     },
   };
 
@@ -108,7 +108,7 @@ const Render = ({ setIsLoading }) => {
         enableZoom={false}
         enableRotate={false}
         autoRotate
-        autoRotateSpeed={5}
+        autoRotateSpeed={3}
       />
     </Canvas>
   );
