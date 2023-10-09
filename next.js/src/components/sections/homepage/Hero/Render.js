@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useGLTF, Stage } from "@react-three/drei";
+import { useGLTF, Stage, PerspectiveCamera } from "@react-three/drei";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -29,15 +29,15 @@ const CanvasElement = () => {
   }
   const mesh = {
     0: {
-      x: useTransform(mouse.x, [0, 1], [-3, 1]),
-      y: useTransform(mouse.y, [0, 1], [-1, 0]),
+      x: useTransform(mouse.x, [0, 1], [-1, 1]),
+      y: useTransform(mouse.y, [0, 1], [-1, 1]),
     },
     1: {
-      x: useTransform(mouse.x, [0, 1], [1, -1]),
-      y: useTransform(mouse.y, [0, 1], [1, -1]),
+      x: useTransform(mouse.x, [0, 1], [-1, 1]),
+      y: useTransform(mouse.y, [0, 1], [-2, 0]),
     },
     2: {
-      x: useTransform(mouse.x, [0, 1], [0, 3]),
+      x: useTransform(mouse.x, [0, 1], [-1, 1]),
       y: useTransform(mouse.y, [0, 1], [-1, 1]),
     },
   };
@@ -62,26 +62,26 @@ const CanvasElement = () => {
   let time = 0;
   useFrame(() => {
     time += 0.02;
-    mesh0.current.position.y = 3 * Math.sin(time);
-    mesh1.current.position.y = -8 * Math.sin(time);
-    mesh2.current.position.y = 5 * Math.sin(time);
+    mesh0.current.position.y = 8 * Math.sin(time);
+    mesh1.current.position.y = -13 * Math.sin(time);
+    mesh2.current.position.y = 13 * Math.sin(time);
   })
 
   return (
     <>
       <Stage shadows={false}>
-        <group dispose={null}>
+        <group>
           <group scale={0.01}>
             <motion.group
-              position={[80.087, 35.76, 67.906]}
+              position={[184.438, 294.244, 299.84]}
               rotation-x={mesh[0].x}
               rotation-y={mesh[0].y}
-              ref={mesh0}
             >
               <group
-                position={[6.048, 46.004, -10.375]}
-                rotation={[0.107, 0.447, -0.679]}
-                scale={[0.482, 0.428, 0.428]}
+                position={[-7.348, 132.705, -33.139]}
+                rotation={[-0.005, 0.503, -0.485]}
+                scale={[1.388, 1.232, 1.232]}
+                ref={mesh0}
               >
                 <mesh
                   castShadow
@@ -93,15 +93,15 @@ const CanvasElement = () => {
               </group>
             </motion.group>
             <motion.group
-              position={[-2.296, -136.045, 169.386]}
+              position={[96.218, -226.036, 400.485]}
               rotation-x={mesh[1].x}
               rotation-y={mesh[1].y}
-              ref={mesh1}
             >
               <group
-                position={[25.968, 14.322, -28.377]}
-                rotation={[-0.741, -0.106, -1.482]}
-                scale={0.465}
+                position={[68.546, -5.902, -96.177]}
+                rotation={[-1.158, 0.055, -1.48]}
+                scale={1.339}
+                ref={mesh1}
               >
                 <mesh
                   castShadow
@@ -117,20 +117,20 @@ const CanvasElement = () => {
               angle={Math.PI / 6}
               decay={2}
               distance={2000}
-              position={[196.569, 167.645, -16.355]}
+              position={[727.382, 436.616, 45.659]}
               rotation={[-0.566, -0.228, -0.661]}
-              scale={[2.095, 0.903, 0.796]}
+              scale={[6.568, 2.831, 2.494]}
             />
             <motion.group
-              position={[-152.705, -49.086, 84.174]}
+              position={[-304.251, -44.403, 330.953]}
               rotation-x={mesh[2].x}
               rotation-y={mesh[2].y}
-              ref={mesh2}
             >
               <group
-                position={[-52.082, -10.437, 7.791]}
+                position={[-176.401, -35.351, 26.387]}
                 rotation={[0.747, 0.5, 0.652]}
-                scale={0.404}
+                scale={1.369}
+                ref={mesh2}
               >
                 <mesh
                   castShadow
@@ -142,9 +142,16 @@ const CanvasElement = () => {
               </group>
             </motion.group>
             <directionalLight
-              intensity={0.75}
+              intensity={0.74}
               decay={2}
-              rotation={[-0.34, 0.668, 0.519]}
+              rotation={[-0.276, 0.589, 0.472]}
+            />
+            <PerspectiveCamera
+              makeDefault={false}
+              far={100000}
+              near={70}
+              fov={45}
+              position={[-23.991, -27.979, 1518.056]}
             />
           </group>
         </group>
