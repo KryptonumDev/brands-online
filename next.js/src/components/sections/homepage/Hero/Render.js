@@ -27,15 +27,15 @@ const CanvasElement = () => {
   }
   const mesh = {
     0: {
-      x: useTransform(mouse.x, [0, 1], [0, 1]),
-      y: useTransform(mouse.y, [0, 1], [0, 1]),
+      x: useTransform(mouse.x, [0, 1], [-1, 0]),
+      y: useTransform(mouse.y, [0, 1], [-1, 0]),
     },
     1: {
-      x: useTransform(mouse.x, [0, 1], [0, -2]),
-      y: useTransform(mouse.y, [0, 1], [0, -2]),
+      x: useTransform(mouse.x, [0, 1], [1, -1]),
+      y: useTransform(mouse.y, [0, 1], [1, -1]),
     },
     2: {
-      x: useTransform(mouse.x, [0, 1], [0, 1.5]),
+      x: useTransform(mouse.x, [0, 1], [0, 3]),
       y: useTransform(mouse.y, [0, 1], [0, 1.5]),
     },
   };
@@ -54,16 +54,15 @@ const CanvasElement = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const mesh0 = useRef(null);
   const mesh1 = useRef(null);
   const mesh2 = useRef(null);
   let time = 0;
   useFrame(() => {
     time += 0.02;
-    mesh0.current.position.y = 5 * Math.sin(time);
-    mesh1.current.position.y = -15 * Math.sin(time);
-    mesh2.current.position.y = 8 * Math.sin(time);
+    mesh0.current.position.y = 3 * Math.sin(time);
+    mesh1.current.position.y = -8 * Math.sin(time);
+    mesh2.current.position.y = 5 * Math.sin(time);
   })
 
   return (
