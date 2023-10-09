@@ -9,6 +9,9 @@ const fetchData = async (query) => {
       body: JSON.stringify({
         ...{ query },
       }),
+      next: {
+        revalidate: 0,
+      },
     });
 
     const body = await response.json();
