@@ -8,10 +8,8 @@ const Counter = ({ children, ...props }) => {
     once: true
   });
 
-  // Use regular expressions to extract beforeNumber and afterNumber
   const match = children.match(/(.*?)(\d+)(.*)/);
 
-  // Extract the parts
   const beforeNumber = match[1];
   const numericPart = match[2];
   const afterNumber = match[3];
@@ -30,7 +28,7 @@ const Counter = ({ children, ...props }) => {
       });
       return () => controls.stop();
     }
-  }, [isInView, initialNumber, numericPart.length]);
+  }, [isInView, initialNumber]);
 
   return (
     <p {...props} ref={ref}>

@@ -2,8 +2,8 @@
   margin-top: calc((clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 82px)) * -1);
   .render {
     width: 100%;
-    height: calc(clamp(300px, calc(400vw/7.68), 550px) + clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 82px));
-    margin-bottom: -80px;
+    height: calc(clamp(300px, calc(400vw/7.68), 600px) + clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 82px));
+    margin-bottom: -100px;
     display: flex;
     align-items: center;
     justify-content: center;
