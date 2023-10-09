@@ -3,6 +3,7 @@ import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
+import { NoToneMapping } from "three";
 
 const Render = ({ setIsLoading }) => {
   const { nodes } = useGLTF("/renders/about.gltf");
@@ -44,6 +45,7 @@ const Render = ({ setIsLoading }) => {
     <Canvas
       resize={{ scroll: false }}
       onCreated={() => setIsLoading(false)}
+      gl={{ toneMapping: NoToneMapping }}
     >
       <Stage shadows={false}>
         <group dispose={null}>

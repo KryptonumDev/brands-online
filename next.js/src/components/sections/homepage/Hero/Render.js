@@ -29,7 +29,7 @@ const CanvasElement = () => {
   }
   const mesh = {
     0: {
-      x: useTransform(mouse.x, [0, 1], [-2, 1]),
+      x: useTransform(mouse.x, [0, 1], [-3, 1]),
       y: useTransform(mouse.y, [0, 1], [-1, 0]),
     },
     1: {
@@ -73,15 +73,15 @@ const CanvasElement = () => {
         <group dispose={null}>
           <group scale={0.01}>
             <motion.group
-              position={[64.248, -13.655, 64.4]}
+              position={[80.087, 35.76, 67.906]}
               rotation-x={mesh[0].x}
               rotation-y={mesh[0].y}
               ref={mesh0}
             >
               <group
-                position={[8.78, 42.161, -6.561]}
-                rotation={[0.212, 0.433, -0.762]}
-                scale={[0.441, 0.392, 0.392]}
+                position={[6.048, 46.004, -10.375]}
+                rotation={[0.107, 0.447, -0.679]}
+                scale={[0.482, 0.428, 0.428]}
               >
                 <mesh
                   castShadow
@@ -93,15 +93,15 @@ const CanvasElement = () => {
               </group>
             </motion.group>
             <motion.group
-              position={[-18.249, -138.103, 21.859]}
+              position={[-2.296, -136.045, 169.386]}
               rotation-x={mesh[1].x}
               rotation-y={mesh[1].y}
               ref={mesh1}
             >
               <group
-                position={[12.348, 13.876, -28.383]}
-                rotation={[-0.479, 0.451, -1.44]}
-                scale={0.384}
+                position={[25.968, 14.322, -28.377]}
+                rotation={[-0.741, -0.106, -1.482]}
+                scale={0.465}
               >
                 <mesh
                   castShadow
@@ -122,15 +122,15 @@ const CanvasElement = () => {
               scale={[2.095, 0.903, 0.796]}
             />
             <motion.group
-              position={[-107.174, -64.7, 101.803]}
+              position={[-152.705, -49.086, 84.174]}
               rotation-x={mesh[2].x}
               rotation-y={mesh[2].y}
               ref={mesh2}
             >
               <group
-                position={[-47.443, -6.222, -8.616]}
-                rotation={[0.316, 0.132, 0.79]}
-                scale={0.366}
+                position={[-52.082, -10.437, 7.791]}
+                rotation={[0.747, 0.5, 0.652]}
+                scale={0.404}
               >
                 <mesh
                   castShadow
@@ -142,7 +142,7 @@ const CanvasElement = () => {
               </group>
             </motion.group>
             <directionalLight
-              intensity={0.7}
+              intensity={0.75}
               decay={2}
               rotation={[-0.34, 0.668, 0.519]}
             />

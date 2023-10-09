@@ -3,13 +3,17 @@ import { useGLTF, OrthographicCamera, Stage, OrbitControls } from "@react-three/
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
+import { NoToneMapping } from "three";
 
 const options = {
   damping: 20
 }
 
 const Render = () => (
-  <Canvas resize={{ scroll: false }}>
+  <Canvas
+    resize={{ scroll: false }}
+    gl={{ toneMapping: NoToneMapping }}
+  >
     <CanvasElements />
   </Canvas>
 )

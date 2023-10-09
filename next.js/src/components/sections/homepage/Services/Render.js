@@ -3,6 +3,7 @@ import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
 import { motion as motion3d } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { NoToneMapping } from "three";
 
 const Render = ({ rotation }) => {
   const options = {
@@ -43,6 +44,7 @@ const Render = ({ rotation }) => {
     >
       <Canvas
         resize={{ scroll: false }}
+        gl={{ toneMapping: NoToneMapping }}
       >
         <CanvasElement rotation={rotation} />
       </Canvas>

@@ -2,12 +2,14 @@ import React, { useRef } from "react";
 import { useGLTF, OrthographicCamera, Stage, OrbitControls } from "@react-three/drei";
 import { motion } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
+import { NoToneMapping } from "three";
 
 const Render = ({ progress, setIsLoading }) => {
   return (
     <Canvas
       resize={{ scroll: false }}
       onCreated={() => setIsLoading(false)}
+      gl={{ toneMapping: NoToneMapping }}
     >
       <CanvasElement progress={progress} />
     </Canvas>
