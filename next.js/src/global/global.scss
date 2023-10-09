@@ -236,7 +236,7 @@ main {
   }
 }
 
-.noMouseEffect:hover ~ .mouseEffect {
+body:has(.noMouseEffect:hover) .mouseEffect {
   opacity: 0;
 }
 body:has(a:hover, button:hover, summary:hover, label:hover) .mouseEffect {
