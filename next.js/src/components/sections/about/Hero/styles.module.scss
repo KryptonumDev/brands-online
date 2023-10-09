@@ -1,7 +1,6 @@
 .wrapper {
   margin-top: calc((clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 82px)) * -1);
   .render {
-    z-index: -1;
     width: 100%;
     height: calc(clamp(300px, calc(400vw/7.68), 600px) + clamp(20px, calc(28vw/7.68), 36px) + clamp(58px, calc(64vw/7.68), 64px) + clamp(34px, calc(48vw/7.68), 82px));
     margin-bottom: -100px;
@@ -27,6 +26,8 @@
     }
   }
   header {
+    position: relative;
+    z-index: 2;
     max-width: calc(826rem/16);
     margin: 0 auto;
     text-align: center;
