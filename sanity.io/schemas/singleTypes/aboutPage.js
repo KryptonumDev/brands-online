@@ -109,7 +109,7 @@ export const aboutPage_experienceList = {
   fields: [
     {
       name: 'number',
-      type: 'number',
+      type: 'string',
       title: 'Number',
       validation: Rule => Rule.required()
     },
