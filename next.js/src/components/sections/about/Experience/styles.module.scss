@@ -30,13 +30,10 @@
         opacity: .5;
         transition: opacity .3s;
       }
-      transform: rotateX(8deg);
-      @media (min-width: 1000px){
-        transform: rotateY(5deg);
-      }
+      transform: rotateX(5deg);
       transition: transform .3s;
       &:hover {
-        transform: translateY(-3px);
+        transform: translateY(-5px);
         &::before {
           opacity: 1;
         }
