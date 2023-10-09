@@ -33,10 +33,10 @@ export default function RootLayout({ children }) {
         <SmoothScroll>
           <main id="main">
             {children}
-            <MouseEffect />
           </main>
         </SmoothScroll>
         <Footer />
+        <MouseEffect />
       </body>
     </html>
   )

@@ -66,10 +66,6 @@ body {
   font-size: clamp(1rem, calc(20vw/7.68), calc(20rem/16));
 }
 
-* {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNSIgaGVpZ2h0PSIzNSIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iIzAwQzJCNSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMjkuMiAyMC40NThjLTEuMTg3IDUuNTM4LTYuMTEgOS42OS0xMiA5LjY5LTYuNzc5IDAtMTIuMjczLTUuNDk1LTEyLjI3My0xMi4yNzNTMTAuNDIgNS42MDIgMTcuMTk5IDUuNjAyYzYuMDggMCAxMS4xMjggNC40MjIgMTIuMTAzIDEwLjIyNkgxNy42ODhWMTEuODdsLTYuNDUxIDYuNDUyIDYuNDUxIDYuMDk0di0zLjk1OUgyOS4yWm01LTIuNTgzYzAgOS4zODktNy42MTIgMTctMTcgMTctOS4zOSAwLTE3LTcuNjExLTE3LTE3czcuNjEtMTcgMTctMTdjOS4zODggMCAxNyA3LjYxMSAxNyAxN1oiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==") 18 18, auto !important;
-}
-
 :focus {
   outline: none;
 }
@@ -106,6 +102,7 @@ label {
 button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 sup {
@@ -126,6 +123,7 @@ select {
 }
 
 summary {
+  cursor: pointer;
   list-style: none;
   &::marker,
   &::-webkit-details-marker {
@@ -241,6 +239,6 @@ main {
 .noMouseEffect:hover ~ .mouseEffect {
   opacity: 0;
 }
-section:has(a:hover, button:hover) ~ .mouseEffect {
+body:has(a:hover, button:hover, summary:hover, label:hover) .mouseEffect {
   opacity: .2 !important;
 }

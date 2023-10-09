@@ -12,6 +12,7 @@
     top: 0;
     margin-bottom: 5px;
   }
+  cursor: pointer;
   &:has(input:focus-visible) {
     outline: 1px solid var(--neutral-800);
     outline-offset: 5px;

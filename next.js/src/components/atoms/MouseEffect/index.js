@@ -4,19 +4,15 @@ import styles from './styles.module.scss';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const MouseEffect = () => {
-  const options = {
-    damping: 20
+  const blob = {
+    x: useSpring(useMotionValue(0), { damping: 20 }),
+    y: useSpring(useMotionValue(0), { damping: 20 }),
   }
-  const mouse = {
-    x: useSpring(useMotionValue(0), options),
-    y: useSpring(useMotionValue(0), options),
-  }
-
   const handleMouseMove = ({ clientX, clientY }) => {
     const x = clientX;
     const y = clientY;
-    mouse.x.set(x);
-    mouse.y.set(y);
+    blob.x.set(x);
+    blob.y.set(y);
   }
 
   useEffect(() => {
@@ -30,11 +26,11 @@ const MouseEffect = () => {
 
   return (
     <motion.div
-      className={`${styles.wrapper} mouseEffect`}
+      className={`${styles.blob} mouseEffect`}
       aria-hidden="true"
       style={{
-        left: mouse.x,
-        top: mouse.y,
+        left: blob.x,
+        top: blob.y,
       }}
     >
       <svg
