@@ -12,15 +12,6 @@
     width: auto;
     height: auto;
     transform-origin: center;
-    animation: rotate 10s infinite linear;
-    @keyframes rotate {
-      50% {
-        opacity: .8;
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
   }
   @media (pointer: coarse){
     display: none;
