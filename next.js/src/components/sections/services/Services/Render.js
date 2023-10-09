@@ -18,7 +18,7 @@ const CanvasElement = ({ progress }) => {
   const mesh = useRef(null);
 
   useFrame((state, delta) => {
-    mesh.current.rotation.x += delta * 1;
+    mesh.current.rotation.x += delta * .5;
   })
 
   return (

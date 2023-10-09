@@ -76,7 +76,7 @@ const CanvasElement = ({ progress }) => {
         enableZoom={false}
         enableRotate={false}
         autoRotate
-        autoRotateSpeed={3}
+        autoRotateSpeed={2}
       />
     </>
   )
