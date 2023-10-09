@@ -239,5 +239,8 @@ main {
 }
 
 .noMouseEffect:hover ~ .mouseEffect {
-  opacity: 0 !important;
+  opacity: 0;
+}
+section:has(a:hover, button:hover) ~ .mouseEffect {
+  opacity: .2 !important;
 }

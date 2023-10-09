@@ -6,6 +6,7 @@
   pointer-events: none;
   transform: translate(-25%, -25%);
   transition: opacity .5s;
+  opacity: .08;
   svg {
     filter: blur(32px);
     width: auto;
