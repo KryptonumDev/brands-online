@@ -3,12 +3,14 @@ import { useGLTF, Stage } from "@react-three/drei";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
 import { motion } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
+import { NoToneMapping } from "three";
 
 const Render = ({ setIsLoading }) => {
   return (
     <Canvas
       resize={{ scroll: false }}
       onCreated={() => setIsLoading(false)}
+      gl={{ toneMapping: NoToneMapping }}
     >
       <CanvasElement />
     </Canvas>
@@ -27,7 +29,7 @@ const CanvasElement = () => {
   }
   const mesh = {
     0: {
-      x: useTransform(mouse.x, [0, 1], [-1, 0]),
+      x: useTransform(mouse.x, [0, 1], [-2, 1]),
       y: useTransform(mouse.y, [0, 1], [-1, 0]),
     },
     1: {
