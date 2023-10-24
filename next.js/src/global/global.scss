@@ -236,8 +236,8 @@ main {
   }
 }
 
-body:has(.noMouseEffect:hover) .mouseEffect {
-  opacity: 0;
+body:has(.blobEffectStack:hover) .mouseEffect {
+  z-index: 1;
 }
 body:has(a:hover, button:hover, details[data-opened="true"] summary:hover, label:hover) .mouseEffect {
   opacity: .2 !important;

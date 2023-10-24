@@ -21,7 +21,7 @@ const Clients = ({
 }) => {
   const [ frameWidth, setFrameWidth ] = useState(0);
   return (
-    <section className={`${styles.wrapper} noMouseEffect`}>
+    <section className={`${styles.wrapper} blobEffectStack`}>
       <header>
         <Tag>{clients_Tag}</Tag>
         <Markdown.h2>{clients_Heading}</Markdown.h2>
