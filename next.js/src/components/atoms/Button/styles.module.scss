@@ -95,9 +95,9 @@
         top: -2px;
         width: calc(100% + 4px);
         height: calc(100% + 4px);
-        stroke-dasharray: 150 310;
-        stroke-dashoffset: 150;
-        transition: stroke-dashoffset 1.5s var(--easing);
+        stroke-dasharray: 310;
+        stroke-dashoffset: 310;
+        transition: stroke-dashoffset 1s var(--easing);
       }
       &::before {
         content: '';
@@ -117,7 +117,7 @@
           opacity: 1;
         }
         svg {
-          stroke-dashoffset: -310;
+          stroke-dashoffset: 0;
         }
       }
     }
