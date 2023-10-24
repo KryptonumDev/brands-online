@@ -33,18 +33,19 @@
           }
         }
       }
-      background-color: var(--neutral-100);
+      background: rgba(255, 255, 255, .4);
+      backdrop-filter: blur(4px);
       transition: background-color .3s, border-color .3s;
       &:hover,
       &:focus-within {
-        background-color: var(--neutral-200);
+        background: rgba(255, 255, 255, .6);
         border-color: var(--neutral-100);
       }
       &[data-opened="true"]{
         summary {
           cursor: default;
         }
-        background-color: var(--neutral-200);
+        background: rgba(255, 255, 255, .8);
         border-color: var(--neutral-100);
       }
       summary {
