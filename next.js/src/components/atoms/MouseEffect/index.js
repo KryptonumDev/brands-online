@@ -5,8 +5,8 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const MouseEffect = () => {
   const blob = {
-    x: useSpring(useMotionValue(0), { damping: 15 }),
-    y: useSpring(useMotionValue(0), { damping: 15 }),
+    x: useSpring(useMotionValue(0), { damping: 50 }),
+    y: useSpring(useMotionValue(0), { damping: 50 }),
   }
   const cursor = {
     x: useSpring(useMotionValue(0), { damping: 50, stiffness: 600 }),
@@ -47,35 +47,18 @@ const MouseEffect = () => {
           top: blob.y,
         }}
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='30.71 36.71 117.16 116.7'
-        >
-          <path fill='url(#paint0_linear_1421_3068)'
-            d=''
-          >
-            <animate
-              attributeName='d'
-              dur='10s'
-              repeatCount='indefinite'
-              values='M143.5 85.3c7.8 24.5 5.4 51.6-9.3 62.5-14.7 10.8-41.7 5.3-65.1-10.5C45.7 121.6 26 95.6 31.7 73.8c5.8-21.7 37-39.1 61.6-36.9 24.6 2.1 42.4 23.9 50.2 48.4z;
-              M167.4 73.5c5.6 21.9-14 47.5-39 65.7-25 18.2-55.5 29-73.5 17.3-18-11.8-23.6-46.2-14-73.6 9.6-27.4 34.3-47.8 62.2-48.8 27.8-1 58.7 17.4 64.3 39.4z;
-              M140.6 80.4c5.1 22.1-2.4 41.9-21.1 58.2-18.6 16.3-48.3 29-62.8 19-14.5-10.1-13.9-43-4.1-71.5 9.7-28.5 28.6-52.5 46.9-52.3 18.3.1 36 24.5 41.1 46.6z;
-              M143.5 85.3c7.8 24.5 5.4 51.6-9.3 62.5-14.7 10.8-41.7 5.3-65.1-10.5C45.7 121.6 26 95.6 31.7 73.8c5.8-21.7 37-39.1 61.6-36.9 24.6 2.1 42.4 23.9 50.2 48.4z;'
-            ></animate>
-          </path>
+        <div className={styles.blob1} />
+        <div className={styles.blob2} />
+        <div className={styles.blob3} />
+        <div className={styles.blob4} />
+        <div className={styles.blob5} />
+        <svg xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient
-              id='paint0_linear_1421_3068'
-              x1='0.326'
-              x2='316.671'
-              y1='165.324'
-              y2='165.324'
-              gradientUnits='userSpaceOnUse'
-            >
-              <stop offset='0.354' stopColor='#0FE'></stop>
-              <stop offset='1' stopColor='#009086'></stop>
-            </linearGradient>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
           </defs>
         </svg>
       </motion.div>

@@ -33,7 +33,7 @@
   }
   > div {
     border-radius: clamp(4px, calc(8vw/7.68), 12px);
-    background-color: var(--neutral-100);
+    background-color: rgba(255,255,255,.8);
     transition: opacity .1s .5s;
     &:hover {
       opacity: 0;

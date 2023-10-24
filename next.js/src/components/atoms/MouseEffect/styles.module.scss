@@ -1,17 +1,3 @@
-.blob {
-  width: clamp(200px, calc(300vw/7.68), 500px);
-  height: clamp(200px, calc(300vw/7.68), 500px);
-  transform: translate(-25%, -25%);
-  transition: opacity .5s;
-  z-index: -2;
-  opacity: .1;
-  filter: blur(32px);
-  svg {
-    width: auto;
-    height: auto;
-    transform-origin: center;
-  }
-}
 .cursor,
 .blob {
   position: fixed;
@@ -29,5 +15,92 @@
     transform-origin: center;
     transform-box: fill-box;
     transition: transform .4s var(--easing);
+  }
+}
+
+.blob {
+  width: clamp(300px, calc(500vw/7.68), 500px);
+  height: clamp(300px, calc(500vw/7.68), 500px);
+  transform: translate(-25%, -25%);
+  z-index: -2;
+  opacity: .6;
+  transition: opacity .4s;
+  filter: url(#goo) blur(40px);
+  svg {
+    display: none;
+  }
+  div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    mix-blend-mode: hard-light;
+    border-radius: 50%;
+  }
+  --color1: 18, 113, 255;
+  --color2: 221, 74, 255;
+  --color3: 100, 220, 255;
+  --color4: 200, 50, 50;
+  --color5: 235, 255, 182;
+}
+.blob1 {
+  background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+  transform-origin: center center;
+  animation: moveVertical 30s ease infinite;
+}
+.blob2 {
+  background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+  transform-origin: 0%;
+  animation: moveInCircle 20s reverse infinite;
+}
+.blob3 {
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  transform-origin: 75%;
+  animation: moveInCircle 40s linear infinite;
+}
+.blob4 {
+  background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+  transform-origin: 25%;
+  animation: moveHorizontal 40s ease infinite;
+}
+.blob5 {
+  background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+  transform-origin: 0% 75%;
+  animation: moveInCircle 20s ease infinite;
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
   }
 }
