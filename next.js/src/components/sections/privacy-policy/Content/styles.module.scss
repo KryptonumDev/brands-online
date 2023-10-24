@@ -5,11 +5,12 @@
   details {
     counter-increment: counter;
     border-radius: 28px;
-    background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;
+    background: rgba(255, 255, 255, .8);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--neutral-300);
     transition: border-color .6s var(--easing);
     &[data-opened="true"]{
-      border-color: rgba(255,255,255,0);
+      border-color: #CFFA5B;
       summary {
         cursor: default;
       }

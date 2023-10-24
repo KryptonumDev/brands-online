@@ -38,7 +38,7 @@ const Content = ({ content }) => {
             initial={i === 0 ? { height: 'auto', marginBottom: '28px' } : { height: 0, marginBottom: '0' }}
             animate={opened === i ? { height: 'auto', marginBottom: '28px' } : { height: 0, marginBottom: '0' }}
             transition={{
-              duration: '.6',
+              duration: '.8',
               ease: easing
             }}
           >

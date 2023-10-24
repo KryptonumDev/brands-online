@@ -21,11 +21,12 @@
     .item {
       padding: clamp(20px, calc(36vw/7.68), 36px) clamp(16px, calc(36vw/7.68), 36px);
       border-radius: 28px;
-      background: linear-gradient(var(--neutral-100), var(--neutral-100)) padding-box, var(--gradients-100) border-box;
+      background: rgba(255, 255, 255, .6);
+      backdrop-filter: blur(4px);
       border: 2px solid var(--neutral-300);
       transition: border-color .6s;
       &:hover {
-        border-color: rgba(255, 255, 255, 0);
+        border-color: #CFFA5B;
       }
       display: flex;
       align-items: center;

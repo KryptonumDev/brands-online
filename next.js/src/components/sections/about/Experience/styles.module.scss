@@ -11,6 +11,7 @@
       padding: clamp(20px, calc(28vw/7.68), 36px) clamp(16px, calc(24vw/7.68), 28px);
       border-radius: 12px;
       background-color: rgba(255,255,255,.6);
+      backdrop-filter: blur(4px);
       border: 1px solid var(--neutral-300);
       display: grid;
       grid-template-columns: 1fr 1fr;
