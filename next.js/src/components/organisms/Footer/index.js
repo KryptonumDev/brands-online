@@ -29,7 +29,7 @@ const Footer = async () => {
           </div>
         </div>
         <div className={styles.copy}>
-          <p><span>Ⓒ</span> 2023 <CustomLink href="https://kryptonum.eu/pl">Kryptonum</CustomLink></p>
+          <p><span>Ⓒ</span> {new Date().getFullYear()}</p>
           <CustomLink href='/privacy-policy'>Privacy policy</CustomLink>
         </div>
       </div>
