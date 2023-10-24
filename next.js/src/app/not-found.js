@@ -1,4 +1,3 @@
-
 import Hero from "@/components/sections/notFound/Hero";
 import Seo from "@/global/Seo";
 import fetchData from "@/utils/fetchData";
