@@ -38,7 +38,7 @@ const CustomLink = ({ href, children, ...props }) => {
         rel: 'noreferrer'
       })}
       href={href}
-      className={styles.wrapper}
+      className={`${styles.wrapper} CustomLink`}
       ref={linkRef}
       onMouseOver={() => setScale(1)}
       onMouseOut={() => setScale(0)}

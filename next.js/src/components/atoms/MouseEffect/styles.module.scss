@@ -1,11 +1,9 @@
 .blob {
   width: clamp(200px, calc(300vw/7.68), 500px);
   height: clamp(200px, calc(300vw/7.68), 500px);
-  position: fixed;
-  z-index: -2;
-  pointer-events: none;
   transform: translate(-25%, -25%);
   transition: opacity .5s;
+  z-index: -2;
   opacity: .1;
   filter: blur(32px);
   svg {
@@ -13,7 +11,23 @@
     height: auto;
     transform-origin: center;
   }
-  @media (pointer: coarse){
+}
+.cursor,
+.blob {
+  position: fixed;
+  pointer-events: none;
+  @media (pointer: coarse) {
     display: none;
+  }
+}
+.cursor {
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  mix-blend-mode: multiply;
+  overflow: visible;
+  rect {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform .4s var(--easing);
   }
 }

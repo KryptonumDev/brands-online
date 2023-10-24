@@ -239,6 +239,15 @@ main {
 body:has(.noMouseEffect:hover) .mouseEffect {
   opacity: 0;
 }
-body:has(a:hover, button:hover, summary:hover, label:hover) .mouseEffect {
+body:has(a:hover, button:hover, details[data-opened="true"] summary:hover, label:hover) .mouseEffect {
   opacity: .2 !important;
+}
+body:has(a:hover, button:hover, details[data-opened="true"] summary:hover, label:hover) .cursor rect {
+  transform: scale(1.6);
+}
+body:has(a:active, button:active, details[data-opened="true"] summary:active, label:active) .cursor rect {
+  transform: scale(0);
+}
+body:has(a.CustomLink:hover) .cursor rect {
+  transform: scale(0) !important;
 }
