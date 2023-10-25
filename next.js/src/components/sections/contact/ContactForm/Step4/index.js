@@ -50,6 +50,18 @@ const Step4 = ({
           errors={errors}
         />
         <Input
+          label="Title *(optional)*"
+          type="text"
+          register={register('title')}
+          errors={errors}
+        />
+        <Input
+          label="Website *(optional)*"
+          type="text"
+          register={register('website')}
+          errors={errors}
+        />
+        <Input
           label="Phone *(optional)*"
           type="tel"
           register={register('phone', {

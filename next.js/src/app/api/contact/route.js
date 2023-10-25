@@ -22,7 +22,9 @@ const constructMessage = (data) => {
     phone='',
     company='',
     message='',
-    legal=''
+    legal='',
+    title='',
+    website='',
   } = data;
 
   function formatServicesObject(jsonObj) {
@@ -46,10 +48,12 @@ const constructMessage = (data) => {
   }
 
   return `
+<p>Title: <b>${title || 'Not specified'}</b></p>
 <p>Name: <b>${name}</b></p>
 <p>Email: <b>${email}</b></p>
 <p>Phone: <b>${phone || 'Not specified'}</b></p>
 <p>Company: <b>${company || 'Not specified'}</b></p>
+<p>Website: <b>${website || 'Not specified'}</b></p>
 <p>Budget: <b>${budget !== null ? budget : 'Not specified'}</b></p>
 <p>Deadline: <b>${deadline !== null ? deadline : 'Not specified'}</b></p>
 <p>Services: ${formatServicesObject(services)}</p>
