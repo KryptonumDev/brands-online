@@ -7,11 +7,13 @@ import Checkbox from '@/components/moleculas/Checkbox';
 import CustomLink from '@/components/atoms/CustomLink';
 import { motion } from 'framer-motion';
 import { phoneValidation } from '@/utils/functions';
+import { BackStep } from '..';
 
 const Step4 = ({
   stylesWrapper,
   heading,
   paragraph,
+  step,
   setStep,
   form: {
     register,
@@ -84,12 +86,10 @@ const Step4 = ({
           errors={errors}
         />
       </div>
-      <NextStepBtn
-        setStep={setStep}
-        step={4}
-        className={stylesWrapper.nextStepBtn}
-        type="submit"
-      />
+      <div className={stylesWrapper.ButtonContainer}>
+        <BackStep setStep={setStep} step={step} />
+        <NextStepBtn setStep={setStep} step={4} type="submit" />
+      </div>
     </motion.section>
   );
 };

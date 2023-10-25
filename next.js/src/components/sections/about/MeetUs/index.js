@@ -34,7 +34,7 @@ const MeetUs = ({
       >
         {meetUs_Projects.map(({ title, description }, i) => (
           <div
-            className={styles.item}
+            className={`${styles.item} CustomLink`}
             key={i}
             onMouseEnter={() => setModal(prevState => ({ ...prevState, index: i }))}
             onMouseLeave={() => setModal(prevState => ({ ...prevState, index: i }))}

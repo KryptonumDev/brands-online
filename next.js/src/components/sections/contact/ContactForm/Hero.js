@@ -21,7 +21,9 @@ const Hero = ({
         {hint && (
           <p className={stylesWrapper.hint}>{hint}</p>
         )}
-        <NextStepBtn setStep={setStep} step={1} text={cta} className={stylesWrapper.nextStepBtn} />
+        <div className={`${stylesWrapper.ButtonContainer} ${stylesWrapper.HeroButtonContainer}`}>
+          <NextStepBtn setStep={setStep} step={1} text={cta} />
+        </div>
       </header>
     </motion.section>
   );

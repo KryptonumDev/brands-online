@@ -4,34 +4,12 @@
     margin-bottom: 8px;
   }
 }
-.backBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
-  margin-right: auto;
-  margin-bottom: clamp(34px, calc(42vw/7.68), 42px);
-  transition: transform .5s var(--easing);
-  svg, span {
-    transition: transform .5s var(--easing);
-  }
-  span {
-    transition-delay: .05s;
-  }
-  &:hover {
-    svg, span {
-      transform: translateX(-5px);
-    }
-  }
-  &:active {
-    transform: translateX(-5px);
-  }
-}
 .progressbar {
   width: 100%;
   height: 6px;
   border-radius: 20px;
-  background-color: var(--neutral-300);
+  background-color: rgba(232,232,232,.6);
+  backdrop-filter: blur(4px);
   overflow: hidden;
   .bar {
     height: 100%;

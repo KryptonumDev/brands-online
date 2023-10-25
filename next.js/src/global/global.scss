@@ -247,6 +247,6 @@ body:has(a:hover, button:hover, details[data-opened="false"] summary:hover, labe
 body:has(a:active, button:active, details[data-opened="false"] summary:active, label:active) .cursor rect {
   transform: scale(0);
 }
-body:has(a.CustomLink:hover) .cursor rect {
+body:has(.CustomLink:hover) .cursor rect {
   transform: scale(0) !important;
 }

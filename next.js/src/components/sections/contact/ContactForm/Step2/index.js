@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import InputTag from '@/components/moleculas/InputTag';
 import { motion } from 'framer-motion';
 import NextStepBtn from '../NextStepBtn';
+import { BackStep } from '..';
 
 const Step2 = ({
   stylesWrapper,
@@ -10,6 +11,7 @@ const Step2 = ({
   paragraph,
   options,
   setStep,
+  step,
   form: {
     register,
     errors
@@ -35,7 +37,10 @@ const Step2 = ({
             >{item}</InputTag>
         ))}
       </div>
-      <NextStepBtn setStep={setStep} step={3} className={stylesWrapper.nextStepBtn} />
+      <div className={stylesWrapper.ButtonContainer}>
+        <BackStep setStep={setStep} step={step} />
+        <NextStepBtn setStep={setStep} step={3} />
+      </div>
     </motion.section>
   );
 };

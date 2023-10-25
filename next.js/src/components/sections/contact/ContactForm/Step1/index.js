@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
 import InputTag from '@/components/moleculas/InputTag';
 import NextStepBtn from '../NextStepBtn';
+import { BackStep } from '..';
 
 const Step1 = ({
   stylesWrapper,
@@ -11,6 +12,7 @@ const Step1 = ({
   paragraph,
   options,
   setStep,
+  step,
   form: {
     register,
     errors
@@ -64,7 +66,6 @@ const Step1 = ({
           const updatedAddTags = [...prevState];
           updatedAddTags[optionIndex].disabled = true;
           updatedAddTags[optionIndex].name = '';
-          updatedAddTags[optionIndex].checked = true;
           return updatedAddTags;
         });
         setTimeout(() => {
@@ -166,7 +167,10 @@ const Step1 = ({
       <div className={styles.options} ref={wrapperOptions}>
         {renderedOptions}
       </div>
-      <NextStepBtn setStep={setStep} step={2} className={stylesWrapper.nextStepBtn} />
+      <div className={stylesWrapper.ButtonContainer}>
+        <BackStep setStep={setStep} step={step} />
+        <NextStepBtn setStep={setStep} step={2} />
+      </div>
     </motion.section>
   );
 };

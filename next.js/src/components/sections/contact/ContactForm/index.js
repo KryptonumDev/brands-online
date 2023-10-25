@@ -88,7 +88,6 @@ const ContactForm = ({
             {step > 0 && (
               <Indicator
                 step={step}
-                setStep={setStep}
                 maxSteps={maxSteps}
                 initial={{ opacity: 0 }}
                 animate={step > 0 ? { opacity: 1 } : { opacity: 0 }}
@@ -114,6 +113,7 @@ const ContactForm = ({
                 paragraph={step1_Paragraph}
                 options={step1_Options}
                 setStep={setStep}
+                step={step}
                 key="step1"
                 {...animation}
                 form={{
@@ -129,6 +129,7 @@ const ContactForm = ({
                 paragraph={step2_Paragraph}
                 options={step2_Options}
                 setStep={setStep}
+                step={step}
                 key="step2"
                 {...animation}
                 form={{
@@ -144,6 +145,7 @@ const ContactForm = ({
                 paragraph={step3_Paragraph}
                 options={step3_Options}
                 setStep={setStep}
+                step={step}
                 key="step3"
                 {...animation}
                 form={{
@@ -158,6 +160,7 @@ const ContactForm = ({
                 heading={step4_Heading}
                 paragraph={step4_Paragraph}
                 setStep={setStep}
+                step={step}
                 key="step4"
                 {...animation}
                 form={{
@@ -194,3 +197,47 @@ const ContactForm = ({
 };
 
 export default ContactForm;
+
+
+export const BackStep = ({ setStep, step }) => {
+  const [backStepDisabled, setBackStepDisabled] = useState(false);
+  const backStep = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setBackStepDisabled(true);
+    setStep(step - 1);
+    setTimeout(() => {
+      setBackStepDisabled(false);
+    }, 300);
+  }
+  return (
+    <button
+      type="button"
+      disabled={backStepDisabled}
+      onClick={() => backStep()}
+    >
+      <BackStepArrow />
+      <span>Previous step</span>
+    </button>
+  )
+}
+const BackStepArrow = () => (
+  <svg xmlns='http://www.w3.org/2000/svg' width='23' height='20' fill='none'>
+    <path
+      fill='url(#paint0_linear_731_6867)'
+      d='M22.75 14.013V5.72H9.898V.103L0 10l9.898 9.898v-5.885H22.75z'
+    ></path>
+    <defs>
+      <linearGradient
+        id='paint0_linear_731_6867'
+        x1='22.75'
+        x2='0'
+        y1='10'
+        y2='10'
+        gradientUnits='userSpaceOnUse'
+      >
+        <stop stopColor='#14E5D7'></stop>
+        <stop offset='1' stopColor='#00C2B5'></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+)
