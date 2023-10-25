@@ -33,7 +33,7 @@ const ContactPage = async () => {
   }} = await getData();
 
   return (
-    <>
+    <div id="contactPage">
       <ContactForm data={{
         hero_Heading,
         hero_Paragraph,
@@ -61,7 +61,7 @@ const ContactPage = async () => {
         { name: 'Main page', path: '' },
         { name: 'Contact', path: pathname },
       ]} />
-    </>
+    </div>
   )
 }
 

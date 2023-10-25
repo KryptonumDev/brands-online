@@ -253,3 +253,6 @@ body:has(.CustomLink:hover) .cursor rect {
 body:has(footer:hover) .cursor {
   mix-blend-mode: color-dodge;
 }
+body:has(#contactPage:hover) .mouseEffect {
+  opacity: .2;
+}

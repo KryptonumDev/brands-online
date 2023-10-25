@@ -25,7 +25,10 @@
   left: 50%;
   top: 50%;
   z-index: -2;
-  opacity: .60;
+  opacity: .6;
+  &.isContactPage {
+    opacity: .2;
+  }
   transition: opacity .4s;
   filter: url(#goo) blur(40px);
   #goo {
