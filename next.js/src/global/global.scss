@@ -239,7 +239,6 @@ main {
 body:has(.blobEffectStack:hover) .mouseEffect {
   z-index: 1;
   opacity: .2;
-  transition: none;
 }
 body:has(a:hover, button:hover, details[data-opened="false"] summary:hover, label:hover) .cursor rect {
   transform: scale(1.6);
