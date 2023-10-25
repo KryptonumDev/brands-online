@@ -250,3 +250,6 @@ body:has(a:active, button:active, details[data-opened="false"] summary:active, l
 body:has(.CustomLink:hover) .cursor rect {
   transform: scale(0) !important;
 }
+body:has(footer:hover) .cursor {
+  mix-blend-mode: color-dodge;
+}
