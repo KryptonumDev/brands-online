@@ -5,8 +5,8 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const MouseEffect = () => {
   const blob = {
-    x: useSpring(useMotionValue('50%'), { damping: 50 }),
-    y: useSpring(useMotionValue('50%'), { damping: 50 }),
+    x: useSpring(useMotionValue('50%'), { damping: 80 }),
+    y: useSpring(useMotionValue('50%'), { damping: 80 }),
   }
 
   const cursor = {
