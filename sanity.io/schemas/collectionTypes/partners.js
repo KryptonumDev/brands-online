@@ -19,7 +19,7 @@ export default {
     {
       type: 'url',
       name: 'href',
-      title: 'URL',
+      title: 'URL (optional)',
     },
   ],
   fieldsets: [

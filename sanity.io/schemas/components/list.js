@@ -43,7 +43,7 @@ export const titleDescriptionAndImage = {
     {
       name: 'description',
       type: 'markdown',
-      title: 'description',
+      title: 'Description',
     },
     {
       name: 'img',

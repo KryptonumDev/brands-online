@@ -88,6 +88,24 @@ export default {
       fieldset: 'clients',
     },
     {
+      name: 'clients_List',
+      type: 'array',
+      title: 'List',
+      validation: Rule => Rule.min(3),
+      of: [
+        {
+          type: 'reference',
+          to: [
+            { type: 'partners' }
+          ],
+          options: {
+            disableNew: true
+          }
+        },
+      ],
+      fieldset: 'clients',
+    },
+    {
       name: 'seo',
       type: 'seo',
       title: 'SEO',

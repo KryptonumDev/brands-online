@@ -65,6 +65,7 @@ export default {
           type: 'list_titleDescriptionAndImage'
         }
       ],
+      description: 'The Images should have 300x300px dimensions. However, the recommended size is 600x600px (so @2x). Remember please to properly optimize your image. The best results will be if you use https://squoosh.app/ and compress to WebP format.',
       title: 'Projects',
       fieldset: 'meetUs',
     },
