@@ -50,9 +50,12 @@ const Step4 = ({
           errors={errors}
         />
         <Input
-          label="Title *(optional)*"
-          type="text"
-          register={register('title')}
+          label="Phone *(optional)*"
+          type="tel"
+          register={register('phone', {
+            pattern: { value: regex.phone, message: `Incorrect phone number` }
+          })}
+          onKeyDown={(e) => phoneValidation(e)}
           errors={errors}
         />
         <Input
@@ -62,12 +65,9 @@ const Step4 = ({
           errors={errors}
         />
         <Input
-          label="Phone *(optional)*"
-          type="tel"
-          register={register('phone', {
-            pattern: { value: regex.phone, message: `Incorrect phone number` }
-          })}
-          onKeyDown={(e) => phoneValidation(e)}
+          label="Title *(optional)*"
+          type="text"
+          register={register('title')}
           errors={errors}
         />
         <Input
