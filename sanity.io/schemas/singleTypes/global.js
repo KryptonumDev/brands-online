@@ -63,6 +63,19 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'footer_Address',
+      title: 'Address',
+      type: 'string',
+      fieldset: 'footer',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'footer_Tel',
+      title: 'Phone',
+      type: 'string',
+      fieldset: 'footer',
+    },
+    {
       name: 'seo',
       type: 'global_Seo',
       title: 'Global SEO',
