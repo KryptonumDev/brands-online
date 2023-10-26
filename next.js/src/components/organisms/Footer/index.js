@@ -12,6 +12,8 @@ const Footer = async () => {
     footer_Heading,
     footer_Cta,
     footer_Slogan,
+    footer_Address,
+    footer_Tel,
   }} = await getData();
 
   return (
@@ -23,10 +25,16 @@ const Footer = async () => {
             <Button data={footer_Cta} variant='secondary' />
           </div>
           <div className={styles.brand}>
-            <Link href="/" aria-label="Homepage">
-              <Img data={footer_Logo} placeholder="empty" />
-            </Link>
-            <Markdown>{footer_Slogan}</Markdown>
+            <div>
+              <Link href="/" aria-label="Homepage" className={styles.logo}>
+                <Img data={footer_Logo} placeholder="empty" />
+              </Link>
+              <Markdown className={styles.slogan}>{footer_Slogan}</Markdown>
+            </div>
+            <div className={styles.info}>
+              <p>{footer_Address}</p>
+              <p><CustomLink href={`tel:${footer_Tel}`}>{footer_Tel}</CustomLink></p>
+            </div>
           </div>
         </div>
         <div className={styles.copy}>
@@ -64,6 +72,8 @@ const getData = async () => {
         href
       }
       footer_Slogan
+      footer_Address
+      footer_Tel
     }
   `)
   return data;

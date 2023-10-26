@@ -6,7 +6,7 @@
   @media (max-width: 399px){
     padding-bottom: clamp(64px, calc(82vw/7.68), 82px);
   }
-  background: linear-gradient(270deg, #14E5D7 0%, #00C2B5 100%);
+  background: linear-gradient(270deg, #14E5D7, #00C2B5);
   .column {
     display: grid;
     align-items: flex-start;
@@ -20,13 +20,29 @@
       }
     }
     .brand {
-      max-width: calc(480rem/16);
-      a {
+      display: grid;
+      gap: 20px clamp(48px, calc(64vw/7.68), 82px);
+      @media (min-width: 900px){
+        max-width: calc(480rem/16);
+      }
+      @media (max-width: 899px) and (min-width: 500px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      .logo {
         display: inline-block;
         margin-bottom: clamp(16px, calc(28vw/7.68), 36px);
         img {
           width: clamp(240px, calc(278vw/7.68), 278px);
           height: auto;
+        }
+      }
+      .slogan {
+        font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
+      }
+      .info {
+        font-size: clamp(calc(14rem/16), calc(16rem/7.68), calc(16rem/16));
+        > *:not(:last-child) {
+          margin-bottom: 8px;
         }
       }
     }
