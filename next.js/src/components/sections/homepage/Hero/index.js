@@ -28,7 +28,7 @@ const Hero = ({
         <Button data={hero_Cta} />
       </header>
       <div className={styles.render}>
-        <RenderPlaceholder className={styles.placeholder} loading={isLoading} />
+        <RenderPlaceholder className={styles.placeholder} size="large" loading={isLoading} />
         {!isMounted ? null : (
           <Render setIsLoading={setIsLoading} />
         )}

@@ -9,10 +9,12 @@
     .paragraph {
       margin: clamp(16px, calc(20vw/7.68), 28px) 0 clamp(28px, calc(36vw/7.68), 48px);
     }
+    z-index: 2;
   }
   .render {
-    width: 100%;
+    width: calc(100% + 150px);
     aspect-ratio: 1/1;
+    margin: -20% 0 -20% -150px;
     > div:last-child {
       pointer-events: none !important;
     }
@@ -25,7 +27,7 @@
     }
     @media (max-width: 999px){
       width: calc(100% + (var(--pageMargin) * 2));
-      margin: 0 calc(var(--pageMargin) * -1);
+      margin: -20% calc(var(--pageMargin) * -1);
     }
   }
 }
