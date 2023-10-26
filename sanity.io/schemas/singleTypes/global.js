@@ -8,6 +8,7 @@ export default {
       type: 'string',
       name: 'email',
       title: 'Email',
+      validation: Rule => Rule.required(),
     },
     {
       type: 'string',
@@ -33,22 +34,33 @@ export default {
       fieldset: 'social',
     },
     {
+      name: 'footer_Logo',
+      title: 'Logo',
+      type: 'image',
+      description: 'Footer logo should be uploaded in .svg format.',
+      fieldset: 'footer',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'footer_Heading',
       title: 'Heading',
       type: 'string',
       fieldset: 'footer',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'footer_Cta',
       title: 'CTA',
       type: 'cta',
       fieldset: 'footer',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'footer_Slogan',
       title: 'Slogan',
       type: 'markdown',
       fieldset: 'footer',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'seo',
