@@ -93,19 +93,6 @@ const getData = async () => {
       services_List {
         title
         description
-        img {
-          asset {
-            altText
-            url
-            metadata {
-              lqip
-              dimensions {
-                width
-                height
-              }
-            }
-          }
-        }
       }
         # Motivation
       motivation_Paragraph

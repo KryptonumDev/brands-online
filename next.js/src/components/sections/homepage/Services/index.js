@@ -4,7 +4,6 @@ import Tag from '@/components/atoms/Tag';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
-import Img from '@/utils/Img';
 import { easing } from '@/global/constants';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import RenderPlaceholder from '@/components/atoms/RenderPlaceholder';
@@ -49,7 +48,7 @@ const Services = ({
           <Button data={services_Cta} />
         </header>
         <div className={styles.list}>
-          {services_List.map(({ title, description, img }, i) => (
+          {services_List.map(({ title, description }, i) => (
             <details
               key={i}
               open
@@ -79,8 +78,6 @@ const Services = ({
                 }}
               >
                 <Markdown className={styles.description}>{description}</Markdown>
-                <Shape className={styles.shape} />
-                <Img data={img} />
               </motion.div>
             </details>
           ))}
@@ -123,12 +120,4 @@ const Arrow = ({ ...props }) => (
       </linearGradient>
     </defs>
   </motion.svg>
-)
-
-const Shape = ({ ...props }) => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='516' height='97' viewBox='0 0 516 97' fill='var(--neutral-100)' {...props}>
-    <path
-      d='M.167 96.5V0C.785 25.375 15.489 37.25 36 38.875l189.795.75c10.719-.688 12.788 7.156 12.788 9.969 0 9.437-7.969 11.375-12.85 11.156H36C8.322 60.75.908 85 .167 96.5zM516 96.5V0c-.618 25.375-15.322 37.25-35.834 38.875l-189.794.75c-10.719-.688-12.789 7.156-12.789 9.969 0 9.437 7.97 11.375 12.851 11.156h189.732C507.845 60.75 515.259 85 516 96.5z'
-    ></path>
-  </svg>
 )
