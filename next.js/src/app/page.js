@@ -11,24 +11,22 @@ import SchemaBreadcrumbs from "@/global/Schema/Breadcrumbs";
 const pathname = '';
 
 const IndexPage = async () => {
-  const {
-    page: {
-      hero_Heading,
-      hero_Paragraph,
-      hero_Cta,
-      services_Tag,
-      services_Heading,
-      services_Paragraph,
-      services_Cta,
-      services_List,
-      motivation_Paragraph,
-      clients_Tag,
-      clients_Heading,
-      clients_Paragraph,
-      clients_Cta,
-    },
-    partners
-  } = await getData();
+  const { page: {
+    hero_Heading,
+    hero_Paragraph,
+    hero_Cta,
+    services_Tag,
+    services_Heading,
+    services_Paragraph,
+    services_Cta,
+    services_List,
+    motivation_Paragraph,
+    clients_Tag,
+    clients_Heading,
+    clients_Paragraph,
+    clients_List,
+    clients_Cta,
+  }} = await getData();
 
   return (
     <>
@@ -51,8 +49,8 @@ const IndexPage = async () => {
         clients_Tag,
         clients_Heading,
         clients_Paragraph,
+        clients_List,
         clients_Cta,
-        partners,
       }} />
       <SchemaBreadcrumbs breadcrumbs={[
         { name: 'Main page', path: pathname },
@@ -100,6 +98,23 @@ const getData = async () => {
       clients_Tag
       clients_Heading
       clients_Paragraph
+      clients_List {
+        name
+        href
+        img {
+          asset {
+            altText
+            url
+            metadata {
+              lqip
+              dimensions {
+                width
+                height
+              }
+            }
+          }
+        }
+      }
       clients_Cta {
         theme
         text
@@ -110,23 +125,6 @@ const getData = async () => {
         title
         description
       }
-    }
-    partners: allPartners(limit: 6, sort: { _createdAt: DESC}) {
-      img {
-        asset {
-          altText
-          url
-          metadata {
-            lqip
-            dimensions {
-              width
-              height
-            }
-          }
-        }
-      }
-      name
-      href
     }
   `)
   return data;

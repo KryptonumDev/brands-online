@@ -15,8 +15,8 @@ const Clients = ({
     clients_Tag,
     clients_Heading,
     clients_Paragraph,
+    clients_List,
     clients_Cta,
-    partners
   }
 }) => {
   const [ frameWidth, setFrameWidth ] = useState(0);
@@ -43,7 +43,7 @@ const Clients = ({
         }}
         className={styles.swiper}
       >
-        {partners.map(({ img, name, href }, i) => (
+        {clients_List.map(({ img, name, href }, i) => (
           <SwiperSlide key={i}>
             {href ? (
               <a href={href} target="_blank" rel="noopener">
@@ -57,10 +57,10 @@ const Clients = ({
         <motion.div
           className={styles.indicator}
           initial={{
-            width: Math.min(partners[0].img.asset.metadata.dimensions.width, 200)
+            width: Math.min(clients_List[0].img.asset.metadata.dimensions.width, 200)
           }}
           animate={{
-            width: frameWidth === 0 ? Math.min(partners[0].img.asset.metadata.dimensions.width, 200) : frameWidth
+            width: frameWidth === 0 ? Math.min(clients_List[0].img.asset.metadata.dimensions.width, 200) : frameWidth
           }}
         />
       </Swiper>
