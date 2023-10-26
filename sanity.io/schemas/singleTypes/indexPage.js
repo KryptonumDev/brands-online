@@ -51,7 +51,7 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'list_titleDescriptionAndImage'
+          type: 'list_titleAndDescription'
         }
       ],
       title: 'List',
