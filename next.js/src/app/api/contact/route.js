@@ -69,6 +69,11 @@ const emailData = {
   to: 'kryptonumstudio@gmail.com',
 }
 
+const headers = {
+  'Access-Control-Allow-Origin': 'https://www.brandsonline.com',
+  'Access-Control-Allow-Methods': 'POST',
+}
+
 export async function POST(request) {
   const req = await request.json();
   const { name='', email='', phone='', legal=false } = req;
@@ -80,7 +85,7 @@ export async function POST(request) {
   (phone && !isValidPhone(phone))
   ||
   !legal)){
-    return NextResponse.json({ success: false }, { status: 422 })
+    return NextResponse.json({ success: false }, { status: 422, headers })
   }
   
   const messageBody = constructMessage(req);
@@ -94,8 +99,8 @@ export async function POST(request) {
       html: messageBody,
       text: removeHtmlTags(messageBody),
     });
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers });
   } catch (error) {
-    return NextResponse.json({ success: false });
+    return NextResponse.json({ success: false }, { headers });
   }
 }
