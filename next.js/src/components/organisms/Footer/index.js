@@ -1,13 +1,14 @@
 import styles from './styles.module.scss';
-import { Logo } from '@/components/atoms/Icons';
 import Button from '@/components/atoms/Button';
 import Link from 'next/link';
 import CustomLink from '@/components/atoms/CustomLink';
 import fetchData from '@/utils/fetchData';
 import Markdown from '@/utils/Markdown';
+import Img from '@/utils/Img';
 
 const Footer = async () => {
   const { global: {
+    footer_Logo,
     footer_Heading,
     footer_Cta,
     footer_Slogan,
@@ -23,7 +24,7 @@ const Footer = async () => {
           </div>
           <div className={styles.brand}>
             <Link href="/" aria-label="Homepage">
-              <Logo viewBox={true} circleColor="#FCFCFC" />
+              <Img data={footer_Logo} placeholder="empty" />
             </Link>
             <Markdown>{footer_Slogan}</Markdown>
           </div>
@@ -43,6 +44,19 @@ const getData = async () => {
       instagram
       facebook
       youtube
+      footer_Logo {
+        asset {
+          altText
+          url
+          metadata {
+            lqip
+            dimensions {
+              width
+              height
+            }
+          }
+        }
+      }
       footer_Heading
       footer_Cta {
         theme
