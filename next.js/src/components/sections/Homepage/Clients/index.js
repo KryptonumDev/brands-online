@@ -1,9 +1,9 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Autoplay } from 'swiper/modules';
 import 'swiper/scss';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Markdown from '@/utils/Markdown';
 import styles from './styles.module.scss';
 import Tag from '@/components/atoms/Tag';
@@ -19,9 +19,14 @@ const Clients = ({
     clients_Cta,
   }
 }) => {
+  const wrapper = useRef(null);
+  const isInView = useInView(wrapper);
+  useEffect(() => {
+    document.body.classList.toggle('blobEffectStack', isInView)
+  }, [isInView])
   const [ frameWidth, setFrameWidth ] = useState(0);
   return (
-    <section className={`${styles.wrapper} blobEffectStack`}>
+    <section className={`${styles.wrapper}`} ref={wrapper}>
       <header>
         <Tag>{clients_Tag}</Tag>
         <Markdown.h2>{clients_Heading}</Markdown.h2>

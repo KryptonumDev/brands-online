@@ -236,7 +236,8 @@ main {
   }
 }
 
-body:has(.blobEffectStack:hover) .mouseEffect {
+body:has(.blobEffectStack:hover) .mouseEffect,
+body.blobEffectStack .mouseEffect {
   z-index: 1;
   opacity: .2;
 }
