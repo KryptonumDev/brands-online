@@ -53,7 +53,7 @@ const Render = ({ rotation }) => {
 }
 
 const CanvasElement = ({ rotation }) => {
-  const { nodes } = useGLTF("/renders/brands-online-logo-homepage.gltf");
+  const { nodes } = useGLTF("/renders/brands-online-logo.gltf");
 
   const mesh = useRef(null);
   let time = 0;
@@ -115,6 +115,6 @@ const CanvasElement = ({ rotation }) => {
   )
 }
 
-useGLTF.preload("/renders/brands-online-logo-homepage.gltf");
+useGLTF.preload("/renders/brands-online-logo.gltf");
 
 export default Render;
