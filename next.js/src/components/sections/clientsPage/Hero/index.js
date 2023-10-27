@@ -3,7 +3,7 @@ import { lazy, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
-import { useSpring, useTransform, useScroll } from 'framer-motion';
+import { motion, useSpring, useTransform, useScroll } from 'framer-motion';
 import RenderPlaceholder from '@/components/atoms/RenderPlaceholder';
 const Render = lazy(() => import('./Render'));
 
@@ -21,7 +21,6 @@ const Hero = ({
   }, []);
 
   const wrapper = useRef(null);
-
   const { scrollYProgress } = useScroll({
     target: wrapper,
     offset: ['start end', 'end start']
@@ -29,6 +28,8 @@ const Hero = ({
 
   const options = { damping: 50 }
   const progress = useSpring(useTransform(scrollYProgress, [0, 1], [-10, -2]), options);
+
+  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["100vh", "-80vh"]);
 
   return (
     <section className={styles.wrapper} ref={wrapper}>
@@ -43,6 +44,10 @@ const Hero = ({
           <Render progress={progress} setIsLoading={setIsLoading} />
         )}
       </div>
+      <motion.div
+        className={styles.glassEffect}
+        style={{ y: glassEffectProgress }}
+      ><div /><div /><div /><div /><div /><div /></motion.div>
     </section>
   );
 };

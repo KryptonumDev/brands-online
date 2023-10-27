@@ -28,4 +28,34 @@
       margin: 0 calc(var(--pageMargin) * -1);
     }
   }
+  > *:not(.glassEffect){
+    z-index: 1;
+    position: relative;
+  }
+  @media (min-width: 800px){
+    position: relative;
+    .glassEffect {
+      position: absolute;
+      left: -34px;
+      bottom: 0;
+      z-index: 0;
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      padding: clamp(1px, calc(2vw/7.68), 2px);
+      gap: clamp(1px, calc(2vw/7.68), 2px);
+      border-radius: clamp(5px, calc(10vw/7.68), 14px);
+      background: linear-gradient(315deg, rgba(232, 232, 232, .62), rgba(255, 255, 255, 0));
+      div {
+        width: 90px;
+        height: 90px;
+        border-radius: clamp(4px, calc(8vw/7.68), 12px);
+        background-color: rgba(255, 255, 255, .8);
+        transition: opacity .3s;
+        &:hover {
+          opacity: 0;
+          transition-delay: 0s;
+        }
+      }
+    }
+  }
 }
