@@ -44,7 +44,7 @@ const Services = ({
     target: wrapper,
     offset: ['start end', 'end start']
   })
-  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["50vh", "-80vh"]);
+  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["80vh", "-50vh"]);
 
   return (
     <section>
@@ -57,7 +57,7 @@ const Services = ({
           <motion.div
             className={styles.glassEffect}
             style={{ y: glassEffectProgress }}
-          ><div /><div /><div /><div /></motion.div>
+          ><div /><div /></motion.div>
         </header>
         <div className={styles.list}>
           {services_List.map(({ title, description }, i) => (

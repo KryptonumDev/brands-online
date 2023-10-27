@@ -23,7 +23,7 @@ const Motivation = ({
       <motion.div
         className={styles.glassEffect}
         style={{ y: glassEffectProgress }}
-      ><div /><div /><div /><div /><div /><div /><div /><div /><div /></motion.div>
+      ><div /><div /><div /><div /></motion.div>
     </section>
   );
 };

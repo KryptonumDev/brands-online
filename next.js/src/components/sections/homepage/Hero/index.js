@@ -40,7 +40,7 @@ const Hero = ({
         <motion.div
           className={styles.glassEffect}
           style={{ y: glassEffectProgress }}
-        ><div /><div /><div /><div /></motion.div>
+        ><div /><div /></motion.div>
       </header>
       <div className={styles.render}>
         <RenderPlaceholder className={styles.placeholder} loading={isLoading} />
