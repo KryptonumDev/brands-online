@@ -5,4 +5,30 @@
   h2 {
     font-size: clamp(calc(24rem/16), calc(32vw/7.68), calc(48rem/16));
   }
+  position: relative;
+  @media (min-width: 800px){
+    .glassEffect {
+      position: absolute;
+      left: -35px;
+      z-index: -2;
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: clamp(1px, calc(2vw/7.68), 2px);
+      gap: clamp(1px, calc(2vw/7.68), 2px);
+      border-radius: clamp(5px, calc(10vw/7.68), 14px);
+      background: linear-gradient(315deg, rgba(232, 232, 232, .62), rgba(255, 255, 255, 0));
+      div {
+        width: 90px;
+        height: 90px;
+        border-radius: clamp(4px, calc(8vw/7.68), 12px);
+        background-color: rgba(255, 255, 255, .8);
+        transition: opacity .1s .5s;
+  
+        &:hover {
+          opacity: 0;
+          transition-delay: 0s;
+        }
+      }
+    }
+  }
 }

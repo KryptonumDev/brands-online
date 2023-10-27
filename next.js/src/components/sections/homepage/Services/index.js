@@ -38,14 +38,26 @@ const Services = ({
 
   const rotation = useSpring(useTransform(progress, [0, 1], [-3, 5]), { damping: 100 });
 
+  
+  const wrapper = useRef();
+  const { scrollYProgress } = useScroll({
+    target: wrapper,
+    offset: ['start end', 'end start']
+  })
+  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["50vh", "-80vh"]);
+
   return (
     <section>
       <div className={styles.column}>
-        <header>
+        <header ref={wrapper}>
           <Tag className={styles.tag}>{services_Tag}</Tag>
           <Markdown.h2>{services_Heading}</Markdown.h2>
           <Markdown className={styles.paragraph}>{services_Paragraph}</Markdown>
           <Button data={services_Cta} />
+          <motion.div
+            className={styles.glassEffect}
+            style={{ y: glassEffectProgress }}
+          ><div /><div /><div /><div /></motion.div>
         </header>
         <div className={styles.list}>
           {services_List.map(({ title, description }, i) => (

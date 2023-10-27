@@ -26,7 +26,7 @@ const Clients = ({
   }, [isInView])
   const [ frameWidth, setFrameWidth ] = useState(0);
   return (
-    <section className={`${styles.wrapper}`} ref={wrapper}>
+    <section className={`${styles.wrapper}`}>
       <header>
         <Tag>{clients_Tag}</Tag>
         <Markdown.h2>{clients_Heading}</Markdown.h2>
@@ -47,6 +47,7 @@ const Clients = ({
           disableOnInteraction: false,
         }}
         className={styles.swiper}
+        ref={wrapper}
       >
         {clients_List.map(({ img, name, href }, i) => (
           <SwiperSlide key={i}>

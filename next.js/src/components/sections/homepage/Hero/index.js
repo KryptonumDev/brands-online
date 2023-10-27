@@ -1,9 +1,10 @@
 'use client'
-import { lazy, useEffect, useState } from 'react';
+import { lazy, useEffect, useRef, useState } from 'react';
 import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
 import RenderPlaceholder from '@/components/atoms/RenderPlaceholder';
+import { useTransform, useScroll, motion  } from 'framer-motion';
 const Render = lazy(() => import('./Render'));
 
 const Hero = ({
@@ -20,15 +21,29 @@ const Hero = ({
     setIsMounted(true);
   }, []);
 
+  
+  const wrapper = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: wrapper,
+    offset: ['start end', 'end start']
+  })
+
+  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["50vh", "-50vh"]);
+
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} ref={wrapper}>
       <header>
         <Markdown.h1>{hero_Heading}</Markdown.h1>
         <Markdown className={styles.paragraph}>{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
+        <motion.div
+          className={styles.glassEffect}
+          style={{ y: glassEffectProgress }}
+        ><div /><div /><div /><div /></motion.div>
       </header>
       <div className={styles.render}>
-        <RenderPlaceholder className={styles.placeholder} size="large" loading={isLoading} />
+        <RenderPlaceholder className={styles.placeholder} loading={isLoading} />
         {!isMounted ? null : (
           <Render setIsLoading={setIsLoading} />
         )}
