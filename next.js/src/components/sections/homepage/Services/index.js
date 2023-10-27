@@ -36,7 +36,7 @@ const Services = ({
     offset: ['start end', 'end start']
   });
 
-  const rotation = useSpring(useTransform(progress, [0, 1], [-6, 4]), { damping: 100 });
+  const rotation = useSpring(useTransform(progress, [0, 1], [-3, 5]), { damping: 100 });
 
   return (
     <section>

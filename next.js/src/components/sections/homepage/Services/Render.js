@@ -67,39 +67,42 @@ const CanvasElement = ({ rotation }) => {
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
-            <spotLight
-              intensity={1}
-              angle={Math.PI / 6}
-              decay={2}
-              distance={2000}
-              position={[-3.337, 1.932, 3.099]}
-              rotation={[0.895, 0.205, 0.443]}
-            />
             <directionalLight
-              intensity={1.2}
+              intensity={1}
               decay={2}
-              rotation={[-0.172, 0.295, 0.537]}
+              rotation={[2.199, -0.292, -1.365]}
             />
             <motion3d.group
-              position={[121.842, -32.198, 104.76]}
+              position={[557.396, -273.599, 76.345]}
+              rotation={[-0.17, -0.59, 0.255]}
+              scale={3.664}
               rotation-y={rotation}
               ref={mesh}
             >
-              <group
-                position={[-0.731, 1.617, -1.232]}
-                rotation={[-0.272, -0.237, -0.139]}
-                scale={[0.88, 0.84, 0.88]}
-              >
+              <group position={[-88.946, 55.988, -21]}>
                 <mesh
                   castShadow
                   receiveShadow
                   geometry={nodes.Shape_0.geometry}
                   material={nodes.Shape_0.material}
-                  position={[-23.067, 16.115, 7.695]}
-                  rotation={[0.489, Math.PI / 10, 0]}
+                  position={[0.254, -0.688, 0]}
+                />
+              </group>
+              <group position={[-51.946, 85.988, -21]}>
+                <mesh
+                  castShadow
+                  receiveShadow
+                  geometry={nodes.Shape_0_1.geometry}
+                  material={nodes.Shape_0_1.material}
+                  position={[0.19, -0.074, 0]}
                 />
               </group>
             </motion3d.group>
+            <directionalLight
+              intensity={0.7}
+              decay={2}
+              rotation={[0.432, 0.969, -0.51]}
+            />
           </group>
         </group>
       </Stage>
