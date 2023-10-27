@@ -54,10 +54,6 @@ const Services = ({
           <Markdown.h2>{services_Heading}</Markdown.h2>
           <Markdown className={styles.paragraph}>{services_Paragraph}</Markdown>
           <Button data={services_Cta} />
-          <motion.div
-            className={styles.glassEffect}
-            style={{ y: glassEffectProgress }}
-          ><div /><div /></motion.div>
         </header>
         <div className={styles.list}>
           {services_List.map(({ title, description }, i) => (
@@ -94,6 +90,10 @@ const Services = ({
             </details>
           ))}
         </div>
+        <motion.div
+          className={styles.glassEffect}
+          style={{ y: glassEffectProgress }}
+        ><div /><div /></motion.div>
       </div>
       <div
         ref={canvas}

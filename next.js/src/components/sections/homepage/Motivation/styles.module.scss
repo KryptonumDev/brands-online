@@ -4,13 +4,14 @@
   text-align: center;
   h2 {
     font-size: clamp(calc(24rem/16), calc(32vw/7.68), calc(48rem/16));
+    z-index: 2;
+    position: relative;
   }
   position: relative;
   @media (min-width: 800px){
     .glassEffect {
       position: absolute;
       left: -15px;
-      z-index: -2;
       display: inline-grid;
       grid-template-columns: 1fr 1fr;
       padding: clamp(1px, calc(2vw/7.68), 2px);
@@ -22,8 +23,7 @@
         height: 90px;
         border-radius: clamp(4px, calc(8vw/7.68), 12px);
         background-color: rgba(255, 255, 255, .8);
-        transition: opacity .1s .5s;
-  
+        transition: opacity .3s;
         &:hover {
           opacity: 0;
           transition-delay: 0s;

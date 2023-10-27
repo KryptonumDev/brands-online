@@ -29,7 +29,7 @@ const Hero = ({
     offset: ['start end', 'end start']
   })
 
-  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["50vh", "-50vh"]);
+  const glassEffectProgress = useTransform(scrollYProgress, [0, 1], ["50vh", "-80vh"]);
 
   return (
     <section className={styles.wrapper} ref={wrapper}>
@@ -37,10 +37,6 @@ const Hero = ({
         <Markdown.h1>{hero_Heading}</Markdown.h1>
         <Markdown className={styles.paragraph}>{hero_Paragraph}</Markdown>
         <Button data={hero_Cta} />
-        <motion.div
-          className={styles.glassEffect}
-          style={{ y: glassEffectProgress }}
-        ><div /><div /></motion.div>
       </header>
       <div className={styles.render}>
         <RenderPlaceholder className={styles.placeholder} loading={isLoading} />
@@ -48,6 +44,10 @@ const Hero = ({
           <Render setIsLoading={setIsLoading} />
         )}
       </div>
+      <motion.div
+        className={styles.glassEffect}
+        style={{ y: glassEffectProgress }}
+      ><div /><div /></motion.div>
     </section>
   );
 };
