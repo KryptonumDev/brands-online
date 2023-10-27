@@ -76,6 +76,33 @@ export default {
       fieldset: 'footer',
     },
     {
+      name: 'cookieConsent_Heading',
+      title: 'Heading',
+      type: 'string',
+      fieldset: 'cookieConsent',
+    },
+    {
+      name: 'cookieConsent_Description',
+      title: 'Description',
+      type: 'markdown',
+      fieldset: 'cookieConsent',
+    },
+    {
+      name: 'cookieConsent_PreferenceTitle',
+      title: 'Preference Title',
+      type: 'string',
+      fieldset: 'cookieConsent',
+    },
+    {
+      name: 'cookieConsent_List',
+      title: 'List',
+      type: 'array',
+      of: [{
+        type: 'list_titleAndDescription',
+      }],
+      fieldset: 'cookieConsent',
+    },
+    {
       name: 'seo',
       type: 'global_Seo',
       title: 'Global SEO',
@@ -93,7 +120,12 @@ export default {
       name: 'footer',
       title: 'Footer',
       options: { collapsible: true, collapsed: true }
-    }
+    },
+    {
+      name: 'cookieConsent',
+      title: 'Cookie Consent',
+      options: { collapsible: true, collapsed: true }
+    },
   ]
 }
 

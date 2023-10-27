@@ -13,7 +13,7 @@ export const titleAndDescription = {
     {
       name: 'description',
       type: 'markdown',
-      title: 'description',
+      title: 'Description',
     },
   ],
   preview: {
