@@ -103,7 +103,7 @@ const Nav = () => {
   return (
     <>
       <a href="#main" className={styles.skipToMainContent}>Skip to main content</a>
-      <header className={`${styles.wrapper} blobEffectStack`} aria-expanded={navOpened}>
+      <header className={`${styles.wrapper}`} aria-expanded={navOpened}>
         <div className="max-width">
           <Link
             href='/'

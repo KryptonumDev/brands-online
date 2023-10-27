@@ -22,8 +22,8 @@ const Render = ({ setIsLoading }) => {
       y: useTransform(mouse.y, [0, 1], [-1, 1]),
     },
     1: {
-      x: useTransform(mouse.x, [0, 1], [-1, 1.5]),
-      y: useTransform(mouse.y, [0, 1], [-1, 1.5]),
+      x: useTransform(mouse.x, [0, 1], [-2, 0]),
+      y: useTransform(mouse.y, [0, 1], [1, 1.5]),
     },
   };
 
