@@ -30,10 +30,7 @@
     opacity: .2;
   }
   transition: opacity .4s;
-  filter: url(#goo) blur(40px);
-  #goo {
-    display: none;
-  }
+  filter: blur(40px);
   svg {
     width: clamp(300px, calc(500vw/7.68), 600px);
     height: auto;
