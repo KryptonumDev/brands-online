@@ -1,17 +1,19 @@
 import styles from './styles.module.scss';
 
 const Switch = ({
+  hasLabel=true,
   ...props
 }) => {
+  const Wrapper = hasLabel ? 'label' : 'div';
   return (
-    <label className={styles.toggle} {...props}>
+    <Wrapper className={styles.toggle} {...props}>
       <input
         type='checkbox'
       />
       <div className={styles.dot}>
         <Tick className={styles.tick} />
       </div>
-    </label>
+    </Wrapper>
   );
 };
 

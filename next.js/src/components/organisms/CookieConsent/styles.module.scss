@@ -1,0 +1,86 @@
+.wrapper {
+  &[aria-hidden="true"]{
+    display: none;
+  }
+  position: fixed;
+  z-index: 9;
+  right: clamp(16px, calc(24vw/7.68), 34px);
+  bottom: clamp(16px, calc(24vw/7.68), 34px);
+  width: calc(100% - clamp(16px, calc(24vw/7.68), 34px) * 2);
+  max-width: 690px;
+  max-height: calc(100vh - clamp(16px, calc(24vw/7.68), 34px) * 2);
+  display: flex;
+  flex-direction: column;
+  border-radius: clamp(20px, calc(28vw/7.68), 28px);
+  border: 1px solid var(--gradients-300, #14E5D7);
+  background-color: rgba(255,255,255,.98);
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 0px 10px 0px rgba(18, 224, 211, .6);
+  padding: 0 clamp(16px, calc(28vw/7.68), 28px) clamp(28px, calc(28vw/7.68), 28px);
+  .overflow {
+    padding-top: clamp(28px, calc(28vw/7.68), 28px);
+    overflow: auto;
+  }
+  .close {
+    position: absolute;
+    padding: 12px;
+    right: 6px;
+    top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    background-color: rgba(255,255,255,.6);
+    backdrop-filter: blur(4px);
+    border-radius: 32px;
+  }
+  header {
+    .heading {
+      font-size: clamp(calc(24rem/16), calc(32vw/7.68), calc(32rem/16));
+      margin-bottom: 8px;
+    }
+    .description {
+      font-size: clamp(calc(16rem/16), calc(18vw/7.68), calc(20rem/16));
+    }
+  }
+  .preferences {
+    overflow: hidden;
+    .preferencesTitle {
+      font-size: clamp(calc(20rem/16), calc(24vw/7.68), calc(24rem/16));
+      margin: 20px 0 clamp(16px, calc(20vw/7.68), 24px);
+    }
+    .title {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: clamp(calc(16rem/16), calc(20vw/7.68), calc(20rem/16));
+      background: var(--gradients-300);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      padding: 8px 0;
+    }
+    .description {
+      font-size: calc(14rem/16);
+    }
+  }
+  .actionTab {
+    margin-top: 24px;
+    display: grid;
+    gap: 16px;
+    align-items: center;
+    @media (min-width: 500px) {
+      justify-content: space-between;
+      grid-template-columns: auto auto;
+    }
+    button {
+      flex-grow: 1;
+      &.preferences {
+        text-decoration: underline;
+      }
+    }
+  }
+}

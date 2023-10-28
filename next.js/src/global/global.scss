@@ -236,6 +236,10 @@ main {
   }
 }
 
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
 body.blobEffectStack .mouseEffect {
   z-index: 1;
   opacity: .2;
