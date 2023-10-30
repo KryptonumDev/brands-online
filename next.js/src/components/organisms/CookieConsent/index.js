@@ -10,54 +10,83 @@ const CookieConsent = ({ data: {
   cookieConsent_Heading,
   cookieConsent_Description,
   cookieConsent_PreferencesTitle,
-  cookieConsent_List,
+  cookieConsent_List_Necessary,
+  cookieConsent_List_Statistical,
+  cookieConsent_List_Marketing,
+  cookieConsent_List_Preferences,
+  cookieConsent_List_Unclassified,
 }}) => {
+  const cookiesList = [
+    {
+      heading: 'Necessary',
+      description: cookieConsent_List_Necessary,
+      name: 'necessary',
+      isActive: true,
+    },
+    {
+      heading: 'Statistics',
+      description: cookieConsent_List_Statistical,
+      name: 'statistics',
+      isActive: false,
+    },
+    {
+      heading: 'Marketing',
+      description: cookieConsent_List_Marketing,
+      name: 'marketing',
+      isActive: false,
+    },
+    {
+      heading: 'Preferences',
+      description: cookieConsent_List_Preferences,
+      name: 'preferences',
+      isActive: false,
+    },
+    {
+      heading: 'Unclassified',
+      description: cookieConsent_List_Unclassified,
+      name: 'unclassified',
+      isActive: false,
+    },
+  ]
+
   const [ showBanner, setShowBanner ] = useState(true);
   const [ showPreferences, setShowPreferences ] = useState(false);
 
-  const [activeCookie, setActiveCookie] = useState(() => {
-    const arr = []
-    // detailsTab.cookies.forEach(el => {
-    //   const isActive = el.workPartName === 'necessary'
-    //   arr.push({ name: el.workPartName, isActive: isActive })
-    // })
-    return arr;
-  })
+  const [ activeCookie, setActiveCookie ] = useState(cookiesList);
 
   useEffect(() => {
     if (getCookie('necessary')) {
-      dataLayerArguments("consent", "default", {
-        'ad_storage': getCookie('marketing'),
-        'analytics_storage': getCookie('statistics'),
+      gtag("consent", "default", {
         'functionality_storage': getCookie('necessary'),
+        'analytics_storage': getCookie('statistics'),
+        'ad_storage': getCookie('marketing'),
         'personalization_storage': getCookie('preferences'),
         'unclassified_storage': getCookie('unclassified'),
         'wait_for_update': 2500
       });
-      dataLayerArguments("set", "ads_data_redaction", true);
+      gtag("set", "ads_data_redaction", true);
       setShowBanner(false);
     } else {
-      dataLayerArguments("consent", "default", {
-        'ad_storage': "denied",
-        'analytics_storage': "denied",
+      gtag("consent", "default", {
         'functionality_storage': "denied",
+        'analytics_storage': "denied",
+        'ad_storage': "denied",
         'personalization_storage': "denied",
-        'security_storage': "granted",
         'unclassified_storage': "denied",
         'wait_for_update': 2500
       });
-      dataLayerArguments("set", "ads_data_redaction", true);
+      gtag("set", "ads_data_redaction", true);
     }
   }, [showBanner])
 
   const acceptAll = () => {
     activeCookie.forEach(el => {
-      setCookie(el.name, 'granted', 365)
+      setCookie(el.name, 'granted', 365);
     })
-    dataLayerArguments('consent', 'update', {
-      'ad_storage': 'granted',
+    gtag('consent', 'update', {
+      'functionality_storage': 'granted',
       'analytics_storage': "granted",
-      'functionality_storage': "granted",
+      'ad_storage': "granted",
       'personalization_storage': "granted",
       'unclassified_storage': "granted",
     });
@@ -67,17 +96,17 @@ const CookieConsent = ({ data: {
     activeCookie.forEach(el => {
       setCookie(el.name, el.isActive ? 'granted' : 'denied', 365)
     })
-    dataLayerArguments('consent', 'update', {
-      'ad_storage': getCookie('marketing'),
-      'analytics_storage': getCookie('statistics'),
+    gtag('consent', 'update', {
       'functionality_storage': getCookie('necessary'),
+      'analytics_storage': getCookie('statistics'),
+      'ad_storage': getCookie('marketing'),
       'personalization_storage': getCookie('preferences'),
       'unclassified_storage': getCookie('unclassified'),
     });
     setShowBanner(false);
   }
   const changeTabs = (index) => {
-    const arr = [...activeCookie]
+    const arr = [...activeCookie];
     if (arr[index].name === "necessary") {
       return null;
     }
@@ -88,11 +117,12 @@ const CookieConsent = ({ data: {
     activeCookie.forEach(el => {
       setCookie(el.name, 'denied', 365);
     })
-    dataLayerArguments('consent', 'update', {
-      'ad_storage': 'denied',
-      'analytics_storage': "denied",
+    gtag('consent', 'update', {
       'functionality_storage': "denied",
+      'analytics_storage': "denied",
+      'ad_storage': 'denied',
       'personalization_storage': "denied",
+      'unclassified_storage': "denied",
     });
     setShowBanner(false);
   }
@@ -118,16 +148,20 @@ const CookieConsent = ({ data: {
           exit={{ height: 0 }}
         >
           <p className={styles.preferencesTitle}>{cookieConsent_PreferencesTitle}</p>
-          {cookieConsent_List.map(({ title, description }, i) => (
+          {cookiesList.map(({ heading, description }, i) => (
             <div className={styles.item} key={i}>
-              <label className={styles.title}>
-                <Markdown>{title}</Markdown>
+              <label
+                className={styles.title}
+                onClick={() => changeTabs(i)}
+              >
+                <Markdown>{heading}</Markdown>
                 <Switch
-                  onClick={() => changeTabs()}
+                  defaultChecked={ i===0 }
+                  disabled={ i === 0}
                   hasLabel={false}
                 />
               </label>
-              <Markdown className={styles.description}>{description}</Markdown>
+              <p className={styles.description}>{description}</p>
             </div>
           ))}
         </motion.div>
@@ -147,7 +181,7 @@ const CookieConsent = ({ data: {
   )
 }
 
-const dataLayerArguments = () => {
+const gtag = () => {
   // eslint-disable-next-line no-undef
   if (arguments) {
     window.dataLayer = window.dataLayer || [];

@@ -30,7 +30,11 @@ export default async function RootLayout({ children }) {
     cookieConsent_Heading,
     cookieConsent_Description,
     cookieConsent_PreferencesTitle,
-    cookieConsent_List,
+    cookieConsent_List_Necessary,
+    cookieConsent_List_Statistical,
+    cookieConsent_List_Marketing,
+    cookieConsent_List_Preferences,
+    cookieConsent_List_Unclassified,
   } } = await getData();
 
   return (
@@ -58,7 +62,11 @@ export default async function RootLayout({ children }) {
           cookieConsent_Heading,
           cookieConsent_Description,
           cookieConsent_PreferencesTitle,
-          cookieConsent_List,
+          cookieConsent_List_Necessary,
+          cookieConsent_List_Statistical,
+          cookieConsent_List_Marketing,
+          cookieConsent_List_Preferences,
+          cookieConsent_List_Unclassified,
         }} />
         <noscript dangerouslySetInnerHTML={{
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
@@ -74,10 +82,11 @@ const getData = async () => {
       cookieConsent_Heading
       cookieConsent_Description
       cookieConsent_PreferencesTitle
-      cookieConsent_List {
-        title
-        description
-      }
+      cookieConsent_List_Necessary
+      cookieConsent_List_Statistical
+      cookieConsent_List_Marketing
+      cookieConsent_List_Preferences
+      cookieConsent_List_Unclassified
     }
   `)
   return data;

@@ -6,9 +6,10 @@ const Switch = ({
 }) => {
   const Wrapper = hasLabel ? 'label' : 'div';
   return (
-    <Wrapper className={styles.toggle} {...props}>
+    <Wrapper className={styles.toggle}>
       <input
         type='checkbox'
+        {...props}
       />
       <div className={styles.dot}>
         <Tick className={styles.tick} />

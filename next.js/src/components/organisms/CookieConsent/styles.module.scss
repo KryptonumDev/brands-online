@@ -49,6 +49,9 @@
       font-size: clamp(calc(20rem/16), calc(24vw/7.68), calc(24rem/16));
       margin: 20px 0 clamp(16px, calc(20vw/7.68), 24px);
     }
+    .item:not(:last-child) {
+      margin-bottom: 8px;
+    }
     .title {
       cursor: pointer;
       display: flex;
@@ -60,7 +63,7 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
+      margin-bottom: 3px;
       padding: 8px 0;
     }
     .description {
