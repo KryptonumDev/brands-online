@@ -47,7 +47,6 @@ const CookieConsent = ({ data: {
         'wait_for_update': 2500
       });
       dataLayerArguments("set", "ads_data_redaction", true);
-      setShowBanner(false);
     }
   }, [showBanner])
 
