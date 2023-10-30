@@ -8,6 +8,7 @@ import MouseEffect from '@/components/atoms/MouseEffect'
 import CookieConsent from '@/components/organisms/CookieConsent'
 import fetchData from '@/utils/fetchData'
 import Script from 'next/script'
+import SplashScreen from '@/components/organisms/SpalshScreen'
 
 const DMSans = localFont({
   src: [
@@ -68,6 +69,7 @@ export default async function RootLayout({ children }) {
           cookieConsent_List_Preferences,
           cookieConsent_List_Unclassified,
         }} />
+        <SplashScreen />
         <noscript dangerouslySetInnerHTML={{
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
         }} />
