@@ -181,11 +181,9 @@ const CookieConsent = ({ data: {
   )
 }
 
-const gtag = () => {
-  // eslint-disable-next-line no-undef
+function gtag() {
   if (arguments) {
     window.dataLayer = window.dataLayer || [];
-    // eslint-disable-next-line no-undef
     window.dataLayer.push(arguments);
   }
 }
