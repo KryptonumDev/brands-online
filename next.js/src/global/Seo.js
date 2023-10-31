@@ -1,7 +1,7 @@
 import fetchData from "@/utils/fetchData";
 
 export const domain = 'https://www.brandsonline.com';
-const locale = "pl_PL";
+const locale = "en_US";
 
 const Seo = async ({ title, description, url }) => {
   const { data: { global } } = await getData();
