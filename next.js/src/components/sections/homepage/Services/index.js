@@ -37,7 +37,6 @@ const Services = ({
   });
 
   const rotation = useSpring(useTransform(progress, [0, 1], [-3, 5]), { damping: 100 });
-
   
   const wrapper = useRef();
   const { scrollYProgress } = useScroll({

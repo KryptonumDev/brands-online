@@ -1,16 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useMotionValue, useSpring, useTransform } from "framer-motion";
-import { motion } from 'framer-motion-3d';
+import { motion as motion3d } from 'framer-motion-3d';
 import { NoToneMapping } from "three";
 
+const options = {
+  damping: 25
+}
+
 const Render = ({ setIsLoading }) => {
+  return (
+    <Canvas
+      resize={{ scroll: false }}
+      onCreated={() => setIsLoading(false)}
+      gl={{ toneMapping: NoToneMapping }}
+    >
+      <CanvasElement />
+    </Canvas>
+  );
+}
+
+const CanvasElement = () => {
   const { nodes } = useGLTF("/renders/about.gltf");
 
-  const options = {
-    damping: 25
-  }
   const mouse = {
     x: useSpring(useMotionValue(0), options),
     y: useSpring(useMotionValue(0), options),
@@ -22,8 +35,8 @@ const Render = ({ setIsLoading }) => {
       y: useTransform(mouse.y, [0, 1], [-1, 1]),
     },
     1: {
-      x: useTransform(mouse.x, [0, 1], [-2, 0]),
-      y: useTransform(mouse.y, [0, 1], [1, 1.5]),
+      x: useTransform(mouse.x, [0, 1], [-1, 0]),
+      y: useTransform(mouse.y, [0, 1], [-0.5, 1]),
     },
   };
 
@@ -41,12 +54,17 @@ const Render = ({ setIsLoading }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const mesh1 = useRef(null);
+  const mesh2 = useRef(null);
+  let time = 0;
+  useFrame(() => {
+    time += 0.01 * 2;
+    mesh1.current.rotation.z = .2 * Math.sin(time);
+    mesh2.current.rotation.z = -.1 * Math.sin(time);
+  })
+
   return (
-    <Canvas
-      resize={{ scroll: false }}
-      onCreated={() => setIsLoading(false)}
-      gl={{ toneMapping: NoToneMapping }}
-    >
+    <>
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
@@ -63,10 +81,11 @@ const Render = ({ setIsLoading }) => {
               decay={2}
               rotation={[-0.506, 0.629, 0.756]}
             />
-            <motion.group
+            <motion3d.group
               position={[619.016, -468.333, 10.83]}
               rotation-x={mesh[0].x}
               rotation-y={mesh[0].y}
+              ref={mesh1}
             >
               <group
                 position={[29.558, 94.494, -88.033]}
@@ -82,11 +101,12 @@ const Render = ({ setIsLoading }) => {
                   rotation={[-0.319, 0, 0]}
                 />
               </group>
-            </motion.group>
-            <motion.group
+            </motion3d.group>
+            <motion3d.group
               position={[282.137, -327.582, 6.465]}
               rotation-x={mesh[1].x}
               rotation-y={mesh[1].y}
+              ref={mesh2}
             >
               <group
                 position={[-160.521, 55.613, 1.438]}
@@ -101,7 +121,7 @@ const Render = ({ setIsLoading }) => {
                   position={[0.723, -0.262, 0]}
                 />
               </group>
-            </motion.group>
+            </motion3d.group>
           </group>
         </group>
       </Stage>
@@ -109,11 +129,10 @@ const Render = ({ setIsLoading }) => {
         enablePan={false}
         enableZoom={false}
         enableRotate={false}
-        autoRotate
-        autoRotateSpeed={2}
+        autoRotate={false}
       />
-    </Canvas>
-  );
+    </>
+  )
 }
 
 useGLTF.preload("/renders/about.gltf");
