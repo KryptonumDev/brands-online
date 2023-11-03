@@ -1,7 +1,8 @@
 .modalContainer {
   position: absolute;
-  width: clamp(150px, calc(172vw/7.68), 300px);
-  height: clamp(150px, calc(172vw/7.68), 300px);
+  width: clamp(128px, calc(164vw/7.68), 164px);
+  height: clamp(128px, calc(164vw/7.68), 164px);
+  border-radius: 50%;
   overflow: hidden;
   pointer-events: none;
   .modalSlider {
