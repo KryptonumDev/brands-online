@@ -66,7 +66,7 @@ ${message && `<p>${message}</p>`}
 
 const emailData = {
   from: 'BrandsOnline <hello@brandsonline.com>',
-  to: 'kryptonumstudio@gmail.com',
+  to: 'hello@brandsonline.com',
 }
 
 const headers = {
