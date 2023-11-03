@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { useGLTF, OrthographicCamera, Stage, OrbitControls } from "@react-three/drei";
-import { motion } from 'framer-motion-3d';
+import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
+import { motion as motion3d } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
 import { NoToneMapping } from "three";
 
@@ -17,58 +17,54 @@ const Render = ({ progress, setIsLoading }) => {
 }
 
 const CanvasElement = ({ progress }) => {
-  const { nodes } = useGLTF("/renders/logo-brands-online.gltf");
+  const { nodes } = useGLTF("/renders/brands-online-logo.gltf");
 
   const mesh = useRef(null);
   let time = 0;
   useFrame(() => {
     time += 0.01 * 2;
-    mesh.current.rotation.z = .1 * Math.sin(time);
+    mesh.current.rotation.x = .1 * Math.sin(time);
   })
   return (
     <>
       <Stage shadows={false}>
         <group dispose={null}>
           <group scale={0.01}>
-            <spotLight
-              intensity={1}
-              angle={Math.PI / 6}
-              decay={2}
-              distance={2000}
-              position={[-3.337, 1.932, 3.099]}
-              rotation={[0.895, 0.205, 0.443]}
-            />
             <directionalLight
-              intensity={0.7}
+              intensity={1}
               decay={2}
-              rotation={[-0.166, 0.259, 0.58]}
+              rotation={[2.199, -0.292, -1.365]}
             />
-            <motion.group
-              position={[97.705, -28.857, 83.781]}
-              scale={[1, 1.002, 1]}
+            <motion3d.group
+              position={[557.396, -273.599, 76.345]}
+              rotation={[-0.17, -0.59, 0.255]}
+              scale={3}
               rotation-y={progress}
               ref={mesh}
             >
-              <group
-                position={[3.42, 8.178, 10.802]}
-                rotation={[-0.309, -0.214, -0.096]}
-                scale={[0.973, 0.928, 0.973]}
-              >
+              <group position={[-88.946, 55.988, -21]}>
                 <mesh
                   castShadow
                   receiveShadow
                   geometry={nodes.Shape_0.geometry}
                   material={nodes.Shape_0.material}
-                  position={[-22.407, 18.88, -13.047]}
-                  rotation={[0.074, 0.398, -0.269]}
+                  position={[0.254, -0.688, 0]}
                 />
               </group>
-            </motion.group>
-            <OrthographicCamera
-              makeDefault={false}
-              far={100000}
-              near={0}
-              position={[95.38, -24.756, 1092.293]}
+              <group position={[-51.946, 85.988, -21]}>
+                <mesh
+                  castShadow
+                  receiveShadow
+                  geometry={nodes.Shape_0_1.geometry}
+                  material={nodes.Shape_0_1.material}
+                  position={[0.19, -0.074, 0]}
+                />
+              </group>
+            </motion3d.group>
+            <directionalLight
+              intensity={0.7}
+              decay={2}
+              rotation={[0.432, 0.969, -0.51]}
             />
           </group>
         </group>
@@ -77,13 +73,12 @@ const CanvasElement = ({ progress }) => {
         enablePan={false}
         enableZoom={false}
         enableRotate={false}
-        autoRotate
-        autoRotateSpeed={2}
+        autoRotate={false}
       />
     </>
   )
 }
 
-useGLTF.preload("/renders/logo-brands-online.gltf");
+useGLTF.preload("/renders/brands-online-logo.gltf");
 
 export default Render;
