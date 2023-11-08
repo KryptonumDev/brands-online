@@ -13,7 +13,7 @@ const SplashScreen = () => {
   return (
     <aside className={styles.wrapper} aria-hidden={loaded}>
       <motion.div
-        initial={{ width: 'auto', transform: 'auto' }}
+        initial={{ width: 'auto', transform: 'scale(1)' }}
         animate={{ width: loaded ? '32px' : 'auto', transform: loaded ? 'scale(2)' : 'scale(1)' }}
         exit={{ width: '32px', transform: 'scale(2)' }}
         transition={{

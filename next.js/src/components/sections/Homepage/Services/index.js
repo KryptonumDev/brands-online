@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import Markdown from '@/utils/Markdown';
 import Button from '@/components/atoms/Button';
 import { easing } from '@/global/constants';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import RenderPlaceholder from '@/components/atoms/RenderPlaceholder';
 const Render = lazy(() => import('./Render'));
 
@@ -36,7 +36,35 @@ const Services = ({
     offset: ['start end', 'end start']
   });
 
-  const rotation = useSpring(useTransform(progress, [0, 1], [-3, 5]), { damping: 100 });
+  const rotation = useSpring(useTransform(progress, [0, 1], [-8, 10]), { damping: 100 });
+  const canvasY = useTransform(progress, [0, 1], ["25vh", "-25vh"]);
+
+  const options = {
+    damping: 50
+  }
+  const mouse = {
+    x: useSpring(useMotionValue(0), options),
+    y: useSpring(useMotionValue(0), options),
+  }
+
+  const mouseTransform = {
+    x: useTransform(mouse.x, [0, 1], [-80, 80]),
+    y: useTransform(mouse.y, [0, 1], [-80, 80]),
+  }
+
+  const handleMouseMove = ({ clientX, clientY }) => {
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth);
+    const y = (clientY / innerHeight);
+    mouse.x.set(x);
+    mouse.y.set(y);
+  }
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   
   const wrapper = useRef();
   const { scrollYProgress } = useScroll({
@@ -94,14 +122,22 @@ const Services = ({
           style={{ y: glassEffectProgress }}
         ><div /><div /></motion.div>
       </div>
-      <div
-        ref={canvas}
-        className={styles.render}
+      <motion.div
+        style={{
+          x: mouseTransform.x,
+          y: mouseTransform.y
+        }}
       >
-        {!isMounted ? <RenderPlaceholder /> : (
-          <Render rotation={rotation} />
-        )}
-      </div>
+        <motion.div
+          ref={canvas}
+          className={styles.render}
+          style={{ y: canvasY }}
+        >
+          {!isMounted ? <RenderPlaceholder /> : (
+            <Render rotation={rotation} />
+          )}
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

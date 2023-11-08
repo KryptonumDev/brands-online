@@ -29,7 +29,7 @@ const CanvasElement = () => {
     y: useSpring(useMotionValue(0), options),
   }
 
-  const mesh = {
+  const rotation = {
     0: {
       x: useTransform(mouse.x, [0, 1], [-1, 1]),
       y: useTransform(mouse.y, [0, 1], [-1, 1]),
@@ -38,6 +38,11 @@ const CanvasElement = () => {
       x: useTransform(mouse.x, [0, 1], [-1, 0]),
       y: useTransform(mouse.y, [0, 1], [-0.5, 1]),
     },
+  };
+
+  const position = {
+    x: useTransform(mouse.y, [0, 1], [-50, 50]),
+    y: useTransform(mouse.x, [0, 1], [-80, 0]),
   };
 
   const handleMouseMove = ({ clientX, clientY }) => {
@@ -82,45 +87,55 @@ const CanvasElement = () => {
               rotation={[-0.506, 0.629, 0.756]}
             />
             <motion3d.group
-              position={[619.016, -468.333, 10.83]}
-              rotation-x={mesh[0].x}
-              rotation-y={mesh[0].y}
-              ref={mesh1}
+              position-x={position.x}
+              position-y={position.y}
             >
-              <group
-                position={[29.558, 94.494, -88.033]}
-                rotation={[-0.252, -0.467, -0.85]}
-                scale={[1.378, 1.378, 1.733]}
+              <motion3d.group
+                position={[619.016, -468.333, 10.83]}
+                rotation-x={rotation[0].x}
+                rotation-y={rotation[0].y}
+                ref={mesh1}
               >
-                <mesh
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Shape_0.geometry}
-                  material={nodes.Shape_0.material}
-                  position={[0.199, -0.875, 0]}
-                  rotation={[-0.319, 0, 0]}
-                />
-              </group>
+                <group
+                  position={[29.558, 94.494, -88.033]}
+                  rotation={[-0.252, -0.467, -0.85]}
+                  scale={[1.378, 1.378, 1.733]}
+                >
+                  <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Shape_0.geometry}
+                    material={nodes.Shape_0.material}
+                    position={[0.199, -0.875, 0]}
+                    rotation={[-0.319, 0, 0]}
+                  />
+                </group>
+              </motion3d.group>
             </motion3d.group>
             <motion3d.group
-              position={[282.137, -327.582, 6.465]}
-              rotation-x={mesh[1].x}
-              rotation-y={mesh[1].y}
-              ref={mesh2}
+              position-x={position.x}
+              position-y={position.y}
             >
-              <group
-                position={[-160.521, 55.613, 1.438]}
-                rotation={[0.506, 0.134, 0.576]}
-                scale={1.466}
+              <motion3d.group
+                position={[282.137, -327.582, 6.465]}
+                rotation-x={rotation[1].x}
+                rotation-y={rotation[1].y}
+                ref={mesh2}
               >
-                <mesh
-                  castShadow
-                  receiveShadow
-                  geometry={nodes.Shape_0_1.geometry}
-                  material={nodes.Shape_0_1.material}
-                  position={[0.723, -0.262, 0]}
-                />
-              </group>
+                <group
+                  position={[-160.521, 55.613, 1.438]}
+                  rotation={[0.506, 0.134, 0.576]}
+                  scale={1.466}
+                >
+                  <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Shape_0_1.geometry}
+                    material={nodes.Shape_0_1.material}
+                    position={[0.723, -0.262, 0]}
+                  />
+                </group>
+              </motion3d.group>
             </motion3d.group>
           </group>
         </group>

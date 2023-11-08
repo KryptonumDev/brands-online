@@ -1,54 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useGLTF, Stage, OrbitControls } from "@react-three/drei";
 import { motion as motion3d } from 'framer-motion-3d';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { NoToneMapping } from "three";
 
 const Render = ({ rotation }) => {
-  const options = {
-    damping: 50
-  }
-  const mouse = {
-    x: useSpring(useMotionValue(0), options),
-    y: useSpring(useMotionValue(0), options),
-  }
-
-  const mouseTransform = {
-    x: useTransform(mouse.x, [0, 1], [-50, 50]),
-    y: useTransform(mouse.y, [0, 1], [-50, 50]),
-  }
-
-  const handleMouseMove = ({ clientX, clientY }) => {
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth);
-    const y = (clientY / innerHeight);
-    mouse.x.set(x);
-    mouse.y.set(y);
-  }
-
-  useEffect(() => {
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   return (
-    <motion.div
-      style={{
-        width: '100%',
-        height: '100%',
-        x: mouseTransform.x,
-        y: mouseTransform.y
-      }}
+    <Canvas
+      resize={{ scroll: false }}
+      gl={{ toneMapping: NoToneMapping }}
     >
-      <Canvas
-        resize={{ scroll: false }}
-        gl={{ toneMapping: NoToneMapping }}
-      >
-        <CanvasElement rotation={rotation} />
-      </Canvas>
-    </motion.div>
+      <CanvasElement rotation={rotation} />
+    </Canvas>
   );
 }
 
@@ -59,7 +22,7 @@ const CanvasElement = ({ rotation }) => {
   let time = 0;
   useFrame(() => {
     time += 0.01 * 1;
-    mesh.current.rotation.x = .25 * Math.sin(time);
+    mesh.current.rotation.z = .25 * Math.sin(time);
   })
 
   return (
