@@ -48,8 +48,8 @@ const Services = ({
   }
 
   const mouseTransform = {
-    x: useTransform(mouse.x, [0, 1], [-80, 80]),
-    y: useTransform(mouse.y, [0, 1], [-80, 80]),
+    x: useTransform(mouse.x, [0, 1], [-34, 34]),
+    y: useTransform(mouse.y, [0, 1], [-34, 34]),
   }
 
   const handleMouseMove = ({ clientX, clientY }) => {
