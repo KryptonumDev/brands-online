@@ -52,6 +52,10 @@
   }
 }
 
+html,
+body {
+  overflow-x: clip;
+}
 body.scrollLock {
   overflow: hidden;
   touch-action: none;
@@ -59,7 +63,6 @@ body.scrollLock {
 
 body {
   min-width: 320px;
-  overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   background-color: var(--neutral-100);
   color: var(--neutral-900);

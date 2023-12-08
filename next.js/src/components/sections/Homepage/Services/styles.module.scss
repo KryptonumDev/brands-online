@@ -19,6 +19,7 @@
     gap: clamp(1px, calc(2vw/7.68), 2px);
     border-radius: clamp(5px, calc(10vw/7.68), 14px);
     background: linear-gradient(315deg, rgba(232, 232, 232, .62), rgba(255, 255, 255, 0));
+    z-index: -1;
     div {
       width: 90px;
       height: 90px;
